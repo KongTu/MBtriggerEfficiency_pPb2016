@@ -21,9 +21,9 @@
 #include "DataFormats/HcalDigi/interface/HcalDigiCollections.h"
 #include "DataFormats/HcalRecHit/interface/HcalRecHitCollections.h"
 
-// #include "Geometry/Records/interface/CaloGeometryRecord.h"
-// #include "Geometry/CaloGeometry/interface/CaloGeometry.h"
-// #include "Geometry/CaloGeometry/interface/CaloSubdetectorGeometry.h"
+#include "Geometry/Records/interface/CaloGeometryRecord.h"
+#include "Geometry/CaloGeometry/interface/CaloGeometry.h"
+#include "Geometry/CaloGeometry/interface/CaloSubdetectorGeometry.h"
 
 #include "DataFormats/JetReco/interface/CaloJet.h"
 #include "DataFormats/JetReco/interface/CaloJetCollection.h"
@@ -34,7 +34,7 @@
 #include "TH2F.h"
 #include "TProfile2D.h"
 
-//#include <CLHEP/Geometry/Point3D.h>
+#include <CLHEP/Geometry/Point3D.h>
 
 //add L1 stuff
 #include "CondFormats/L1TObjects/interface/L1GtAlgorithm.h"
