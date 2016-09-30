@@ -385,7 +385,8 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
 
   if (!useReco){
     edm::Handle<HFDigiCollection> digi;
-    iEvent.getByLabel("hcalDigis",digi);
+    
+    iEvent.getByToken("hcalDigis",digi);
   
     HFDigiCollection::const_iterator i;
     
