@@ -363,7 +363,7 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
   
   ZB_vsLumi->Fill(lsec,1);
 
-  //if ((!useMC)&&lsec<1000) return;
+  if ( lsec<270 || lsec > 464 ) return;
 
   evtsTot++;
   
