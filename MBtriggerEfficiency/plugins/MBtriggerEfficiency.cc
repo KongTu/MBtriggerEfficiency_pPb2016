@@ -132,6 +132,7 @@ public:
   std::string outfname;
   edm::InputTag gtDigiTag;
   edm::InputTag gctDigiTag;
+  edm::InputTag l1GtRecordInputTag;
   edm::EDGetTokenT<CaloTowerCollection> caloTowerTag;
   edm::EDGetTokenT<HFRecHitCollection> hfRechitTag;
   edm::EDGetTokenT<reco::CaloJetCollection> caloJetTag;
@@ -188,6 +189,7 @@ private:
 MBtriggerEfficiency::MBtriggerEfficiency(const edm::ParameterSet& iConfig):
   m_l1GtUtils(iConfig, consumesCollector(), true)//this is important for 80x to compile
 {
+  l1GtRecordInputTag = iConfig.getParameter<edm::InputTag>("l1GtRecordInputTag");
   outfname=iConfig.getParameter<std::string>("outputFileName");
   gtDigiTag=iConfig.getParameter<edm::InputTag>("gtDigiTag");
   gctDigiTag=iConfig.getParameter<edm::InputTag>("gctDigiTag");
