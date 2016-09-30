@@ -539,7 +539,7 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
 
    bool fireJet8_fromGT=false;
    bool fireJet12_fromGT=false;   
-
+/*
    int iErrorCode=-1;
    for (uint32_t iTr=0; iTr < trgList.size(); iTr++)
      {
@@ -590,7 +590,7 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
 //  std::cout<<"MENU USED: "<<m_l1GtUtils.l1TriggerMenu()<<std::endl;
 
      }
-  
+  */ 
    if ((fireLongThr1||fireShortThr1)&&fireHF2) crossTest_HF1->Fill(0.1,1);
    if ((fireLongThr1||fireShortThr1)&&(!fireHF2)) crossTest_HF1->Fill(1.1,1);
    if ((!(fireLongThr1||fireShortThr1))&&fireHF2) crossTest_HF1->Fill(2.1,1);
