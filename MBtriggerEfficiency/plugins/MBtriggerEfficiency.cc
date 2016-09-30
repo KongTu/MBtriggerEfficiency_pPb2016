@@ -186,11 +186,9 @@ private:
 // constructors and destructor
 //
 MBtriggerEfficiency::MBtriggerEfficiency(const edm::ParameterSet& iConfig):
-  m_l1GtUtils(iConfig.getParameter<edm::InputTag>(
-                    "L1GtRecordInputTag"), consumesCollector(), true)//this is important for 80x to compile
+  m_l1GtUtils(gtDigiTag, consumesCollector(), true)//this is important for 80x to compile
 {
   outfname=iConfig.getParameter<std::string>("outputFileName");
-
   gtDigiTag=iConfig.getParameter<edm::InputTag>("gtDigiTag");
   gctDigiTag=iConfig.getParameter<edm::InputTag>("gctDigiTag");
   caloTowerTag=consumes<CaloTowerCollection>(iConfig.getParameter<edm::InputTag>("caloTowerTag"));
