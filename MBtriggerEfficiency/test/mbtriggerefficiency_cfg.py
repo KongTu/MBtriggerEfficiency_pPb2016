@@ -4,7 +4,7 @@ process = cms.Process("Demo")
 
 process.load("FWCore.MessageService.MessageLogger_cfi")
 
-process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(30000) )
+process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(10000) )
 
 process.source = cms.Source("PoolSource",
     # replace 'myfile.root' with the source file you want to use
@@ -12,24 +12,30 @@ process.source = cms.Source("PoolSource",
 #dNdEta run
 
 #zerobias2
-'/store/data/Run2015A/ZeroBias1/RAW/v1/000/247/920/00000/00C32415-C911-E511-9520-02163E0142B9.root',
-'/store/data/Run2015A/ZeroBias1/RAW/v1/000/247/920/00000/080C38EB-8312-E511-AC02-02163E013654.root',
-'/store/data/Run2015A/ZeroBias1/RAW/v1/000/247/920/00000/0844A503-C711-E511-BF89-02163E014528.root',
-'/store/data/Run2015A/ZeroBias1/RAW/v1/000/247/920/00000/0EB92E71-8711-E511-A79D-02163E014458.root',
-'/store/data/Run2015A/ZeroBias1/RAW/v1/000/247/920/00000/10072A05-8412-E511-84DC-02163E012B9A.root',
-'/store/data/Run2015A/ZeroBias1/RAW/v1/000/247/920/00000/10268A8D-8711-E511-97F4-02163E0144CF.root',
-'/store/data/Run2015A/ZeroBias1/RAW/v1/000/247/920/00000/1A2E50A8-8412-E511-9A54-02163E0135FA.root',
-'/store/data/Run2015A/ZeroBias1/RAW/v1/000/247/920/00000/1A3145A4-8711-E511-8C58-02163E0145D1.root',
-'/store/data/Run2015A/ZeroBias1/RAW/v1/000/247/920/00000/1E4005E8-8312-E511-B745-02163E011929.root',
-'/store/data/Run2015A/ZeroBias1/RAW/v1/000/247/920/00000/24373704-8412-E511-B503-02163E013829.root',
-'/store/data/Run2015A/ZeroBias1/RAW/v1/000/247/920/00000/24BB49EB-8312-E511-A87E-02163E013907.root',
-'/store/data/Run2015A/ZeroBias1/RAW/v1/000/247/920/00000/366E75FF-8312-E511-992E-02163E011A1A.root',
-'/store/data/Run2015A/ZeroBias1/RAW/v1/000/247/920/00000/42476C16-C911-E511-9781-02163E014698.root',
-'/store/data/Run2015A/ZeroBias1/RAW/v1/000/247/920/00000/443F9504-8111-E511-887F-02163E013477.root',
-'/store/data/Run2015A/ZeroBias1/RAW/v1/000/247/920/00000/4C0E9A7E-8E12-E511-BC8B-02163E013584.root'
+#'/store/data/Run2015A/ZeroBias1/RAW/v1/000/247/920/00000/00C32415-C911-E511-9520-02163E0142B9.root'
+#'/store/data/Run2015A/ZeroBias1/RAW/v1/000/247/920/00000/080C38EB-8312-E511-AC02-02163E013654.root',
+#'/store/data/Run2015A/ZeroBias1/RAW/v1/000/247/920/00000/0844A503-C711-E511-BF89-02163E014528.root',
+#'/store/data/Run2015A/ZeroBias1/RAW/v1/000/247/920/00000/0EB92E71-8711-E511-A79D-02163E014458.root',
+#'/store/data/Run2015A/ZeroBias1/RAW/v1/000/247/920/00000/10072A05-8412-E511-84DC-02163E012B9A.root',
+#'/store/data/Run2015A/ZeroBias1/RAW/v1/000/247/920/00000/10268A8D-8711-E511-97F4-02163E0144CF.root',
+#'/store/data/Run2015A/ZeroBias1/RAW/v1/000/247/920/00000/1A2E50A8-8412-E511-9A54-02163E0135FA.root',
+#'/store/data/Run2015A/ZeroBias1/RAW/v1/000/247/920/00000/1A3145A4-8711-E511-8C58-02163E0145D1.root',
+#'/store/data/Run2015A/ZeroBias1/RAW/v1/000/247/920/00000/1E4005E8-8312-E511-B745-02163E011929.root',
+#'/store/data/Run2015A/ZeroBias1/RAW/v1/000/247/920/00000/24373704-8412-E511-B503-02163E013829.root',
+#'/store/data/Run2015A/ZeroBias1/RAW/v1/000/247/920/00000/24BB49EB-8312-E511-A87E-02163E013907.root',
+#'/store/data/Run2015A/ZeroBias1/RAW/v1/000/247/920/00000/366E75FF-8312-E511-992E-02163E011A1A.root',
+#'/store/data/Run2015A/ZeroBias1/RAW/v1/000/247/920/00000/42476C16-C911-E511-9781-02163E014698.root',
+#'/store/data/Run2015A/ZeroBias1/RAW/v1/000/247/920/00000/443F9504-8111-E511-887F-02163E013477.root',
+#'/store/data/Run2015A/ZeroBias1/RAW/v1/000/247/920/00000/4C0E9A7E-8E12-E511-BC8B-02163E013584.root'
+#'/store/data/Run2015A/ZeroBias1/RAW/v1/000/247/920/00000/00C32415-C911-E511-9520-02163E0142B9.root'
+'/store/data/Run2015D/ZeroBias/RAW/v1/000/259/152/00000/0C81667F-F672-E511-809D-02163E01440D.root'
 	)
 )
 
+process.load("Configuration.StandardSequences.Digi_cff")
+process.load('Configuration.StandardSequences.GeometryDB_cff')
+process.load("Configuration.StandardSequences.RawToDigi_cff")
+process.load("Configuration.EventContent.EventContent_cff")
 process.load('Configuration.StandardSequences.FrontierConditions_GlobalTag_cff')
 #from Configuration.AlCa.autoCond import autoCond
 #process.GlobalTag.globaltag = 'GR_P_V54::All'
@@ -58,7 +64,8 @@ process.es_prefer_es_pool = cms.ESPrefer( "PoolDBESSource", "es_pool" )
 # override the L1 menu from an Xml file
 process.l1GtTriggerMenuXml = cms.ESProducer("L1GtTriggerMenuXmlProducer",
   TriggerMenuLuminosity = cms.string('startup'),
-  DefXmlFile = cms.string('L1Menu_Collisions2015_lowPU_v3_L1T_Scales_20141121.xml'), 
+  #DefXmlFile = cms.string('L1Menu_Collisions2015_lowPU_v3_L1T_Scales_20141121.xml'), 
+  DefXmlFile = cms.string('L1Menu_Collisions2015_lowPU_25nsStage1_v8.xml'),
   VmeXmlFile = cms.string('')
 )
 process.L1GtTriggerMenuRcdSource = cms.ESSource("EmptyESSource",
@@ -115,6 +122,7 @@ process.load("Configuration.StandardSequences.Reconstruction_cff")
 
 process.digian = cms.EDAnalyzer('MBtriggerEfficiency',
 	useReco = cms.bool(False),
+	useMC = cms.bool(False),
 	gtDigiTag=cms.InputTag("gtDigis"),
 	gctDigiTag=cms.InputTag("gctDigis"),
 	caloTowerTag=cms.InputTag("towerMaker"),
