@@ -134,6 +134,7 @@ public:
   edm::InputTag gctDigiTag;
   edm::InputTag l1GtRecordInputTag;
   edm::InputTag l1GtReadoutRecordInputTag;
+  edm::InputTag l1GtTriggerMenuLiteInputTag;
   edm::EDGetTokenT<CaloTowerCollection> caloTowerTag;
   edm::EDGetTokenT<HFRecHitCollection> hfRechitTag;
   edm::EDGetTokenT<reco::CaloJetCollection> caloJetTag;
@@ -192,6 +193,7 @@ MBtriggerEfficiency::MBtriggerEfficiency(const edm::ParameterSet& iConfig):
 {
   l1GtRecordInputTag = iConfig.getParameter<edm::InputTag>("l1GtRecordInputTag");
   l1GtReadoutRecordInputTag = iConfig.getParameter<edm::InputTag>("l1GtReadoutRecordInputTag");
+  l1GtTriggerMenuLiteInputTag = iConfig.getParameter<edm::InputTag>("l1GtTriggerMenuLiteInputTag");
   outfname=iConfig.getParameter<std::string>("outputFileName");
   gtDigiTag=iConfig.getParameter<edm::InputTag>("gtDigiTag");
   gctDigiTag=iConfig.getParameter<edm::InputTag>("gctDigiTag");
