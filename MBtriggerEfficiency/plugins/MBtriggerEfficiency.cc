@@ -357,13 +357,13 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
   int lsec=iEvent.eventAuxiliary().luminosityBlock();
   int bx=iEvent.eventAuxiliary().bunchCrossing();
 
-  //std::cout<<"lsec: "<<lsec<<"   // bx number: "<<bx<<std::endl;
+  std::cout<<"lsec: "<<lsec<<"   // bx number: "<<bx<<std::endl;
 
   bxNum->Fill(bx,1);
   
   ZB_vsLumi->Fill(lsec,1);
 
-  if ((!useMC)&&lsec<91) return;
+  //if ((!useMC)&&lsec<1000) return;
 
   evtsTot++;
   
@@ -381,7 +381,7 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
     {
       edm::Handle<HFDigiCollection> digi;
       iEvent.getByLabel("hcalDigis",digi);
-      
+    
       HFDigiCollection::const_iterator i;
       
       for (int k=0; k<40; k++)
@@ -505,7 +505,9 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
       nChanShort->Fill(nChShort,1);
       //std::cout<<nChLong<<std::endl;
     }
-      ////////////////////////////////////////
+   
+
+   ////////////////////////////////////////
       
 /*   
    edm::ESHandle<L1GtTriggerMenu> menuRcd;
@@ -549,23 +551,22 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
 
    bool fireJet8_fromGT=false;
    bool fireJet12_fromGT=false;   
-
-   
+/*
    int iErrorCode=-1;
    for (uint32_t iTr=0; iTr < trgList.size(); iTr++)
      {
        iErrorCode = -1;
-       
+        
        bool decisionBeforeMaskAlgTechTrig = m_l1GtUtils.decisionBeforeMask(iEvent, edm::InputTag(""), gtDigiTag, trgList[iTr], iErrorCode);
         //trgList[iTr], iErrorCode);
-       
        if (iErrorCode == 0) 
    {
-     //std::cout<<"code0"<<std::endl;
+     std::cout<<"code0"<<std::endl;
      if (decisionBeforeMaskAlgTechTrig) 
        {
          if (iTr==4) 
      {
+       std::cout << "code4" << std::endl;
        nMBHF1_firedBX->Fill(bx,1);
        HF1_OR_vsLumi->Fill(lsec,1);
        fireHF1=true;
@@ -601,7 +602,7 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
 //  std::cout<<"MENU USED: "<<m_l1GtUtils.l1TriggerMenu()<<std::endl;
 
      }
-   
+  */ 
    if ((fireLongThr1||fireShortThr1)&&fireHF2) crossTest_HF1->Fill(0.1,1);
    if ((fireLongThr1||fireShortThr1)&&(!fireHF2)) crossTest_HF1->Fill(1.1,1);
    if ((!(fireLongThr1||fireShortThr1))&&fireHF2) crossTest_HF1->Fill(2.1,1);
