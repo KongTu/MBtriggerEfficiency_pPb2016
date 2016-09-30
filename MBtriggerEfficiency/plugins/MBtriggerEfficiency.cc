@@ -630,7 +630,7 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
 //   edm::EDGetTokenT<l1extra::L1JetParticleCollection>    m_l1TauJetToken;
   
 
-  m_l1CenJetToken(consumes<l1extra::L1JetParticleCollection>(m_l1CenJetTag));
+  m_l1CenJetToken(consumes<l1extra::L1JetParticleCollection>(m_l1CenJetToken));
 /*
    m_l1CenJetTag(edm::InputTag("l1extraParticles", "Central"));
    m_l1CenJetToken(consumes<l1extra::L1JetParticleCollection>(m_l1CenJetTag));
