@@ -429,6 +429,8 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
       int amplFront=0;
       int amplBack=0;
       int digiSize=i->size();
+
+      cout << "digiSize: " << digiSize << endl;
       
       for (int k=0; k<digiSize; k++){
         HcalQIESample dSample=i->sample(k);
@@ -440,6 +442,10 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
         phiind=(iphi-1)/2;
         sig[idepth-1][etaind][phiind]->Fill(adc,1);
         amplVSsampl->Fill(k,adc);
+
+        cout << "k: " << k << endl;
+        cout << "adc: " << adc << endl;
+
         if (k==2) ampl+=adc;
         if (k==1) amplFront+=adc;
         if (k==3) amplBack+=adc;
