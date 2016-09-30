@@ -141,6 +141,8 @@ public:
   edm::EDGetTokenT<reco::CaloJetCollection> caloJetTag;
 
   edm::EDGetTokenT<l1extra::L1JetParticleCollection>  m_l1CenJetToken;
+  edm::EDGetTokenT<l1extra::L1JetParticleCollection>  m_l1ForJetToken;
+  edm::EDGetTokenT<l1extra::L1JetParticleCollection>  m_l1TauJetToken;
 
   bool useReco;
   bool useMC;
@@ -206,7 +208,8 @@ MBtriggerEfficiency::MBtriggerEfficiency(const edm::ParameterSet& iConfig):
   caloJetTag = consumes<reco::CaloJetCollection>(iConfig.getParameter<edm::InputTag>("caloJetTag"));
   hfDigiTag = consumes<HFDigiCollection>(iConfig.getParameter<edm::InputTag>("hfDigiTag"));
   m_l1CenJetToken = consumes<l1extra::L1JetParticleCollection>(iConfig.getParameter<edm::InputTag>("m_l1CenJetToken"));
-
+  m_l1ForJetToken = consumes<l1extra::L1JetParticleCollection>(iConfig.getParameter<edm::InputTag>("m_l1ForJetToken"));
+  m_l1TauJetToken = consumes<l1extra::L1JetParticleCollection>(iConfig.getParameter<edm::InputTag>("m_l1TauJetToken"));
   useReco=iConfig.getParameter<bool>("useReco");
   useMC=iConfig.getParameter<bool>("useMC");
   //   tok_ho_  = consumes<HORecHitCollection>(iConfig.getParameter<edm::InputTag>("HOInput"));
@@ -616,18 +619,17 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
 
    /////////////////////////////////////////////
 
-
    //now check L1ExtraParticles
 
    bool fireJet8=false;
    bool fireJet12=false;
 
    //edm::InputTag m_l1CenJetTag(edm::InputTag("l1extraParticles", "Central"));
-   // edm::EDGetTokenT<l1extra::L1JetParticleCollection>  m_l1CenJetToken;
+   //edm::EDGetTokenT<l1extra::L1JetParticleCollection>  m_l1CenJetToken;
    
-   edm::InputTag m_l1ForJetTag(edm::InputTag("l1extraParticles", "Forward"));
-//   edm::EDGetTokenT<l1extra::L1JetParticleCollection>    m_l1ForJetToken;
-   edm::InputTag m_l1TauJetTag(edm::InputTag("l1extraParticles", "Tau"));
+   //edm::InputTag m_l1ForJetTag(edm::InputTag("l1extraParticles", "Forward"));
+   //edm::EDGetTokenT<l1extra::L1JetParticleCollection>    m_l1ForJetToken;
+   //edm::InputTag m_l1TauJetTag(edm::InputTag("l1extraParticles", "Tau"));
 //   edm::EDGetTokenT<l1extra::L1JetParticleCollection>    m_l1TauJetToken;
   
 
@@ -646,10 +648,10 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
    iEvent.getByToken(m_l1CenJetToken,l1cjets);
 
    edm::Handle<l1extra::L1JetParticleCollection> l1fjets;
-   iEvent.getByLabel(m_l1ForJetTag,l1fjets);
+   iEvent.getByLabel(m_l1ForJetToken,l1fjets);
    
    edm::Handle<l1extra::L1JetParticleCollection> l1tjets;
-   iEvent.getByLabel(m_l1TauJetTag,l1tjets);
+   iEvent.getByLabel(m_l1TauJetToken,l1tjets);
 
    for (l1extra::L1JetParticleCollection::const_iterator tj=l1cjets->begin(); tj!=l1cjets->end(); tj++)
      {
