@@ -52,7 +52,7 @@
 #include "CondFormats/DataRecord/interface/L1GtTriggerMenuRcd.h"
 #include "CondFormats/L1TObjects/interface/L1GtTriggerMenuFwd.h"
 
-#include "L1Trigger/GlobalTriggerAnalyzer/interface/L1GtUtils.h"
+//#include "L1Trigger/GlobalTriggerAnalyzer/interface/L1GtUtils.h"
 #include "L1Trigger/GlobalTriggerAnalyzer/interface/L1GtAnalyzer.h"
 #include "L1Trigger/GlobalTriggerAnalyzer/interface/L1GtUtilsHelper.h"
 
