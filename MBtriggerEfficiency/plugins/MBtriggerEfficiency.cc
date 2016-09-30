@@ -135,7 +135,7 @@ public:
   edm::InputTag l1GtRecordInputTag;
   edm::InputTag l1GtReadoutRecordInputTag;
   edm::InputTag l1GtTriggerMenuLiteInputTag;
-  edm::EDGetTokenT<HcalDigiCollections> hcalDigiTag;
+  edm::EDGetTokenT<HFDigiCollection> hfDigiTag;
   edm::EDGetTokenT<CaloTowerCollection> caloTowerTag;
   edm::EDGetTokenT<HFRecHitCollection> hfRechitTag;
   edm::EDGetTokenT<reco::CaloJetCollection> caloJetTag;
@@ -202,7 +202,7 @@ MBtriggerEfficiency::MBtriggerEfficiency(const edm::ParameterSet& iConfig):
   caloTowerTag=consumes<CaloTowerCollection>(iConfig.getParameter<edm::InputTag>("caloTowerTag"));
   hfRechitTag = consumes<HFRecHitCollection>(iConfig.getParameter<edm::InputTag>("hfRechitTag"));
   caloJetTag = consumes<reco::CaloJetCollection>(iConfig.getParameter<edm::InputTag>("caloJetTag"));
-  hcalDigiTag = consumes<HcalDigiCollections>(iConfig.getParameter<std::string>("hcalDigiTag"));
+  hfDigiTag = consumes<HFDigiCollection>(iConfig.getParameter<edm::InputTag>("hfDigiTag"));
 
   useReco=iConfig.getParameter<bool>("useReco");
   useMC=iConfig.getParameter<bool>("useMC");
@@ -389,7 +389,7 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
 
   if (!useReco){
     edm::Handle<HFDigiCollection> digi;
-    iEvent.getByToken(hcalDigiTag,digi);
+    iEvent.getByToken(hfDigiTag,digi);
   
     HFDigiCollection::const_iterator i;
     
