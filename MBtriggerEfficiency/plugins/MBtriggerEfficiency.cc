@@ -525,7 +525,7 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
    edm::InputTag* l1GTRt=new edm::InputTag("foo");
    edm::InputTag* l1GTRRt=new edm::InputTag("foo");
 
-   m_l1GtUtils.getL1GtRecordInputTag(iEvent, *l1GTRt, *l1GTRRt);
+   //m_l1GtUtils.getL1GtRecordInputTag(iEvent, *l1GTRt, *l1GTRRt);
    
 //   std::cout<<"tags:   "<<l1GTRt->instance()<<"_"<<l1GTRt->label()<<"     "<<l1GTRRt->instance()<<"_"<<l1GTRRt->label()<<std::endl;
 
@@ -594,7 +594,7 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
 
      }
    */
-     
+
    if ((fireLongThr1||fireShortThr1)&&fireHF2) crossTest_HF1->Fill(0.1,1);
    if ((fireLongThr1||fireShortThr1)&&(!fireHF2)) crossTest_HF1->Fill(1.1,1);
    if ((!(fireLongThr1||fireShortThr1))&&fireHF2) crossTest_HF1->Fill(2.1,1);
