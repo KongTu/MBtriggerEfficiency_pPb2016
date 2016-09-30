@@ -363,432 +363,432 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
   
   ZB_vsLumi->Fill(lsec,1);
 
-  //if ((!useMC)&&lsec<1000) return;
+//   //if ((!useMC)&&lsec<1000) return;
 
-  evtsTot++;
+//   evtsTot++;
   
-  bool fire[40];
-  bool fireFront[40];
-  bool fireBack[40];
-  bool firePlus[40];
-  bool fireMinus[40];
-  bool fireShortThr1=false;
-  bool fireLongThr1=false;
-  bool fireShortThr2=false;
-  bool fireLongThr2=false;
+//   bool fire[40];
+//   bool fireFront[40];
+//   bool fireBack[40];
+//   bool firePlus[40];
+//   bool fireMinus[40];
+//   bool fireShortThr1=false;
+//   bool fireLongThr1=false;
+//   bool fireShortThr2=false;
+//   bool fireLongThr2=false;
 
-  if (!useReco){
-    edm::Handle<HFDigiCollection> digi;
-    iEvent.getByLabel("hcalDigis",digi);
+//   if (!useReco){
+//     edm::Handle<HFDigiCollection> digi;
+//     iEvent.getByLabel("hcalDigis",digi);
   
-    HFDigiCollection::const_iterator i;
+//     HFDigiCollection::const_iterator i;
     
-    for (int k=0; k<40; k++){
-      fire[k]=false;
-      fireFront[k]=false;
-      fireBack[k]=false;
-      firePlus[k]=false;
-      fireMinus[k]=false;
-    }
+//     for (int k=0; k<40; k++){
+//       fire[k]=false;
+//       fireFront[k]=false;
+//       fireBack[k]=false;
+//       firePlus[k]=false;
+//       fireMinus[k]=false;
+//     }
       
-    int nChLong=0;
-    int nChShort=0;
+//     int nChLong=0;
+//     int nChShort=0;
       
-    for (i=digi->begin(); i!=digi->end(); i++) {
+//     for (i=digi->begin(); i!=digi->end(); i++) {
       
-        HcalDetId cell = i->id();
-        int idepth=cell.depth();
-        int ieta=cell.ieta();
-        int iphi=cell.iphi();
-      //  if (abs(ieta)>36) continue;
-      if (idepth==1) 
-        {
-          nChLong++;
-          allChanEtaPhi->Fill(ieta,iphi,1);
-        }
-      if (idepth==2) nChShort++;
+//         HcalDetId cell = i->id();
+//         int idepth=cell.depth();
+//         int ieta=cell.ieta();
+//         int iphi=cell.iphi();
+//       //  if (abs(ieta)>36) continue;
+//       if (idepth==1) 
+//         {
+//           nChLong++;
+//           allChanEtaPhi->Fill(ieta,iphi,1);
+//         }
+//       if (idepth==2) nChShort++;
       
-      int ampl=0;
-      int amplFront=0;
-      int amplBack=0;
-      int digiSize=i->size();
+//       int ampl=0;
+//       int amplFront=0;
+//       int amplBack=0;
+//       int digiSize=i->size();
       
-      for (int k=0; k<digiSize; k++){
-        HcalQIESample dSample=i->sample(k);
-        //int capid=dSample.capid();
-        int adc=dSample.adc();
-        int etaind, phiind;
-        if (ieta<0) etaind=abs(ieta)-29;
-        else etaind=ieta-16;
-        phiind=(iphi-1)/2;
-        sig[idepth-1][etaind][phiind]->Fill(adc,1);
-        amplVSsampl->Fill(k,adc);
-        if (k==2) ampl+=adc;
-        if (k==1) amplFront+=adc;
-        if (k==3) amplBack+=adc;
-      }    
-      if (idepth==1){
-        allChanSignalLong->Fill(ampl,1);
-        sigPerChanLong[abs(ieta/1000)][iphi]->Fill(ampl,1);
-        if (ampl>11) sigAboveThr1->Fill(ieta,iphi,ampl,1);
-        sigProfile->Fill(ieta,iphi,ampl,1);
-        for (int p=0; p<40; p++){
-          if (ampl>p) fire[p]=true;
-          if (ampl>p&&ieta>0) firePlus[p]=true;
-          if (ampl>p&&ieta<0) fireMinus[p]=true;
-          if (amplFront+ampl>p) fireFront[p]=true;
-          if (amplBack+ampl>p) fireBack[p]=true;
-        }
-        if (ampl>11){
-          //thresholdsLong[etaind][phiind])
-          chanAboveThrFileLong->Fill(ieta,iphi,1);
-          fireLongThr1=true;
-        }
-        if (ampl>17){
-          fireLongThr2=true;
-        }
-      }
-      if (idepth==2){
-        allChanSignalShort->Fill(ampl,1);
-        sigPerChanShort[abs(ieta/1000)][iphi]->Fill(ampl,1);
-        if (ampl>11) sigAboveThrShort1->Fill(ieta,iphi,ampl,1);
-        sigProfileShort->Fill(ieta,iphi,ampl,1);
-        for (int p=0; p<40; p++){
-          if (ampl>p) fire[p]=true;
-          if (ampl>p&&ieta>0) firePlus[p]=true;
-          if (ampl>p&&ieta<0) fireMinus[p]=true;
-          if (amplFront>p||ampl>p) fireFront[p]=true;
-          if (amplBack>p||ampl>p) fireBack[p]=true;
-        }
-        if (ampl>11){
-          //adc>thresholdsShort[etaind][phiind])
+//       for (int k=0; k<digiSize; k++){
+//         HcalQIESample dSample=i->sample(k);
+//         //int capid=dSample.capid();
+//         int adc=dSample.adc();
+//         int etaind, phiind;
+//         if (ieta<0) etaind=abs(ieta)-29;
+//         else etaind=ieta-16;
+//         phiind=(iphi-1)/2;
+//         sig[idepth-1][etaind][phiind]->Fill(adc,1);
+//         amplVSsampl->Fill(k,adc);
+//         if (k==2) ampl+=adc;
+//         if (k==1) amplFront+=adc;
+//         if (k==3) amplBack+=adc;
+//       }    
+//       if (idepth==1){
+//         allChanSignalLong->Fill(ampl,1);
+//         sigPerChanLong[abs(ieta/1000)][iphi]->Fill(ampl,1);
+//         if (ampl>11) sigAboveThr1->Fill(ieta,iphi,ampl,1);
+//         sigProfile->Fill(ieta,iphi,ampl,1);
+//         for (int p=0; p<40; p++){
+//           if (ampl>p) fire[p]=true;
+//           if (ampl>p&&ieta>0) firePlus[p]=true;
+//           if (ampl>p&&ieta<0) fireMinus[p]=true;
+//           if (amplFront+ampl>p) fireFront[p]=true;
+//           if (amplBack+ampl>p) fireBack[p]=true;
+//         }
+//         if (ampl>11){
+//           //thresholdsLong[etaind][phiind])
+//           chanAboveThrFileLong->Fill(ieta,iphi,1);
+//           fireLongThr1=true;
+//         }
+//         if (ampl>17){
+//           fireLongThr2=true;
+//         }
+//       }
+//       if (idepth==2){
+//         allChanSignalShort->Fill(ampl,1);
+//         sigPerChanShort[abs(ieta/1000)][iphi]->Fill(ampl,1);
+//         if (ampl>11) sigAboveThrShort1->Fill(ieta,iphi,ampl,1);
+//         sigProfileShort->Fill(ieta,iphi,ampl,1);
+//         for (int p=0; p<40; p++){
+//           if (ampl>p) fire[p]=true;
+//           if (ampl>p&&ieta>0) firePlus[p]=true;
+//           if (ampl>p&&ieta<0) fireMinus[p]=true;
+//           if (amplFront>p||ampl>p) fireFront[p]=true;
+//           if (amplBack>p||ampl>p) fireBack[p]=true;
+//         }
+//         if (ampl>11){
+//           //adc>thresholdsShort[etaind][phiind])
             
-          chanAboveThrFileShort->Fill(ieta,iphi,1);
-          fireShortThr1=true;                        
-        }
-        if (ampl>17){
-          fireShortThr2=true;
-        }
-      }
-    }
-    for (int k=0; k<40; k++){
-      if (fire[k]) accPerEvt->Fill(k,1);
-      if (fireFront[k]) accPerEvt2sliceFront->Fill(k,1);
-      if (fireBack[k]) accPerEvt2sliceBack->Fill(k,1);
-      if (firePlus[k]) accPerEvtPlus->Fill(k,1);
-      if (fireMinus[k]) accPerEvtMinus->Fill(k,1);
-    }
+//           chanAboveThrFileShort->Fill(ieta,iphi,1);
+//           fireShortThr1=true;                        
+//         }
+//         if (ampl>17){
+//           fireShortThr2=true;
+//         }
+//       }
+//     }
+//     for (int k=0; k<40; k++){
+//       if (fire[k]) accPerEvt->Fill(k,1);
+//       if (fireFront[k]) accPerEvt2sliceFront->Fill(k,1);
+//       if (fireBack[k]) accPerEvt2sliceBack->Fill(k,1);
+//       if (firePlus[k]) accPerEvtPlus->Fill(k,1);
+//       if (fireMinus[k]) accPerEvtMinus->Fill(k,1);
+//     }
 
-    if (fireLongThr1||fireShortThr1){
-      accPerEvtThrFile->Fill(1,1);
-    }
-      // if (fireLongThr2||fireShortThr2) 
-      //  {
+//     if (fireLongThr1||fireShortThr1){
+//       accPerEvtThrFile->Fill(1,1);
+//     }
+//       // if (fireLongThr2||fireShortThr2) 
+//       //  {
       
-      //       accPerEvtThrFile->Fill(1,1);
-      //  }
+//       //       accPerEvtThrFile->Fill(1,1);
+//       //  }
       
-    nChanLong->Fill(nChLong,1);
-    nChanShort->Fill(nChShort,1);
-      //std::cout<<nChLong<<std::endl;
+//     nChanLong->Fill(nChLong,1);
+//     nChanShort->Fill(nChShort,1);
+//       //std::cout<<nChLong<<std::endl;
     
-    }//end of !useReco
+//     }//end of !useReco
    
 
-   ////////////////////////////////////////
+//    ////////////////////////////////////////
       
-/*   
-   edm::ESHandle<L1GtTriggerMenu> menuRcd;
-   iSetup.get<L1GtTriggerMenuRcd>().get(menuRcd) ;
-   const L1GtTriggerMenu* menu = menuRcd.product();
+// /*   
+//    edm::ESHandle<L1GtTriggerMenu> menuRcd;
+//    iSetup.get<L1GtTriggerMenuRcd>().get(menuRcd) ;
+//    const L1GtTriggerMenu* menu = menuRcd.product();
    
       
-  for (CItAlgo algo = menu->gtAlgorithmMap().begin(); algo!=menu->gtAlgorithmMap().end(); ++algo) {
-    std::cout << "Name: " << (algo->second).algoName() << " Alias: " << (algo->second).algoAlias() << std::endl;
-  }
-*/
+//   for (CItAlgo algo = menu->gtAlgorithmMap().begin(); algo!=menu->gtAlgorithmMap().end(); ++algo) {
+//     std::cout << "Name: " << (algo->second).algoName() << " Alias: " << (algo->second).algoAlias() << std::endl;
+//   }
+// */
      
-   bool useL1EventSetup = true;
-   bool useL1GtTriggerMenuLite = false;
+//    bool useL1EventSetup = true;
+//    bool useL1GtTriggerMenuLite = false;
    
-   // could be added in beginRun(...) - if not added, the caching will be done in analyze/produce/filter method
-//   m_l1GtUtils.getL1GtRunCache(iRun, iSetup, useL1EventSetup, useL1GtTriggerMenuLite);
+//    // could be added in beginRun(...) - if not added, the caching will be done in analyze/produce/filter method
+// //   m_l1GtUtils.getL1GtRunCache(iRun, iSetup, useL1EventSetup, useL1GtTriggerMenuLite);
    
-   // must be added in analyze/produce/filter method
-   m_l1GtUtils.getL1GtRunCache(iEvent, iSetup, useL1EventSetup, useL1GtTriggerMenuLite, gtDigiTag);
+//    // must be added in analyze/produce/filter method
+//    m_l1GtUtils.getL1GtRunCache(iEvent, iSetup, useL1EventSetup, useL1GtTriggerMenuLite, gtDigiTag);
    
-   //retreive L1 event setup:
-   m_l1GtUtils.retrieveL1EventSetup(iSetup);
+//    //retreive L1 event setup:
+//    m_l1GtUtils.retrieveL1EventSetup(iSetup);
 
-   edm::InputTag* l1GTRt=new edm::InputTag("foo");
-   edm::InputTag* l1GTRRt=new edm::InputTag("foo");
+//    edm::InputTag* l1GTRt=new edm::InputTag("foo");
+//    edm::InputTag* l1GTRRt=new edm::InputTag("foo");
 
-   m_l1GtUtils.getL1GtRecordInputTag(iEvent, *l1GTRt, *l1GTRRt);
+//    m_l1GtUtils.getL1GtRecordInputTag(iEvent, *l1GTRt, *l1GTRRt);
    
-//   std::cout<<"tags:   "<<l1GTRt->instance()<<"_"<<l1GTRt->label()<<"     "<<l1GTRRt->instance()<<"_"<<l1GTRRt->label()<<std::endl;
+// //   std::cout<<"tags:   "<<l1GTRt->instance()<<"_"<<l1GTRt->label()<<"     "<<l1GTRRt->instance()<<"_"<<l1GTRRt->label()<<std::endl;
 
-   //check if ZeroBias has fired
-   //int iErrorCode=-1;
-   // bool ZBfired=m_l1GtUtils.decisionBeforeMask(iEvent, "L1_ZeroBias", iErrorCode);
+//    //check if ZeroBias has fired
+//    //int iErrorCode=-1;
+//    // bool ZBfired=m_l1GtUtils.decisionBeforeMask(iEvent, "L1_ZeroBias", iErrorCode);
    
-   //loop through other trigs
-   //   std::cout<<"go?  "<<trgList.size()<<std::endl;
+//    //loop through other trigs
+//    //   std::cout<<"go?  "<<trgList.size()<<std::endl;
    
-   bool fireHF1=false;
-   bool fireHF2=false;
+//    bool fireHF1=false;
+//    bool fireHF2=false;
 
-   bool fireJet8_fromGT=false;
-   bool fireJet12_fromGT=false;   
-/*
-   int iErrorCode=-1;
-   for (uint32_t iTr=0; iTr < trgList.size(); iTr++)
-     {
-       iErrorCode = -1;
+//    bool fireJet8_fromGT=false;
+//    bool fireJet12_fromGT=false;   
+
+//    int iErrorCode=-1;
+//    for (uint32_t iTr=0; iTr < trgList.size(); iTr++)
+//      {
+//        iErrorCode = -1;
         
-       bool decisionBeforeMaskAlgTechTrig = m_l1GtUtils.decisionBeforeMask(iEvent, edm::InputTag(""), gtDigiTag, trgList[iTr], iErrorCode);
-        //trgList[iTr], iErrorCode);
-       if (iErrorCode == 0) 
-   {
-     std::cout<<"code0"<<std::endl;
-     if (decisionBeforeMaskAlgTechTrig) 
-       {
-         if (iTr==4) 
-     {
-       std::cout << "code4" << std::endl;
-       nMBHF1_firedBX->Fill(bx,1);
-       HF1_OR_vsLumi->Fill(lsec,1);
-       fireHF1=true;
-     }
-         if (iTr==5) 
-     {
-       nMBHF2_firedBX->Fill(bx,1);
-       HF2_OR_vsLumi->Fill(lsec,1);
-       fireHF2=true;
-     }
+//        bool decisionBeforeMaskAlgTechTrig = m_l1GtUtils.decisionBeforeMask(iEvent, edm::InputTag(""), gtDigiTag, trgList[iTr], iErrorCode);
+//         //trgList[iTr], iErrorCode);
+//        if (iErrorCode == 0) 
+//    {
+//      std::cout<<"code0"<<std::endl;
+//      if (decisionBeforeMaskAlgTechTrig) 
+//        {
+//          if (iTr==4) 
+//      {
+//        std::cout << "code4" << std::endl;
+//        nMBHF1_firedBX->Fill(bx,1);
+//        HF1_OR_vsLumi->Fill(lsec,1);
+//        fireHF1=true;
+//      }
+//          if (iTr==5) 
+//      {
+//        nMBHF2_firedBX->Fill(bx,1);
+//        HF2_OR_vsLumi->Fill(lsec,1);
+//        fireHF2=true;
+//      }
 
-    if (iTr==8) fireJet8_fromGT=true;
-                if (iTr==9) fireJet12_fromGT=true;
-       //        std::cout<<"yes"<<std::endl;
-         idFired->Fill(iTr+1,1);
-       }
-     //trgFiredBptxGate[iTr]++;
-     //   if (decisionBeforeMaskAlgTechTrig) trgFired[iTr]++;
-   } 
+//     if (iTr==8) fireJet8_fromGT=true;
+//                 if (iTr==9) fireJet12_fromGT=true;
+//        //        std::cout<<"yes"<<std::endl;
+//          idFired->Fill(iTr+1,1);
+//        }
+//      //trgFiredBptxGate[iTr]++;
+//      //   if (decisionBeforeMaskAlgTechTrig) trgFired[iTr]++;
+//    } 
        
-       else if (iErrorCode == 210001) 
-   {
-     std::cout<<trgList[iTr]<<" does not exist in the L1 menu"<<std::endl;
-     // algorithm / technical trigger  does not exist in the L1 menu
-   } 
+//        else if (iErrorCode == 210001) 
+//    {
+//      std::cout<<trgList[iTr]<<" does not exist in the L1 menu"<<std::endl;
+//      // algorithm / technical trigger  does not exist in the L1 menu
+//    } 
        
-       else 
-   {
-     std::cout<<"err:  "<<iErrorCode<<std::endl;
-     // error - see error code
-     // do whatever needed
-   }
-//  std::cout<<"MENU USED: "<<m_l1GtUtils.l1TriggerMenu()<<std::endl;
+//        else 
+//    {
+//      std::cout<<"err:  "<<iErrorCode<<std::endl;
+//      // error - see error code
+//      // do whatever needed
+//    }
+// //  std::cout<<"MENU USED: "<<m_l1GtUtils.l1TriggerMenu()<<std::endl;
 
-     }
-  */ 
-   if ((fireLongThr1||fireShortThr1)&&fireHF2) crossTest_HF1->Fill(0.1,1);
-   if ((fireLongThr1||fireShortThr1)&&(!fireHF2)) crossTest_HF1->Fill(1.1,1);
-   if ((!(fireLongThr1||fireShortThr1))&&fireHF2) crossTest_HF1->Fill(2.1,1);
-
-   if ((fireLongThr2||fireShortThr2)&&fireHF1) crossTest_HF2->Fill(0.1,1);
-   if ((fireLongThr2||fireShortThr2)&&(!fireHF1)) crossTest_HF2->Fill(1.1,1);
-   if ((!(fireLongThr2||fireShortThr2))&&fireHF1) crossTest_HF2->Fill(2.1,1);
-
-   /////////////////////////////////////////////
-
-
-   //now check L1ExtraParticles
-
-   bool fireJet8=false;
-   bool fireJet12=false;
-
-   edm::InputTag m_l1CenJetTag(edm::InputTag("l1extraParticles", "Central"));
-//   edm::EDGetTokenT<l1extra::L1JetParticleCollection>    m_l1CenJetToken;
-   edm::InputTag m_l1ForJetTag(edm::InputTag("l1extraParticles", "Forward"));
-//   edm::EDGetTokenT<l1extra::L1JetParticleCollection>    m_l1ForJetToken;
-   edm::InputTag m_l1TauJetTag(edm::InputTag("l1extraParticles", "Tau"));
-//   edm::EDGetTokenT<l1extra::L1JetParticleCollection>    m_l1TauJetToken;
-
-/*
-   m_l1CenJetTag(edm::InputTag("l1extraParticles", "Central"));
-   m_l1CenJetToken(consumes<l1extra::L1JetParticleCollection>(m_l1CenJetTag));
-   m_l1ForJetTag(edm::InputTag("l1extraParticles", "Forward"));
-   m_l1ForJetToken(consumes<l1extra::L1JetParticleCollection>(m_l1ForJetTag));
-   m_l1TauJetTag(edm::InputTag("l1extraParticles", "Tau"));
-   m_l1TauJetToken(consumes<l1extra::L1JetParticleCollection>(m_l1TauJetTag));   
-*/
-   edm::Handle<l1extra::L1JetParticleCollection> l1cjets;
-   iEvent.getByLabel(m_l1CenJetTag,l1cjets);
-
-   edm::Handle<l1extra::L1JetParticleCollection> l1fjets;
-   iEvent.getByLabel(m_l1ForJetTag,l1fjets);
+//      }
    
-   edm::Handle<l1extra::L1JetParticleCollection> l1tjets;
-   iEvent.getByLabel(m_l1TauJetTag,l1tjets);
+//    if ((fireLongThr1||fireShortThr1)&&fireHF2) crossTest_HF1->Fill(0.1,1);
+//    if ((fireLongThr1||fireShortThr1)&&(!fireHF2)) crossTest_HF1->Fill(1.1,1);
+//    if ((!(fireLongThr1||fireShortThr1))&&fireHF2) crossTest_HF1->Fill(2.1,1);
 
-   for (l1extra::L1JetParticleCollection::const_iterator tj=l1cjets->begin(); tj!=l1cjets->end(); tj++)
-     {
-       if (tj->pt()>36) 
-  {
-  hL1jetsEta8->Fill(tj->eta(),1);
-  fireJet8=true;
-  }
-       
-       if (tj->pt()>52)
-  {
-  hL1jetsEta12->Fill(tj->eta(),1);
-  fireJet12=true;
-  }
-     }
+//    if ((fireLongThr2||fireShortThr2)&&fireHF1) crossTest_HF2->Fill(0.1,1);
+//    if ((fireLongThr2||fireShortThr2)&&(!fireHF1)) crossTest_HF2->Fill(1.1,1);
+//    if ((!(fireLongThr2||fireShortThr2))&&fireHF1) crossTest_HF2->Fill(2.1,1);
 
-   for (l1extra::L1JetParticleCollection::const_iterator tj=l1fjets->begin(); tj!=l1fjets->end(); tj++)
-     {
-       if (tj->pt()>36) 
-  {
-  hL1jetsEta8->Fill(tj->eta(),1);
-  fireJet8=true;
-  }
-       
-       if (tj->pt()>52) 
-  {
-  fireJet12=true;
-   hL1jetsEta12->Fill(tj->eta(),1);
-  }
-     }
-
-   for (l1extra::L1JetParticleCollection::const_iterator tj=l1tjets->begin(); tj!=l1tjets->end(); tj++)
-     {
-       if (tj->pt()>36) 
-  {
-  fireJet8=true;
-  hL1jetsEta8->Fill(tj->eta(),1);
-  }
-
-       if (tj->pt()>52) 
-  {
-  fireJet12=true;
-  hL1jetsEta12->Fill(tj->eta(),1);
-  }
-     }
+//    /////////////////////////////////////////////
 
 
-   if (fireJet8&&fireJet8_fromGT) jetCrossTest8->Fill(0.1,1);   
-   if (fireJet8&&!fireJet8_fromGT) jetCrossTest8->Fill(1.1,1);
-   if (!fireJet8&&fireJet8_fromGT) jetCrossTest8->Fill(2.1,1);
+//    //now check L1ExtraParticles
 
-   if (fireJet12&&fireJet12_fromGT) jetCrossTest12->Fill(0.1,1);
-   if (fireJet12&&!fireJet12_fromGT) jetCrossTest12->Fill(1.1,1);
-   if (!fireJet12&&fireJet12_fromGT) jetCrossTest12->Fill(2.1,1);
+//    bool fireJet8=false;
+//    bool fireJet12=false;
 
-   if (useReco)
-     {
-       //check calojets
-       edm::Handle<reco::CaloJetCollection> cjets;
-       iEvent.getByToken(caloJetTag, cjets);
+//    edm::InputTag m_l1CenJetTag(edm::InputTag("l1extraParticles", "Central"));
+// //   edm::EDGetTokenT<l1extra::L1JetParticleCollection>    m_l1CenJetToken;
+//    edm::InputTag m_l1ForJetTag(edm::InputTag("l1extraParticles", "Forward"));
+// //   edm::EDGetTokenT<l1extra::L1JetParticleCollection>    m_l1ForJetToken;
+//    edm::InputTag m_l1TauJetTag(edm::InputTag("l1extraParticles", "Tau"));
+// //   edm::EDGetTokenT<l1extra::L1JetParticleCollection>    m_l1TauJetToken;
+
+// /*
+//    m_l1CenJetTag(edm::InputTag("l1extraParticles", "Central"));
+//    m_l1CenJetToken(consumes<l1extra::L1JetParticleCollection>(m_l1CenJetTag));
+//    m_l1ForJetTag(edm::InputTag("l1extraParticles", "Forward"));
+//    m_l1ForJetToken(consumes<l1extra::L1JetParticleCollection>(m_l1ForJetTag));
+//    m_l1TauJetTag(edm::InputTag("l1extraParticles", "Tau"));
+//    m_l1TauJetToken(consumes<l1extra::L1JetParticleCollection>(m_l1TauJetTag));   
+// */
+//    edm::Handle<l1extra::L1JetParticleCollection> l1cjets;
+//    iEvent.getByLabel(m_l1CenJetTag,l1cjets);
+
+//    edm::Handle<l1extra::L1JetParticleCollection> l1fjets;
+//    iEvent.getByLabel(m_l1ForJetTag,l1fjets);
+   
+//    edm::Handle<l1extra::L1JetParticleCollection> l1tjets;
+//    iEvent.getByLabel(m_l1TauJetTag,l1tjets);
+
+//    for (l1extra::L1JetParticleCollection::const_iterator tj=l1cjets->begin(); tj!=l1cjets->end(); tj++)
+//      {
+//        if (tj->pt()>36) 
+//   {
+//   hL1jetsEta8->Fill(tj->eta(),1);
+//   fireJet8=true;
+//   }
        
-       reco::CaloJetCollection::const_iterator i_cjet;
+//        if (tj->pt()>52)
+//   {
+//   hL1jetsEta12->Fill(tj->eta(),1);
+//   fireJet12=true;
+//   }
+//      }
+
+//    for (l1extra::L1JetParticleCollection::const_iterator tj=l1fjets->begin(); tj!=l1fjets->end(); tj++)
+//      {
+//        if (tj->pt()>36) 
+//   {
+//   hL1jetsEta8->Fill(tj->eta(),1);
+//   fireJet8=true;
+//   }
        
-       for(i_cjet = cjets->begin(); i_cjet != cjets->end(); i_cjet++)      
-   {
-     if (i_cjet->eta()>3.5&&i_cjet->eta()<4.5)
-       {
-         hCaloJetPlusET->Fill(i_cjet->pt(),1);
-         if (fireJet8) hCaloJetPlusETtrig8->Fill(i_cjet->pt(),1);
-         if (fireJet12) hCaloJetPlusETtrig12->Fill(i_cjet->pt(),1);
-         if (fireHF1) hCaloJetPlusETtrigMB->Fill(i_cjet->pt(),1);
-       }
-     if (i_cjet->eta()>-4.5&&i_cjet->eta()<-3.5)
-       {
-         hCaloJetMinusET->Fill(i_cjet->pt(),1);
-         if (fireJet8) hCaloJetMinusETtrig8->Fill(i_cjet->pt(),1);
-         if (fireJet12) hCaloJetMinusETtrig12->Fill(i_cjet->pt(),1);
-         if (fireHF1) hCaloJetMinusETtrigMB->Fill(i_cjet->pt(),1);
-       }
-   }
+//        if (tj->pt()>52) 
+//   {
+//   fireJet12=true;
+//    hL1jetsEta12->Fill(tj->eta(),1);
+//   }
+//      }
+
+//    for (l1extra::L1JetParticleCollection::const_iterator tj=l1tjets->begin(); tj!=l1tjets->end(); tj++)
+//      {
+//        if (tj->pt()>36) 
+//   {
+//   fireJet8=true;
+//   hL1jetsEta8->Fill(tj->eta(),1);
+//   }
+
+//        if (tj->pt()>52) 
+//   {
+//   fireJet12=true;
+//   hL1jetsEta12->Fill(tj->eta(),1);
+//   }
+//      }
+
+
+//    if (fireJet8&&fireJet8_fromGT) jetCrossTest8->Fill(0.1,1);   
+//    if (fireJet8&&!fireJet8_fromGT) jetCrossTest8->Fill(1.1,1);
+//    if (!fireJet8&&fireJet8_fromGT) jetCrossTest8->Fill(2.1,1);
+
+//    if (fireJet12&&fireJet12_fromGT) jetCrossTest12->Fill(0.1,1);
+//    if (fireJet12&&!fireJet12_fromGT) jetCrossTest12->Fill(1.1,1);
+//    if (!fireJet12&&fireJet12_fromGT) jetCrossTest12->Fill(2.1,1);
+
+//    if (useReco)
+//      {
+//        //check calojets
+//        edm::Handle<reco::CaloJetCollection> cjets;
+//        iEvent.getByToken(caloJetTag, cjets);
        
-       double etaLo[]={-5.0,-4.5,-4.0,-3.5,3.0,3.5,4.0,4.5};
-       double etaHi[]={-4.5,-4.0,-3.5,-3.0,3.5,4.0,4.5,5.0};
+//        reco::CaloJetCollection::const_iterator i_cjet;
        
-       //check HF rechits
-       edm::ESHandle<CaloGeometry> pG;
-       iSetup.get<CaloGeometryRecord>().get(pG);
-       geo = pG.product();
+//        for(i_cjet = cjets->begin(); i_cjet != cjets->end(); i_cjet++)      
+//    {
+//      if (i_cjet->eta()>3.5&&i_cjet->eta()<4.5)
+//        {
+//          hCaloJetPlusET->Fill(i_cjet->pt(),1);
+//          if (fireJet8) hCaloJetPlusETtrig8->Fill(i_cjet->pt(),1);
+//          if (fireJet12) hCaloJetPlusETtrig12->Fill(i_cjet->pt(),1);
+//          if (fireHF1) hCaloJetPlusETtrigMB->Fill(i_cjet->pt(),1);
+//        }
+//      if (i_cjet->eta()>-4.5&&i_cjet->eta()<-3.5)
+//        {
+//          hCaloJetMinusET->Fill(i_cjet->pt(),1);
+//          if (fireJet8) hCaloJetMinusETtrig8->Fill(i_cjet->pt(),1);
+//          if (fireJet12) hCaloJetMinusETtrig12->Fill(i_cjet->pt(),1);
+//          if (fireHF1) hCaloJetMinusETtrigMB->Fill(i_cjet->pt(),1);
+//        }
+//    }
        
-       edm::Handle<HFRecHitCollection> hfRHcol;
-       iEvent.getByToken(hfRechitTag, hfRHcol);
+//        double etaLo[]={-5.0,-4.5,-4.0,-3.5,3.0,3.5,4.0,4.5};
+//        double etaHi[]={-4.5,-4.0,-3.5,-3.0,3.5,4.0,4.5,5.0};
        
-       for (std::vector<HFRecHit>::const_iterator hhit=hfRHcol->begin(); hhit!=hfRHcol->end(); hhit++) 
-   {
-     /*
-     //check that this hit was not considered before and push it into usedHits
-     bool hitIsUsed=false;
-     for (uint32_t i=0; i<usedHitsHC.size(); i++)
-     {
-     if (usedHitsHC[i]==hhit->id()) hitIsUsed=true;
-     }
-     if (hitIsUsed) continue;
-     usedHitsHC.push_back(hhit->id());
-     */
-     ////////////
-     GlobalPoint posH = geo->getPosition((*hhit).detid());
-     //float phihit = posH.phi();
-     float etahit = posH.eta();
+//        //check HF rechits
+//        edm::ESHandle<CaloGeometry> pG;
+//        iSetup.get<CaloGeometryRecord>().get(pG);
+//        geo = pG.product();
+       
+//        edm::Handle<HFRecHitCollection> hfRHcol;
+//        iEvent.getByToken(hfRechitTag, hfRHcol);
+       
+//        for (std::vector<HFRecHit>::const_iterator hhit=hfRHcol->begin(); hhit!=hfRHcol->end(); hhit++) 
+//    {
+//      /*
+//      //check that this hit was not considered before and push it into usedHits
+//      bool hitIsUsed=false;
+//      for (uint32_t i=0; i<usedHitsHC.size(); i++)
+//      {
+//      if (usedHitsHC[i]==hhit->id()) hitIsUsed=true;
+//      }
+//      if (hitIsUsed) continue;
+//      usedHitsHC.push_back(hhit->id());
+//      */
+//      ////////////
+//      GlobalPoint posH = geo->getPosition((*hhit).detid());
+//      //float phihit = posH.phi();
+//      float etahit = posH.eta();
      
-     float e=hhit->energy();
+//      float e=hhit->energy();
      
-     int hitdepth=hhit->id().depth();
+//      int hitdepth=hhit->id().depth();
      
-     if (hitdepth==1)
-       {
-         float etH=e; //*pow(cosh(etahit),-1);
-         for (int ireg=0; ireg<8; ireg++)
-     {
-       if (etahit>etaLo[ireg]&&etahit<etaHi[ireg])
-         {
-           hRecHitET[ireg]->Fill(etH,1);
-           if (fireJet8) hRecHitETtrig8[ireg]->Fill(etH,1);
-           if (fireJet12) hRecHitETtrig12[ireg]->Fill(etH,1);
-           if (fireHF1) hRecHitETtrigMB[ireg]->Fill(etH,1);
-         }
-     }
-       }
-   }
+//      if (hitdepth==1)
+//        {
+//          float etH=e; //*pow(cosh(etahit),-1);
+//          for (int ireg=0; ireg<8; ireg++)
+//      {
+//        if (etahit>etaLo[ireg]&&etahit<etaHi[ireg])
+//          {
+//            hRecHitET[ireg]->Fill(etH,1);
+//            if (fireJet8) hRecHitETtrig8[ireg]->Fill(etH,1);
+//            if (fireJet12) hRecHitETtrig12[ireg]->Fill(etH,1);
+//            if (fireHF1) hRecHitETtrigMB[ireg]->Fill(etH,1);
+//          }
+//      }
+//        }
+//    }
        
-       //check caloTowers
-       edm::Handle<CaloTowerCollection> towers;
-       iEvent.getByToken(caloTowerTag,towers);
-       CaloTowerCollection::const_iterator cal;
+//        //check caloTowers
+//        edm::Handle<CaloTowerCollection> towers;
+//        iEvent.getByToken(caloTowerTag,towers);
+//        CaloTowerCollection::const_iterator cal;
        
-       for ( cal = towers->begin(); cal != towers->end(); ++cal ) 
-   {
-     /*
-       double eE     = cal->emEnergy();
-       double eH     = cal->hadEnergy();
-       double eHO    = cal->outerEnergy();
-     */
-     double etaT   = cal->eta();
-     //       double phiT   = cal->phi();
-     //       double en     = cal->energy();
-     double etT    = cal->energy();//et();
-     //       double had_tm = cal->hcalTime();
-     //       double em_tm  = cal->ecalTime();
-     for (int ireg=0; ireg<8; ireg++)
-       {
-         if (etaT>etaLo[ireg]&&etaT<etaHi[ireg])
-     {
-       hCaloTowerET[ireg]->Fill(etT,1);
-       if (fireJet8) hCaloTowerETtrig8[ireg]->Fill(etT,1);
-       if (fireJet12) hCaloTowerETtrig12[ireg]->Fill(etT,1);
-       if (fireHF1) hCaloTowerETtrigMB[ireg]->Fill(etT,1);
-     }
-       }
-   }
-     }
+//        for ( cal = towers->begin(); cal != towers->end(); ++cal ) 
+//    {
+//      /*
+//        double eE     = cal->emEnergy();
+//        double eH     = cal->hadEnergy();
+//        double eHO    = cal->outerEnergy();
+//      */
+//      double etaT   = cal->eta();
+//      //       double phiT   = cal->phi();
+//      //       double en     = cal->energy();
+//      double etT    = cal->energy();//et();
+//      //       double had_tm = cal->hcalTime();
+//      //       double em_tm  = cal->ecalTime();
+//      for (int ireg=0; ireg<8; ireg++)
+//        {
+//          if (etaT>etaLo[ireg]&&etaT<etaHi[ireg])
+//      {
+//        hCaloTowerET[ireg]->Fill(etT,1);
+//        if (fireJet8) hCaloTowerETtrig8[ireg]->Fill(etT,1);
+//        if (fireJet12) hCaloTowerETtrig12[ireg]->Fill(etT,1);
+//        if (fireHF1) hCaloTowerETtrigMB[ireg]->Fill(etT,1);
+//      }
+//        }
+//    }
+//      }
 }
 
 
