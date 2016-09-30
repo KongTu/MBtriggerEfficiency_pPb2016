@@ -648,10 +648,10 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
    iEvent.getByToken(m_l1CenJetToken,l1cjets);
 
    edm::Handle<l1extra::L1JetParticleCollection> l1fjets;
-   iEvent.getByLabel(m_l1ForJetToken,l1fjets);
+   iEvent.getByToken(m_l1ForJetToken,l1fjets);
    
    edm::Handle<l1extra::L1JetParticleCollection> l1tjets;
-   iEvent.getByLabel(m_l1TauJetToken,l1tjets);
+   iEvent.getByToken(m_l1TauJetToken,l1tjets);
 
    for (l1extra::L1JetParticleCollection::const_iterator tj=l1cjets->begin(); tj!=l1cjets->end(); tj++)
      {
