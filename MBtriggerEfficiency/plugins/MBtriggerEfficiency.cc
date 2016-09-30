@@ -517,7 +517,7 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
 //   m_l1GtUtils.getL1GtRunCache(iRun, iSetup, useL1EventSetup, useL1GtTriggerMenuLite);
    
    // must be added in analyze/produce/filter method
-   m_l1GtUtils.getL1GtRunCache(iEvent, iSetup, useL1EventSetup, useL1GtTriggerMenuLite, gtDigiTag);
+   m_l1GtUtils.getL1GtRunCache(iEvent, iSetup, useL1EventSetup, useL1GtTriggerMenuLite);
    
    //retreive L1 event setup:
    m_l1GtUtils.retrieveL1EventSetup(iSetup);
