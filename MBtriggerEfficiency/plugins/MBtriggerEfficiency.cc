@@ -53,8 +53,6 @@
 #include "CondFormats/L1TObjects/interface/L1GtTriggerMenuFwd.h"
 
 #include "L1Trigger/GlobalTriggerAnalyzer/interface/L1GtUtils.h"
-//#include "L1Trigger/GlobalTriggerAnalyzer/interface/L1GtAnalyzer.h"
-//#include "L1Trigger/GlobalTriggerAnalyzer/interface/L1GtUtilsHelper.h"
 
 #include "DataFormats/L1Trigger/interface/L1JetParticle.h"
 #include "DataFormats/L1Trigger/interface/L1JetParticleFwd.h"
