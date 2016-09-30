@@ -394,6 +394,7 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
   bool fireLongThr2=false;
 
   if (!useReco){
+    
     edm::Handle<HFDigiCollection> digi;
     iEvent.getByToken(hfDigiTag,digi);
   
@@ -412,10 +413,10 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
       
     for (i=digi->begin(); i!=digi->end(); i++) {
       
-        HcalDetId cell = i->id();
-        int idepth=cell.depth();
-        int ieta=cell.ieta();
-        int iphi=cell.iphi();
+      HcalDetId cell = i->id();
+      int idepth=cell.depth();
+      int ieta=cell.ieta();
+      int iphi=cell.iphi();
       //  if (abs(ieta)>36) continue;
       if (idepth==1) 
         {
@@ -488,7 +489,7 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
       }
     }
     for (int k=0; k<40; k++){
-      if (fire[k]) accPerEvt->Fill(k);
+      if (fire[k]) accPerEvt->Fill(k,1);
       if (fireFront[k]) accPerEvt2sliceFront->Fill(k,1);
       if (fireBack[k]) accPerEvt2sliceBack->Fill(k,1);
       if (firePlus[k]) accPerEvtPlus->Fill(k,1);
