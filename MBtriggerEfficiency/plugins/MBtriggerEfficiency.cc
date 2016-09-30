@@ -186,7 +186,7 @@ private:
 // constructors and destructor
 //
 MBtriggerEfficiency::MBtriggerEfficiency(const edm::ParameterSet& iConfig):
-  m_l1GtUtils(gtDigiTag, consumesCollector(), true)//this is important for 80x to compile
+  m_l1GtUtils(iConfig, consumesCollector(), true)//this is important for 80x to compile
 {
   outfname=iConfig.getParameter<std::string>("outputFileName");
   gtDigiTag=iConfig.getParameter<edm::InputTag>("gtDigiTag");
