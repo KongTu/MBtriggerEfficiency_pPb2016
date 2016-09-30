@@ -488,7 +488,7 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
       }
     }
     for (int k=0; k<40; k++){
-      if (fire[k]) accPerEvt->Fill(k,1);
+      if (fire[k]) accPerEvt->Fill(k);
       if (fireFront[k]) accPerEvt2sliceFront->Fill(k,1);
       if (fireBack[k]) accPerEvt2sliceBack->Fill(k,1);
       if (firePlus[k]) accPerEvtPlus->Fill(k,1);
