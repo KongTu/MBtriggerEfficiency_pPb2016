@@ -357,7 +357,7 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
   int lsec=iEvent.eventAuxiliary().luminosityBlock();
   int bx=iEvent.eventAuxiliary().bunchCrossing();
 
-  std::cout<<"lsec: "<<lsec<<"   // bx number: "<<bx<<std::endl;
+  //std::cout<<"lsec: "<<lsec<<"   // bx number: "<<bx<<std::endl;
 
   bxNum->Fill(bx,1);
   
@@ -377,134 +377,122 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
   bool fireShortThr2=false;
   bool fireLongThr2=false;
 
-  if (!useReco)
-    {
-      edm::Handle<HFDigiCollection> digi;
-      iEvent.getByLabel("hcalDigis",digi);
-    
-      HFDigiCollection::const_iterator i;
-      
-      for (int k=0; k<40; k++)
-  {
-    fire[k]=false;
-    fireFront[k]=false;
-    fireBack[k]=false;
-    firePlus[k]=false;
-    fireMinus[k]=false;
-  }
-      
-      int nChLong=0;
-      int nChShort=0;
-      
-      for (i=digi->begin(); i!=digi->end(); i++) {
-  HcalDetId cell = i->id();
-  int idepth=cell.depth();
-  int ieta=cell.ieta();
-  int iphi=cell.iphi();
-//  if (abs(ieta)>36) continue;
-  if (idepth==1) 
-    {
-      nChLong++;
-      allChanEtaPhi->Fill(ieta,iphi,1);
-    }
-  if (idepth==2) nChShort++;
+  if (!useReco){
+    edm::Handle<HFDigiCollection> digi;
+    iEvent.getByLabel("hcalDigis",digi);
   
-  int ampl=0;
-  int amplFront=0;
-  int amplBack=0;
-  int digiSize=i->size();
-  for (int k=0; k<digiSize; k++)
-    {
-      HcalQIESample dSample=i->sample(k);
-      //int capid=dSample.capid();
-      int adc=dSample.adc();
-      int etaind, phiind;
-      if (ieta<0) etaind=abs(ieta)-29;
-      else etaind=ieta-16;
-      phiind=(iphi-1)/2;
-      sig[idepth-1][etaind][phiind]->Fill(adc,1);
-      amplVSsampl->Fill(k,adc);
-      if (k==2) ampl+=adc;
-      if (k==1) amplFront+=adc;
-      if (k==3) amplBack+=adc;
-    }    
-  if (idepth==1) 
-    {
-      allChanSignalLong->Fill(ampl,1);
-      sigPerChanLong[abs(ieta/1000)][iphi]->Fill(ampl,1);
-      if (ampl>11) sigAboveThr1->Fill(ieta,iphi,ampl,1);
-      sigProfile->Fill(ieta,iphi,ampl,1);
-      for (int p=0; p<40; p++)
-        {
-    if (ampl>p) fire[p]=true;
-    if (ampl>p&&ieta>0) firePlus[p]=true;
-    if (ampl>p&&ieta<0) fireMinus[p]=true;
-    if (amplFront+ampl>p) fireFront[p]=true;
-    if (amplBack+ampl>p) fireBack[p]=true;
+    HFDigiCollection::const_iterator i;
     
-        }
-      if (ampl>11)
-        //thresholdsLong[etaind][phiind]) 
-        {
-    chanAboveThrFileLong->Fill(ieta,iphi,1);
-    fireLongThr1=true;
-        }
-      if (ampl>17)
-        {
-    fireLongThr2=true;
-        }
+    for (int k=0; k<40; k++){
+      fire[k]=false;
+      fireFront[k]=false;
+      fireBack[k]=false;
+      firePlus[k]=false;
+      fireMinus[k]=false;
     }
-  
-  if (idepth==2) 
-    {
-      allChanSignalShort->Fill(ampl,1);
-      sigPerChanShort[abs(ieta/1000)][iphi]->Fill(ampl,1);
-      if (ampl>11) sigAboveThrShort1->Fill(ieta,iphi,ampl,1);
-      sigProfileShort->Fill(ieta,iphi,ampl,1);
-      for (int p=0; p<40; p++)
+      
+    int nChLong=0;
+    int nChShort=0;
+      
+    for (i=digi->begin(); i!=digi->end(); i++) {
+      
+        HcalDetId cell = i->id();
+        int idepth=cell.depth();
+        int ieta=cell.ieta();
+        int iphi=cell.iphi();
+      //  if (abs(ieta)>36) continue;
+      if (idepth==1) 
         {
-    if (ampl>p) fire[p]=true;
-    if (ampl>p&&ieta>0) firePlus[p]=true;
-    if (ampl>p&&ieta<0) fireMinus[p]=true;
-    if (amplFront>p||ampl>p) fireFront[p]=true;
-    if (amplBack>p||ampl>p) fireBack[p]=true;
+          nChLong++;
+          allChanEtaPhi->Fill(ieta,iphi,1);
         }
-      if (ampl>11)
-        //adc>thresholdsShort[etaind][phiind])
-        {
-    chanAboveThrFileShort->Fill(ieta,iphi,1);
-    fireShortThr1=true;                        
+      if (idepth==2) nChShort++;
+      
+      int ampl=0;
+      int amplFront=0;
+      int amplBack=0;
+      int digiSize=i->size();
+      
+      for (int k=0; k<digiSize; k++){
+        HcalQIESample dSample=i->sample(k);
+        //int capid=dSample.capid();
+        int adc=dSample.adc();
+        int etaind, phiind;
+        if (ieta<0) etaind=abs(ieta)-29;
+        else etaind=ieta-16;
+        phiind=(iphi-1)/2;
+        sig[idepth-1][etaind][phiind]->Fill(adc,1);
+        amplVSsampl->Fill(k,adc);
+        if (k==2) ampl+=adc;
+        if (k==1) amplFront+=adc;
+        if (k==3) amplBack+=adc;
+      }    
+      if (idepth==1){
+        allChanSignalLong->Fill(ampl,1);
+        sigPerChanLong[abs(ieta/1000)][iphi]->Fill(ampl,1);
+        if (ampl>11) sigAboveThr1->Fill(ieta,iphi,ampl,1);
+        sigProfile->Fill(ieta,iphi,ampl,1);
+        for (int p=0; p<40; p++){
+          if (ampl>p) fire[p]=true;
+          if (ampl>p&&ieta>0) firePlus[p]=true;
+          if (ampl>p&&ieta<0) fireMinus[p]=true;
+          if (amplFront+ampl>p) fireFront[p]=true;
+          if (amplBack+ampl>p) fireBack[p]=true;
         }
-      if (ampl>17)
-        {
+        if (ampl>11){
+          //thresholdsLong[etaind][phiind])
+          chanAboveThrFileLong->Fill(ieta,iphi,1);
+          fireLongThr1=true;
+        }
+        if (ampl>17){
+          fireLongThr2=true;
+        }
+      }
+      if (idepth==2){
+        allChanSignalShort->Fill(ampl,1);
+        sigPerChanShort[abs(ieta/1000)][iphi]->Fill(ampl,1);
+        if (ampl>11) sigAboveThrShort1->Fill(ieta,iphi,ampl,1);
+        sigProfileShort->Fill(ieta,iphi,ampl,1);
+        for (int p=0; p<40; p++){
+          if (ampl>p) fire[p]=true;
+          if (ampl>p&&ieta>0) firePlus[p]=true;
+          if (ampl>p&&ieta<0) fireMinus[p]=true;
+          if (amplFront>p||ampl>p) fireFront[p]=true;
+          if (amplBack>p||ampl>p) fireBack[p]=true;
+        }
+        if (ampl>11){
+          //adc>thresholdsShort[etaind][phiind])
+            
+          chanAboveThrFileShort->Fill(ieta,iphi,1);
+          fireShortThr1=true;                        
+        }
+        if (ampl>17){
           fireShortThr2=true;
         }
-    }
-  
       }
-      for (int k=0; k<40; k++)
-  {
-    if (fire[k]) accPerEvt->Fill(k,1);
-    if (fireFront[k]) accPerEvt2sliceFront->Fill(k,1);
-    if (fireBack[k]) accPerEvt2sliceBack->Fill(k,1);
-    if (firePlus[k]) accPerEvtPlus->Fill(k,1);
-    if (fireMinus[k]) accPerEvtMinus->Fill(k,1);
-  }
+    }
+    for (int k=0; k<40; k++){
+      if (fire[k]) accPerEvt->Fill(k,1);
+      if (fireFront[k]) accPerEvt2sliceFront->Fill(k,1);
+      if (fireBack[k]) accPerEvt2sliceBack->Fill(k,1);
+      if (firePlus[k]) accPerEvtPlus->Fill(k,1);
+      if (fireMinus[k]) accPerEvtMinus->Fill(k,1);
+    }
 
-      if (fireLongThr1||fireShortThr1) 
-  {
-    accPerEvtThrFile->Fill(1,1);
-  }
+    if (fireLongThr1||fireShortThr1){
+      accPerEvtThrFile->Fill(1,1);
+    }
       // if (fireLongThr2||fireShortThr2) 
       //  {
       
       //       accPerEvtThrFile->Fill(1,1);
       //  }
       
-      nChanLong->Fill(nChLong,1);
-      nChanShort->Fill(nChShort,1);
+    nChanLong->Fill(nChLong,1);
+    nChanShort->Fill(nChShort,1);
       //std::cout<<nChLong<<std::endl;
-    }
+    
+    }//end of !useReco
    
 
    ////////////////////////////////////////
@@ -551,7 +539,7 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
 
    bool fireJet8_fromGT=false;
    bool fireJet12_fromGT=false;   
-/*
+
    int iErrorCode=-1;
    for (uint32_t iTr=0; iTr < trgList.size(); iTr++)
      {
@@ -602,7 +590,7 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
 //  std::cout<<"MENU USED: "<<m_l1GtUtils.l1TriggerMenu()<<std::endl;
 
      }
-  */ 
+  
    if ((fireLongThr1||fireShortThr1)&&fireHF2) crossTest_HF1->Fill(0.1,1);
    if ((fireLongThr1||fireShortThr1)&&(!fireHF2)) crossTest_HF1->Fill(1.1,1);
    if ((!(fireLongThr1||fireShortThr1))&&fireHF2) crossTest_HF1->Fill(2.1,1);
