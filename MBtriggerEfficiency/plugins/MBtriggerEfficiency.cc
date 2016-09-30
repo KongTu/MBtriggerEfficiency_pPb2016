@@ -567,7 +567,7 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
      {
        iErrorCode = -1;
         
-       bool decisionBeforeMaskAlgTechTrig = m_l1GtUtils.decisionBeforeMask(iEvent, edm::InputTag(""), gtDigiTag, trgList[iTr], iErrorCode);
+       bool decisionBeforeMaskAlgTechTrig = m_l1GtUtils.decisionBeforeMask(iEvent, trgList[iTr], iErrorCode);
         //trgList[iTr], iErrorCode);
        if (iErrorCode == 0) 
    {
