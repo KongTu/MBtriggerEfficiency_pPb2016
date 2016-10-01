@@ -568,10 +568,10 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
 
      std::cout << "error code 1: " << iErrorCode << std::endl;
       
-     bool decisionBeforeMaskAlgTechTrig = m_l1GtUtils.decisionAfterMask(iEvent, trgList[iTr], iErrorCode);
+     bool decisionBeforeMaskAlgTechTrig = m_l1GtUtils.decisionBeforeMask(iEvent, trgList[iTr], iErrorCode);
      
      std::cout << "error code 2: " << iErrorCode << std::endl;
-     std::cout << "decisionAfterMaskAlgTechTrig: " << decisionBeforeMaskAlgTechTrig << std::endl;
+     std::cout << "decisionBeforeMaskAlgTechTrig: " << decisionBeforeMaskAlgTechTrig << std::endl;
 
      if (iErrorCode == 0){
        std::cout<<"code0"<<std::endl;
