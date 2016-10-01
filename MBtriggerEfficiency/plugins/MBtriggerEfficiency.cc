@@ -564,7 +564,7 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
   int iErrorCode=-1;
   for (uint32_t iTr=0; iTr < trgList.size(); iTr++){
      
-     iErrorCode = -1;
+     iErrorCode = 0;
 
      std::cout << "error code 1: " << iErrorCode << std::endl;
       
