@@ -549,12 +549,12 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
 
   //check if ZeroBias has fired
   int iErrorCode=-1;
-  bool ZBfired=m_l1GtUtils.decisionBeforeMask(iEvent, "L1_SingleMuOpen", iErrorCode);
-  std::cout << "L1_SingleMuOpen: " << ZBfired << std::endl;
+  bool ZBfired=m_l1GtUtils.decisionBeforeMask(iEvent, "L1_SingleJet16", iErrorCode);
+  std::cout << "L1_SingleJet16: " << ZBfired << std::endl;
   std::cout << "errorcode: " << iErrorCode << std::endl;
 
   //loop through other trigs
-  std::cout<<"go?  "<<trgList.size()<<std::endl;
+  //std::cout<<"go?  "<<trgList.size()<<std::endl;
    
   bool fireHF1=false;
   bool fireHF2=false;
