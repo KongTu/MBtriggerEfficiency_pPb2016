@@ -562,7 +562,7 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
   bool fireJet8_fromGT=false;
   bool fireJet12_fromGT=false;   
 
-  int iErrorCode=-1;
+  iErrorCode=-1;
   for (uint32_t iTr=0; iTr < trgList.size(); iTr++){
      
      iErrorCode = -1;      
