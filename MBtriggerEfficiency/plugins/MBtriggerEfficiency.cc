@@ -379,7 +379,7 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
   
   ZB_vsLumi->Fill(lsec,1);
 
-  if ( lsec<270 || lsec > 464 ) return;
+  //if ( lsec<270 || lsec > 464 ) return;
 
   evtsTot++;
   
@@ -542,7 +542,6 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
   // m_l1GtUtils.retrieveL1EventSetup(iSetup);
 
   // edm::InputTag* l1GTRt=new edm::InputTag("foo");
-  // edm::InputTag* l1GTRRt=new edm::InputTag("foo");
 
   // m_l1GtUtils.getL1GtRecordInputTag(iEvent, *l1GTRt, *l1GTRRt);
 
