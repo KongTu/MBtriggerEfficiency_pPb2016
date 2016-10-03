@@ -538,22 +538,23 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
    // must be added in analyze/produce/filter method
    m_l1GtUtils.getL1GtRunCache(iEvent, iSetup, useL1EventSetup, useL1GtTriggerMenuLite);
    
-   //retreive L1 event setup:
-   m_l1GtUtils.retrieveL1EventSetup(iSetup);
+  //retreive L1 event setup:
+  // m_l1GtUtils.retrieveL1EventSetup(iSetup);
 
-   edm::InputTag* l1GTRt=new edm::InputTag("foo");
-   edm::InputTag* l1GTRRt=new edm::InputTag("foo");
+  // edm::InputTag* l1GTRt=new edm::InputTag("foo");
+  // edm::InputTag* l1GTRRt=new edm::InputTag("foo");
 
-   m_l1GtUtils.getL1GtRecordInputTag(iEvent, *l1GTRt, *l1GTRRt);
-   
-   std::cout<<"tags:   "<<l1GTRt->instance()<<"_"<<l1GTRt->label()<<"     "<<l1GTRRt->instance()<<"_"<<l1GTRRt->label()<<std::endl;
+  // m_l1GtUtils.getL1GtRecordInputTag(iEvent, *l1GTRt, *l1GTRRt);
 
-   //check if ZeroBias has fired
-   int iErrorCode=-1;
-   bool ZBfired=m_l1GtUtils.decisionBeforeMask(iEvent, "L1_ZeroBias", iErrorCode);
-   
-   loop through other trigs
-     std::cout<<"go?  "<<trgList.size()<<std::endl;
+  // std::cout<<"tags:   "<<l1GTRt->instance()<<"_"<<l1GTRt->label()<<"     "<<l1GTRRt->instance()<<"_"<<l1GTRRt->label()<<std::endl;
+
+  //check if ZeroBias has fired
+  int iErrorCode=-1;
+  bool ZBfired=m_l1GtUtils.decisionBeforeMask(iEvent, "L1_ZeroBias", iErrorCode);
+  std::cout << "ZBfired: " << ZBfired << std::endl;
+
+  //loop through other trigs
+  std::cout<<"go?  "<<trgList.size()<<std::endl;
    
   bool fireHF1=false;
   bool fireHF2=false;
