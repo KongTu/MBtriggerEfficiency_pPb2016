@@ -564,15 +564,9 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
   int iErrorCode=-1;
   for (uint32_t iTr=0; iTr < trgList.size(); iTr++){
      
-     iErrorCode = -1;
-
-     std::cout << "error code 1: " << iErrorCode << std::endl;
-      
+     iErrorCode = -1;      
      bool decisionBeforeMaskAlgTechTrig = m_l1GtUtils.decisionBeforeMask(iEvent, trgList[iTr], iErrorCode);
      
-     std::cout << "error code 2: " << iErrorCode << std::endl;
-     std::cout << "decisionBeforeMaskAlgTechTrig: " << decisionBeforeMaskAlgTechTrig << std::endl;
-
      if (iErrorCode == 0){
        std::cout<<"code0"<<std::endl;
        if (decisionBeforeMaskAlgTechTrig){
