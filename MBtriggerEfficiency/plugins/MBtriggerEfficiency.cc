@@ -373,7 +373,7 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
   int lsec=iEvent.eventAuxiliary().luminosityBlock();
   int bx=iEvent.eventAuxiliary().bunchCrossing();
 
-  if( lsec > 270 ) std::cout<<"lsec: "<<lsec<<"   // bx number: "<<bx<<std::endl;
+  //if( lsec > 270 ) std::cout<<"lsec: "<<lsec<<"   // bx number: "<<bx<<std::endl;
 
   bxNum->Fill(bx,1);
   
