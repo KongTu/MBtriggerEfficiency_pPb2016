@@ -61,7 +61,7 @@
 // #include "CondFormats/DataRecord/interface/L1GtTriggerMenuRcd.h"
 // #include "CondFormats/L1TObjects/interface/L1GtTriggerMenuFwd.h"
 
-// #include "L1Trigger/GlobalTriggerAnalyzer/interface/L1GtUtils.h"
+#include "L1Trigger/GlobalTriggerAnalyzer/interface/L1GtUtils.h"
 
 // #include "DataFormats/L1Trigger/interface/L1JetParticle.h"
 // #include "DataFormats/L1Trigger/interface/L1JetParticleFwd.h"
@@ -150,9 +150,9 @@ public:
   edm::EDGetTokenT<HFRecHitCollection> hfRechitTag;
   edm::EDGetTokenT<reco::CaloJetCollection> caloJetTag;
 
-  edm::EDGetTokenT<l1extra::L1JetParticleCollection>  m_l1CenJetToken;
-  edm::EDGetTokenT<l1extra::L1JetParticleCollection>  m_l1ForJetToken;
-  edm::EDGetTokenT<l1extra::L1JetParticleCollection>  m_l1TauJetToken;
+  // edm::EDGetTokenT<l1extra::L1JetParticleCollection>  m_l1CenJetToken;
+  // edm::EDGetTokenT<l1extra::L1JetParticleCollection>  m_l1ForJetToken;
+  // edm::EDGetTokenT<l1extra::L1JetParticleCollection>  m_l1TauJetToken;
 
   bool useReco;
   bool useMC;
