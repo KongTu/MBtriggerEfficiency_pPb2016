@@ -59,8 +59,6 @@
 #include "DataFormats/L1GlobalTrigger/interface/L1GtTechnicalTriggerRecord.h"
 #include "DataFormats/L1GlobalTrigger/interface/L1GtTriggerMenuLite.h"
 
-
-
 // #include "DataFormats/L1GlobalTrigger/interface/L1GlobalTriggerRecord.h"
 // #include "DataFormats/L1GlobalTrigger/interface/L1GlobalTriggerObjectMapRecord.h"
 // #include "DataFormats/L1GlobalTrigger/interface/L1GlobalTriggerObjectMaps.h"
@@ -72,7 +70,7 @@
 // #include "CondFormats/DataRecord/interface/L1GtTriggerMenuRcd.h"
 // #include "CondFormats/L1TObjects/interface/L1GtTriggerMenuFwd.h"
 
-//#include "L1Trigger/GlobalTriggerAnalyzer/interface/L1GtUtils.h"
+#include "L1Trigger/GlobalTriggerAnalyzer/interface/L1GtUtils.h"
 
 // #include "DataFormats/L1Trigger/interface/L1JetParticle.h"
 // #include "DataFormats/L1Trigger/interface/L1JetParticleFwd.h"
