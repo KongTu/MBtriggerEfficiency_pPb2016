@@ -37,28 +37,37 @@
 //#include <CLHEP/Geometry/Point3D.h>
 
 //add L1 stuff
-#include "CondFormats/L1TObjects/interface/L1GtAlgorithm.h"
+//#include "CondFormats/L1TObjects/interface/L1GtAlgorithm.h"
+
 #include "DataFormats/L1GlobalTrigger/interface/L1GlobalTriggerReadoutSetupFwd.h"
 #include "DataFormats/L1GlobalTrigger/interface/L1GlobalTriggerReadoutSetup.h"
 #include "DataFormats/L1GlobalTrigger/interface/L1GlobalTriggerReadoutRecord.h"
-#include "DataFormats/L1GlobalTrigger/interface/L1GlobalTriggerRecord.h"
-#include "DataFormats/L1GlobalTrigger/interface/L1GlobalTriggerObjectMapRecord.h"
-#include "DataFormats/L1GlobalTrigger/interface/L1GlobalTriggerObjectMaps.h"
+#include "L1Trigger/RegionalCaloTrigger/interface/L1RCTProducer.h"
+#include "DataFormats/L1TCalorimeter/interface/CaloTower.h"
+#include "DataFormats/L1Trigger/interface/EGamma.h"
+#include "DataFormats/L1Trigger/interface/Muon.h"
+#include "DataFormats/L1Trigger/interface/Jet.h"
+#include "DataFormats/L1Trigger/interface/Tau.h"
+#include "DataFormats/L1Trigger/interface/EtSum.h"
+
+// #include "DataFormats/L1GlobalTrigger/interface/L1GlobalTriggerRecord.h"
+// #include "DataFormats/L1GlobalTrigger/interface/L1GlobalTriggerObjectMapRecord.h"
+// #include "DataFormats/L1GlobalTrigger/interface/L1GlobalTriggerObjectMaps.h"
  
-#include "DataFormats/L1GlobalTrigger/interface/L1GlobalTriggerObjectMap.h"
+// #include "DataFormats/L1GlobalTrigger/interface/L1GlobalTriggerObjectMap.h"
 
-#include "DataFormats/L1GlobalTrigger/interface/L1GtTriggerMenuLite.h"
-#include "CondFormats/L1TObjects/interface/L1GtTriggerMenu.h"
-#include "CondFormats/DataRecord/interface/L1GtTriggerMenuRcd.h"
-#include "CondFormats/L1TObjects/interface/L1GtTriggerMenuFwd.h"
+// #include "DataFormats/L1GlobalTrigger/interface/L1GtTriggerMenuLite.h"
+// #include "CondFormats/L1TObjects/interface/L1GtTriggerMenu.h"
+// #include "CondFormats/DataRecord/interface/L1GtTriggerMenuRcd.h"
+// #include "CondFormats/L1TObjects/interface/L1GtTriggerMenuFwd.h"
 
-#include "L1Trigger/GlobalTriggerAnalyzer/interface/L1GtUtils.h"
+// #include "L1Trigger/GlobalTriggerAnalyzer/interface/L1GtUtils.h"
 
-#include "DataFormats/L1Trigger/interface/L1JetParticle.h"
-#include "DataFormats/L1Trigger/interface/L1JetParticleFwd.h"
+// #include "DataFormats/L1Trigger/interface/L1JetParticle.h"
+// #include "DataFormats/L1Trigger/interface/L1JetParticleFwd.h"
 
-#include "DataFormats/CaloTowers/interface/CaloTowerCollection.h"
-#include "DataFormats/CaloTowers/interface/CaloTower.h"
+//#include "DataFormats/CaloTowers/interface/CaloTowerCollection.h"
+//#include "DataFormats/CaloTowers/interface/CaloTower.h"
 
 // class declaration
 //
