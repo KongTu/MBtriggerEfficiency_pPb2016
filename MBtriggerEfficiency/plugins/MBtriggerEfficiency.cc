@@ -49,6 +49,16 @@
 #include "DataFormats/L1Trigger/interface/Jet.h"
 #include "DataFormats/L1Trigger/interface/Tau.h"
 #include "DataFormats/L1Trigger/interface/EtSum.h"
+#include "DataFormats/L1Trigger/interface/L1GtObject.h"
+#include "DataFormats/L1Trigger/interface/L1GlobalTriggerRecord.h"
+#include "DataFormats/L1Trigger/interface/L1GtFdlWord.h"
+#include "DataFormats/L1Trigger/interface/L1GtLogicParser.h"
+#include "DataFormats/L1Trigger/interface/L1GtObject.h"
+#include "DataFormats/L1Trigger/interface/L1GtTechnicalTrigger.h"
+#include "DataFormats/L1Trigger/interface/L1GtTechnicalTriggerRecord.h"
+#include "DataFormats/L1Trigger/interface/L1GtTriggerMenuLite.h"
+
+
 
 // #include "DataFormats/L1GlobalTrigger/interface/L1GlobalTriggerRecord.h"
 // #include "DataFormats/L1GlobalTrigger/interface/L1GlobalTriggerObjectMapRecord.h"
@@ -61,7 +71,7 @@
 // #include "CondFormats/DataRecord/interface/L1GtTriggerMenuRcd.h"
 // #include "CondFormats/L1TObjects/interface/L1GtTriggerMenuFwd.h"
 
-#include "L1Trigger/GlobalTriggerAnalyzer/interface/L1GtUtils.h"
+//#include "L1Trigger/GlobalTriggerAnalyzer/interface/L1GtUtils.h"
 
 // #include "DataFormats/L1Trigger/interface/L1JetParticle.h"
 // #include "DataFormats/L1Trigger/interface/L1JetParticleFwd.h"
