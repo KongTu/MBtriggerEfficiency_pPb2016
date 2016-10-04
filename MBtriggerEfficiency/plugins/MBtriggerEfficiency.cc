@@ -432,7 +432,6 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
 
       if( digiSize > 4 ) std::cout << "digiSize: " << digiSize << std::endl;
       
-      
       for (int k=0; k<digiSize; k++){
         HcalQIESample dSample=i->sample(k);
         //int capid=dSample.capid();
@@ -556,7 +555,6 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
     std::cout << "errorcode: " << iErrorCode << std::endl;
   }
   
-
   //loop through other trigs
   //std::cout<<"go?  "<<trgList.size()<<std::endl;
    
