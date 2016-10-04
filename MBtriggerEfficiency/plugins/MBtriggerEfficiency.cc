@@ -639,151 +639,151 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
   bool fireJet8=false;
   bool fireJet12=false;
 
-  edm::Handle<l1extra::L1JetParticleCollection> l1cjets;
-  iEvent.getByToken(m_l1CenJetToken,l1cjets);
+  // edm::Handle<l1extra::L1JetParticleCollection> l1cjets;
+  // iEvent.getByToken(m_l1CenJetToken,l1cjets);
 
-  edm::Handle<l1extra::L1JetParticleCollection> l1fjets;
-  iEvent.getByToken(m_l1ForJetToken,l1fjets);
+  // edm::Handle<l1extra::L1JetParticleCollection> l1fjets;
+  // iEvent.getByToken(m_l1ForJetToken,l1fjets);
 
-  edm::Handle<l1extra::L1JetParticleCollection> l1tjets;
-  iEvent.getByToken(m_l1TauJetToken,l1tjets);
+  // edm::Handle<l1extra::L1JetParticleCollection> l1tjets;
+  // iEvent.getByToken(m_l1TauJetToken,l1tjets);
 
-  for (l1extra::L1JetParticleCollection::const_iterator tj=l1cjets->begin(); tj!=l1cjets->end(); tj++){
-    if (tj->pt()>36){
-      hL1jetsEta8->Fill(tj->eta(),1);
-      fireJet8=true;
-    }
-    if (tj->pt()>52){
-      hL1jetsEta12->Fill(tj->eta(),1);
-      fireJet12=true;
-    }
-  }
+  // for (l1extra::L1JetParticleCollection::const_iterator tj=l1cjets->begin(); tj!=l1cjets->end(); tj++){
+  //   if (tj->pt()>36){
+  //     hL1jetsEta8->Fill(tj->eta(),1);
+  //     fireJet8=true;
+  //   }
+  //   if (tj->pt()>52){
+  //     hL1jetsEta12->Fill(tj->eta(),1);
+  //     fireJet12=true;
+  //   }
+  // }
 
-  for (l1extra::L1JetParticleCollection::const_iterator tj=l1fjets->begin(); tj!=l1fjets->end(); tj++){
-    if (tj->pt()>36){
-      hL1jetsEta8->Fill(tj->eta(),1);
-      fireJet8=true;
-    }
-    if (tj->pt()>52){
-      fireJet12=true;
-      hL1jetsEta12->Fill(tj->eta(),1);
-    }
-  }
+  // for (l1extra::L1JetParticleCollection::const_iterator tj=l1fjets->begin(); tj!=l1fjets->end(); tj++){
+  //   if (tj->pt()>36){
+  //     hL1jetsEta8->Fill(tj->eta(),1);
+  //     fireJet8=true;
+  //   }
+  //   if (tj->pt()>52){
+  //     fireJet12=true;
+  //     hL1jetsEta12->Fill(tj->eta(),1);
+  //   }
+  // }
 
-  for (l1extra::L1JetParticleCollection::const_iterator tj=l1tjets->begin(); tj!=l1tjets->end(); tj++){
-    if (tj->pt()>36){
-      fireJet8=true;
-      hL1jetsEta8->Fill(tj->eta(),1);
-    }
+  // for (l1extra::L1JetParticleCollection::const_iterator tj=l1tjets->begin(); tj!=l1tjets->end(); tj++){
+  //   if (tj->pt()>36){
+  //     fireJet8=true;
+  //     hL1jetsEta8->Fill(tj->eta(),1);
+  //   }
 
-    if (tj->pt()>52){
-      fireJet12=true;
-      hL1jetsEta12->Fill(tj->eta(),1);
-    }
-  }
+  //   if (tj->pt()>52){
+  //     fireJet12=true;
+  //     hL1jetsEta12->Fill(tj->eta(),1);
+  //   }
+  // }
 
-  if (fireJet8&&fireJet8_fromGT) jetCrossTest8->Fill(0.1,1);   
-  if (fireJet8&&!fireJet8_fromGT) jetCrossTest8->Fill(1.1,1);
-  if (!fireJet8&&fireJet8_fromGT) jetCrossTest8->Fill(2.1,1);
+  // if (fireJet8&&fireJet8_fromGT) jetCrossTest8->Fill(0.1,1);   
+  // if (fireJet8&&!fireJet8_fromGT) jetCrossTest8->Fill(1.1,1);
+  // if (!fireJet8&&fireJet8_fromGT) jetCrossTest8->Fill(2.1,1);
 
-  if (fireJet12&&fireJet12_fromGT) jetCrossTest12->Fill(0.1,1);
-  if (fireJet12&&!fireJet12_fromGT) jetCrossTest12->Fill(1.1,1);
-  if (!fireJet12&&fireJet12_fromGT) jetCrossTest12->Fill(2.1,1);
+  // if (fireJet12&&fireJet12_fromGT) jetCrossTest12->Fill(0.1,1);
+  // if (fireJet12&&!fireJet12_fromGT) jetCrossTest12->Fill(1.1,1);
+  // if (!fireJet12&&fireJet12_fromGT) jetCrossTest12->Fill(2.1,1);
 
-  if (useReco){
+  // if (useReco){
   
-    //check calojets
-    edm::Handle<reco::CaloJetCollection> cjets;
-    iEvent.getByToken(caloJetTag, cjets);
+  //   //check calojets
+  //   edm::Handle<reco::CaloJetCollection> cjets;
+  //   iEvent.getByToken(caloJetTag, cjets);
 
-    reco::CaloJetCollection::const_iterator i_cjet;
+  //   reco::CaloJetCollection::const_iterator i_cjet;
 
-    for(i_cjet = cjets->begin(); i_cjet != cjets->end(); i_cjet++){
-      if (i_cjet->eta()>3.5&&i_cjet->eta()<4.5){
-         hCaloJetPlusET->Fill(i_cjet->pt(),1);
-         if (fireJet8) hCaloJetPlusETtrig8->Fill(i_cjet->pt(),1);
-         if (fireJet12) hCaloJetPlusETtrig12->Fill(i_cjet->pt(),1);
-         if (fireHF1) hCaloJetPlusETtrigMB->Fill(i_cjet->pt(),1);
-      }
-      if (i_cjet->eta()>-4.5&&i_cjet->eta()<-3.5){
-         hCaloJetMinusET->Fill(i_cjet->pt(),1);
-         if (fireJet8) hCaloJetMinusETtrig8->Fill(i_cjet->pt(),1);
-         if (fireJet12) hCaloJetMinusETtrig12->Fill(i_cjet->pt(),1);
-         if (fireHF1) hCaloJetMinusETtrigMB->Fill(i_cjet->pt(),1);
-      }
-    }
+  //   for(i_cjet = cjets->begin(); i_cjet != cjets->end(); i_cjet++){
+  //     if (i_cjet->eta()>3.5&&i_cjet->eta()<4.5){
+  //        hCaloJetPlusET->Fill(i_cjet->pt(),1);
+  //        if (fireJet8) hCaloJetPlusETtrig8->Fill(i_cjet->pt(),1);
+  //        if (fireJet12) hCaloJetPlusETtrig12->Fill(i_cjet->pt(),1);
+  //        if (fireHF1) hCaloJetPlusETtrigMB->Fill(i_cjet->pt(),1);
+  //     }
+  //     if (i_cjet->eta()>-4.5&&i_cjet->eta()<-3.5){
+  //        hCaloJetMinusET->Fill(i_cjet->pt(),1);
+  //        if (fireJet8) hCaloJetMinusETtrig8->Fill(i_cjet->pt(),1);
+  //        if (fireJet12) hCaloJetMinusETtrig12->Fill(i_cjet->pt(),1);
+  //        if (fireHF1) hCaloJetMinusETtrigMB->Fill(i_cjet->pt(),1);
+  //     }
+  //   }
 
-    double etaLo[]={-5.0,-4.5,-4.0,-3.5,3.0,3.5,4.0,4.5};
-    double etaHi[]={-4.5,-4.0,-3.5,-3.0,3.5,4.0,4.5,5.0};
+  //   double etaLo[]={-5.0,-4.5,-4.0,-3.5,3.0,3.5,4.0,4.5};
+  //   double etaHi[]={-4.5,-4.0,-3.5,-3.0,3.5,4.0,4.5,5.0};
 
-    //check HF rechits
-    edm::ESHandle<CaloGeometry> pG;
-    iSetup.get<CaloGeometryRecord>().get(pG);
-    geo = pG.product();
+  //   //check HF rechits
+  //   edm::ESHandle<CaloGeometry> pG;
+  //   iSetup.get<CaloGeometryRecord>().get(pG);
+  //   geo = pG.product();
 
-    edm::Handle<HFRecHitCollection> hfRHcol;
-    iEvent.getByToken(hfRechitTag, hfRHcol);
+  //   edm::Handle<HFRecHitCollection> hfRHcol;
+  //   iEvent.getByToken(hfRechitTag, hfRHcol);
 
-    for (std::vector<HFRecHit>::const_iterator hhit=hfRHcol->begin(); hhit!=hfRHcol->end(); hhit++){
-      /*
-      //check that this hit was not considered before and push it into usedHits
-      bool hitIsUsed=false;
-      for (uint32_t i=0; i<usedHitsHC.size(); i++)
-      {
-      if (usedHitsHC[i]==hhit->id()) hitIsUsed=true;
-      }
-      if (hitIsUsed) continue;
-      usedHitsHC.push_back(hhit->id());
-      */
-      ////////////
-      GlobalPoint posH = geo->getPosition((*hhit).detid());
-      //float phihit = posH.phi();
-      float etahit = posH.eta();
-      float e=hhit->energy();
-      int hitdepth=hhit->id().depth();
+  //   for (std::vector<HFRecHit>::const_iterator hhit=hfRHcol->begin(); hhit!=hfRHcol->end(); hhit++){
+  //     /*
+  //     //check that this hit was not considered before and push it into usedHits
+  //     bool hitIsUsed=false;
+  //     for (uint32_t i=0; i<usedHitsHC.size(); i++)
+  //     {
+  //     if (usedHitsHC[i]==hhit->id()) hitIsUsed=true;
+  //     }
+  //     if (hitIsUsed) continue;
+  //     usedHitsHC.push_back(hhit->id());
+  //     */
+  //     ////////////
+  //     GlobalPoint posH = geo->getPosition((*hhit).detid());
+  //     //float phihit = posH.phi();
+  //     float etahit = posH.eta();
+  //     float e=hhit->energy();
+  //     int hitdepth=hhit->id().depth();
 
-      if (hitdepth==1){
-       float etH=e; //*pow(cosh(etahit),-1);
-       for (int ireg=0; ireg<8; ireg++){
-          if (etahit>etaLo[ireg]&&etahit<etaHi[ireg]){
-             hRecHitET[ireg]->Fill(etH,1);
-             if (fireJet8) hRecHitETtrig8[ireg]->Fill(etH,1);
-             if (fireJet12) hRecHitETtrig12[ireg]->Fill(etH,1);
-             if (fireHF1) hRecHitETtrigMB[ireg]->Fill(etH,1);
-          }
-        }
-      }
-    }
+  //     if (hitdepth==1){
+  //      float etH=e; //*pow(cosh(etahit),-1);
+  //      for (int ireg=0; ireg<8; ireg++){
+  //         if (etahit>etaLo[ireg]&&etahit<etaHi[ireg]){
+  //            hRecHitET[ireg]->Fill(etH,1);
+  //            if (fireJet8) hRecHitETtrig8[ireg]->Fill(etH,1);
+  //            if (fireJet12) hRecHitETtrig12[ireg]->Fill(etH,1);
+  //            if (fireHF1) hRecHitETtrigMB[ireg]->Fill(etH,1);
+  //         }
+  //       }
+  //     }
+  //   }
 
-    //check caloTowers
-    edm::Handle<CaloTowerCollection> towers;
-    iEvent.getByToken(caloTowerTag,towers);
-    CaloTowerCollection::const_iterator cal;
+  //   //check caloTowers
+  //   edm::Handle<CaloTowerCollection> towers;
+  //   iEvent.getByToken(caloTowerTag,towers);
+  //   CaloTowerCollection::const_iterator cal;
 
-    for ( cal = towers->begin(); cal != towers->end(); ++cal ){
-      /*
-      double eE     = cal->emEnergy();
-      double eH     = cal->hadEnergy();
-      double eHO    = cal->outerEnergy();
-      */
-      double etaT   = cal->eta();
-      //       double phiT   = cal->phi();
-      //       double en     = cal->energy();
-      double etT    = cal->energy();//et();
-      //       double had_tm = cal->hcalTime();
-      //       double em_tm  = cal->ecalTime();
-      for (int ireg=0; ireg<8; ireg++){
-       if (etaT>etaLo[ireg]&&etaT<etaHi[ireg]){
-          hCaloTowerET[ireg]->Fill(etT,1);
-          if (fireJet8) hCaloTowerETtrig8[ireg]->Fill(etT,1);
-          if (fireJet12) hCaloTowerETtrig12[ireg]->Fill(etT,1);
-          if (fireHF1) hCaloTowerETtrigMB[ireg]->Fill(etT,1);
-        }
-      }
-    }
+  //   for ( cal = towers->begin(); cal != towers->end(); ++cal ){
+  //     /*
+  //     double eE     = cal->emEnergy();
+  //     double eH     = cal->hadEnergy();
+  //     double eHO    = cal->outerEnergy();
+  //     */
+  //     double etaT   = cal->eta();
+  //     //       double phiT   = cal->phi();
+  //     //       double en     = cal->energy();
+  //     double etT    = cal->energy();//et();
+  //     //       double had_tm = cal->hcalTime();
+  //     //       double em_tm  = cal->ecalTime();
+  //     for (int ireg=0; ireg<8; ireg++){
+  //      if (etaT>etaLo[ireg]&&etaT<etaHi[ireg]){
+  //         hCaloTowerET[ireg]->Fill(etT,1);
+  //         if (fireJet8) hCaloTowerETtrig8[ireg]->Fill(etT,1);
+  //         if (fireJet12) hCaloTowerETtrig12[ireg]->Fill(etT,1);
+  //         if (fireHF1) hCaloTowerETtrigMB[ireg]->Fill(etT,1);
+  //       }
+  //     }
+  //   }
   
 
-  }//end of if useReco
+  // }//end of if useReco
 }
 // ------------ method called once each job just before starting event loop  ------------
 void 
