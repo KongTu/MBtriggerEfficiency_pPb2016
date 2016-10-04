@@ -49,14 +49,15 @@
 #include "DataFormats/L1Trigger/interface/Jet.h"
 #include "DataFormats/L1Trigger/interface/Tau.h"
 #include "DataFormats/L1Trigger/interface/EtSum.h"
-#include "DataFormats/L1Trigger/interface/L1GtObject.h"
-#include "DataFormats/L1Trigger/interface/L1GlobalTriggerRecord.h"
-#include "DataFormats/L1Trigger/interface/L1GtFdlWord.h"
-#include "DataFormats/L1Trigger/interface/L1GtLogicParser.h"
-#include "DataFormats/L1Trigger/interface/L1GtObject.h"
-#include "DataFormats/L1Trigger/interface/L1GtTechnicalTrigger.h"
-#include "DataFormats/L1Trigger/interface/L1GtTechnicalTriggerRecord.h"
-#include "DataFormats/L1Trigger/interface/L1GtTriggerMenuLite.h"
+
+#include "DataFormats/L1GlobalTrigger/interface/L1GtObject.h"
+#include "DataFormats/L1GlobalTrigger/interface/L1GlobalTriggerRecord.h"
+#include "DataFormats/L1GlobalTrigger/interface/L1GtFdlWord.h"
+#include "DataFormats/L1GlobalTrigger/interface/L1GtLogicParser.h"
+#include "DataFormats/L1GlobalTrigger/interface/L1GtObject.h"
+#include "DataFormats/L1GlobalTrigger/interface/L1GtTechnicalTrigger.h"
+#include "DataFormats/L1GlobalTrigger/interface/L1GtTechnicalTriggerRecord.h"
+#include "DataFormats/L1GlobalTrigger/interface/L1GtTriggerMenuLite.h"
 
 
 
