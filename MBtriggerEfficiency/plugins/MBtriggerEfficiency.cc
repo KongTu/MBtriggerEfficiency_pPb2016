@@ -136,6 +136,7 @@ public:
   edm::InputTag l1GtReadoutRecordInputTag;
   edm::InputTag l1GtTriggerMenuLiteInputTag;
   edm::EDGetTokenT<HFDigiCollection> hfDigiTag;
+  edm::EDGetTokenT<L1GlobalTriggerReadoutRecord> gtDigiToken;
   edm::EDGetTokenT<CaloTowerCollection> caloTowerTag;
   edm::EDGetTokenT<HFRecHitCollection> hfRechitTag;
   edm::EDGetTokenT<reco::CaloJetCollection> caloJetTag;
@@ -204,6 +205,7 @@ MBtriggerEfficiency::MBtriggerEfficiency(const edm::ParameterSet& iConfig):
   gtDigiTag=iConfig.getParameter<edm::InputTag>("gtDigiTag");
   gctDigiTag=iConfig.getParameter<edm::InputTag>("gctDigiTag");
   caloTowerTag=consumes<CaloTowerCollection>(iConfig.getParameter<edm::InputTag>("caloTowerTag"));
+  gtDigiToken = consumes<L1GlobalTriggerReadoutRecord>(iConfig.getParameter<edm::InputTag>("gtDigiToken"));
   hfRechitTag = consumes<HFRecHitCollection>(iConfig.getParameter<edm::InputTag>("hfRechitTag"));
   caloJetTag = consumes<reco::CaloJetCollection>(iConfig.getParameter<edm::InputTag>("caloJetTag"));
   hfDigiTag = consumes<HFDigiCollection>(iConfig.getParameter<edm::InputTag>("hfDigiTag"));
@@ -393,7 +395,14 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
   bool fireLongThr2=false;
 
   if (!useReco){
+
+    edm::Handle<L1GlobalTriggerReadoutRecord> gtRecord;
+    iEvent.getByToken(gtDigiToken, gtRecord);
     
+    DecisionWord dWord = gtRecord->decisionWord();
+    if ( dWord.empty() ) std::cout << "empty" << std::endl;
+    if( dWord[ 0 ] == 1 ) std::cout << "ZeroBiasFired!" << std::endl;
+
     edm::Handle<HFDigiCollection> digi;
     iEvent.getByToken(hfDigiTag,digi);
   
