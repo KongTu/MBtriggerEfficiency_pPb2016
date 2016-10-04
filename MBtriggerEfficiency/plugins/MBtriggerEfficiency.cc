@@ -218,9 +218,9 @@ MBtriggerEfficiency::MBtriggerEfficiency(const edm::ParameterSet& iConfig):
   hfRechitTag = consumes<HFRecHitCollection>(iConfig.getParameter<edm::InputTag>("hfRechitTag"));
   caloJetTag = consumes<reco::CaloJetCollection>(iConfig.getParameter<edm::InputTag>("caloJetTag"));
   hfDigiTag = consumes<HFDigiCollection>(iConfig.getParameter<edm::InputTag>("hfDigiTag"));
-  m_l1CenJetToken = consumes<l1extra::L1JetParticleCollection>(iConfig.getParameter<edm::InputTag>("m_l1CenJetToken"));
-  m_l1ForJetToken = consumes<l1extra::L1JetParticleCollection>(iConfig.getParameter<edm::InputTag>("m_l1ForJetToken"));
-  m_l1TauJetToken = consumes<l1extra::L1JetParticleCollection>(iConfig.getParameter<edm::InputTag>("m_l1TauJetToken"));
+  // m_l1CenJetToken = consumes<l1extra::L1JetParticleCollection>(iConfig.getParameter<edm::InputTag>("m_l1CenJetToken"));
+  // m_l1ForJetToken = consumes<l1extra::L1JetParticleCollection>(iConfig.getParameter<edm::InputTag>("m_l1ForJetToken"));
+  // m_l1TauJetToken = consumes<l1extra::L1JetParticleCollection>(iConfig.getParameter<edm::InputTag>("m_l1TauJetToken"));
   useReco=iConfig.getParameter<bool>("useReco");
   useMC=iConfig.getParameter<bool>("useMC");
   //   tok_ho_  = consumes<HORecHitCollection>(iConfig.getParameter<edm::InputTag>("HOInput"));
