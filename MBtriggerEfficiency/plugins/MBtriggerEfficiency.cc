@@ -399,9 +399,12 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
     edm::Handle<L1GlobalTriggerReadoutRecord> gtRecord;
     iEvent.getByToken(gtDigiToken, gtRecord);
     
-    DecisionWord dWord = gtRecord->decisionWord();
-    if ( dWord.empty() ) std::cout << "empty" << std::endl;
-    if( dWord[ 0 ] == 1 ) std::cout << "ZeroBiasFired!" << std::endl;
+    for(int bit = 0; bit < 100; bit++){
+
+      DecisionWord dWord = gtRecord->decisionWord();
+      if ( dWord.empty() ) continue;
+      if( dWord[ bit ] == 1 ) std::cout << "Something Fired!" << std::endl;   
+    }
 
     edm::Handle<HFDigiCollection> digi;
     iEvent.getByToken(hfDigiTag,digi);
