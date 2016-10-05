@@ -54,6 +54,9 @@
 #include "DataFormats/L1TGlobal/interface/GlobalExtBlk.h"
 #include "DataFormats/L1Trigger/interface/BXVector.h"
 
+#include "DQM/L1TMonitor/interface/L1TStage2uGT.h"
+
+
 #include "DataFormats/L1GlobalTrigger/interface/L1GtObject.h"
 #include "DataFormats/L1GlobalTrigger/interface/L1GlobalTriggerRecord.h"
 #include "DataFormats/L1GlobalTrigger/interface/L1GtFdlWord.h"
@@ -430,9 +433,12 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
 
   if (!useReco){
 
-    edm::Handle<GlobalAlgBlkBxCollection> l1stage2GlobalTest;
-    iEvent.getByToken(l1tStage2uGtSource_, l1stage2GlobalTest);
+    edm::Handle<GlobalAlgBlkBxCollection> uGtAlgs;
+    iEvent.getByToken(l1tStage2uGtSource_, uGtAlgs);
 
+    for (int ibx=uGtAlgs->getFirstBX(); ibx <= uGtAlgs->getLastBX(); ++ibx) {
+      std::cout << "test" << std::endl;
+    }
     //if(!1l1stage2GlobalTest.isValid() ) return;
 
     // edm::Handle<L1GlobalTriggerReadoutRecord> gtRecord;
