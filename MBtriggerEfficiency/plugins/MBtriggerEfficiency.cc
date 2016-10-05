@@ -438,7 +438,7 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
 
     for (int ibx=uGtAlgs->getFirstBX(); ibx <= uGtAlgs->getLastBX(); ++ibx) {
       for (auto itr = uGtAlgs->begin(ibx); itr != uGtAlgs->end(ibx); ++itr) {
-        for(int algoBit = 0; algoBit < numAlgs; ++algoBit) {
+        for(int algoBit = 0; algoBit < 512; ++algoBit) {
                 
                  // Algorithm bits after BX mask, before prescale 
                  if(itr->getAlgoDecisionInitial(algoBit)) {
