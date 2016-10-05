@@ -141,8 +141,8 @@ void MBtriggerEfficiency_Stage2::analyze(const edm::Event& iEvent, const edm::Ev
   cout << "test" << endl;
 
   //select particular lumi, bunch, etc...
-  // int lsec=iEvent.eventAuxiliary().luminosityBlock();
-  // int bx=iEvent.eventAuxiliary().bunchCrossing();
+  int lsec=iEvent.eventAuxiliary().luminosityBlock();
+  int bx=iEvent.eventAuxiliary().bunchCrossing();
 
   // //if( lsec > 270 ) std::cout<<"lsec: "<<lsec<<"   // bx number: "<<bx<<std::endl;
 
