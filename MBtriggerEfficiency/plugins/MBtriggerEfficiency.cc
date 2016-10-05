@@ -414,17 +414,17 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
 
   if (!useReco){
 
-    edm::Handle<L1GlobalTriggerReadoutRecord> gtRecord;
-    iEvent.getByToken(gtDigiToken, gtRecord);
+    // edm::Handle<L1GlobalTriggerReadoutRecord> gtRecord;
+    // iEvent.getByToken(gtDigiToken, gtRecord);
     
-    for(int bit = 0; bit < 100; bit++){
+    // for(int bit = 0; bit < 100; bit++){
 
-      DecisionWord dWord = gtRecord->decisionWord();
-      if ( dWord.empty() ) continue;
-      if( dWord[ bit ] == 1 ) std::cout << "Something Fired!" << std::endl;//nothing gets printout for 2016 data   
-    }
+    //   DecisionWord dWord = gtRecord->decisionWord();
+    //   if ( dWord.empty() ) continue;
+    //   if( dWord[ bit ] == 1 ) std::cout << "Something Fired!" << std::endl;//nothing gets printout for 2016 data   
+    // }
 
-    //We can ignore the part below because the problem is the block above. 
+    //We can ignore the part below because the problem is the block above. 2
 
     edm::Handle<HFDigiCollection> digi;
     iEvent.getByToken(hfDigiTag,digi);
