@@ -437,7 +437,16 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
     iEvent.getByToken(l1tStage2uGtSource_, uGtAlgs);
 
     for (int ibx=uGtAlgs->getFirstBX(); ibx <= uGtAlgs->getLastBX(); ++ibx) {
-      std::cout << "test" << std::endl;
+      for (auto itr = uGtAlgs->begin(ibx); itr != uGtAlgs->end(ibx); ++itr) {
+        for(int algoBit = 0; algoBit < numAlgs; ++algoBit) {
+                
+                 // Algorithm bits after BX mask, before prescale 
+                 if(itr->getAlgoDecisionInitial(algoBit)) {
+                        std::cout << "test" << std::endl;
+
+                 }
+        }
+      }
     }
     //if(!1l1stage2GlobalTest.isValid() ) return;
 
