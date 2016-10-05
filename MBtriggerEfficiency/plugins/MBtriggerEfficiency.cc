@@ -49,7 +49,8 @@
 #include "DataFormats/L1Trigger/interface/Jet.h"
 #include "DataFormats/L1Trigger/interface/Tau.h"
 #include "DataFormats/L1Trigger/interface/EtSum.h"
-#include "DataFormats/L1Trigger/interface/BXVector.h"
+
+#include "DataFormats/L1TGlobal/interface/GlobalAlgBlk.h"
 
 #include "DataFormats/L1GlobalTrigger/interface/L1GtObject.h"
 #include "DataFormats/L1GlobalTrigger/interface/L1GlobalTriggerRecord.h"
