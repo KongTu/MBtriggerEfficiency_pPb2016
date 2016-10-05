@@ -433,7 +433,7 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
     edm::Handle<GlobalAlgBlkBxCollection> l1stage2GlobalTest;
     iEvent.getByToken(l1tStage2uGtSource_, l1stage2GlobalTest);
 
-    if(!1l1stage2GlobalTest.isValid() ) return;
+    //if(!1l1stage2GlobalTest.isValid() ) return;
 
     // edm::Handle<L1GlobalTriggerReadoutRecord> gtRecord;
     // iEvent.getByToken(gtDigiToken, gtRecord);
