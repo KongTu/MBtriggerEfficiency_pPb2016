@@ -150,11 +150,11 @@ void MBtriggerEfficiency_Stage2::analyze(const edm::Event& iEvent, const edm::Ev
 
   // if (!useReco){
 
-    edm::Handle<GlobalAlgBlkBxCollection> uGtAlgs;
-    iEvent.getByToken(l1tStage2uGtSource_, uGtAlgs);
+  edm::Handle<GlobalAlgBlkBxCollection> uGtAlgs;
+  iEvent.getByToken(l1tStage2uGtSource_, uGtAlgs);
 
-    cout << "test1: " << uGtAlgs->getFirstBX() << endl;
-    cout << "test2: " << uGtAlgs->getLastBX() << endl;
+  cout << "test1: " << uGtAlgs->getFirstBX() << endl;
+  cout << "test2: " << uGtAlgs->getLastBX() << endl;
 
     // for (int ibx=uGtAlgs->getFirstBX(); ibx <= uGtAlgs->getLastBX(); ++ibx) {
 
@@ -183,6 +183,14 @@ void MBtriggerEfficiency_Stage2::analyze(const edm::Event& iEvent, const edm::Ev
 void 
 MBtriggerEfficiency_Stage2::beginJob()
 {
+
+  edm::Service<TFileService> fs;
+    TH1D::SetDefaultSumw2();
+
+
+  bxNum = fs->make<TH1D>("bxNum",";bxNum",5000,0,5000);
+  ZB_vsLumi = fs->make<TH1D>("ZB_vsLumi",";ZB_vsLumi",1000,0,1000);
+
 }
 
 // ------------ method called once each job just after ending the event loop  ------------
