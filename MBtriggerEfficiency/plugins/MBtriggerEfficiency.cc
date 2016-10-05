@@ -443,7 +443,6 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
                  // Algorithm bits after BX mask, before prescale 
                  if(itr->getAlgoDecisionInitial(algoBit)) {
                         std::cout << "test" << std::endl;
-
                  }
         }
       }
