@@ -54,7 +54,7 @@
 #include "DataFormats/L1TGlobal/interface/GlobalExtBlk.h"
 #include "DataFormats/L1Trigger/interface/BXVector.h"
 
-#include "DQM/L1TMonitor/interface/L1TStage2uGT.h"
+//#include "DQM/L1TMonitor/interface/L1TStage2uGT.h"
 
 
 #include "DataFormats/L1GlobalTrigger/interface/L1GtObject.h"
