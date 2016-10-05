@@ -73,16 +73,6 @@ public:
   
   static void fillDescriptions(edm::ConfigurationDescriptions& descriptions);
 
-  TH1D* ZB_vsLumi;
-  TH1D* bxNum;
-
-  edm::InputTag m_l1stage2globalAlgBlk;
-
-  edm::EDGetTokenT<GlobalAlgBlkBxCollection> l1tStage2uGtSource_;
-
-  bool useReco;
-
-
 private:
   
   virtual void beginJob() override;
@@ -95,6 +85,15 @@ private:
   //virtual void endLuminosityBlock(edm::LuminosityBlock const&, edm::EventSetup const&) override;
   
   // ----------member data ---------------------------
+
+  TH1D* ZB_vsLumi;
+  TH1D* bxNum;
+
+  edm::InputTag m_l1stage2globalAlgBlk;
+
+  edm::EDGetTokenT<GlobalAlgBlkBxCollection> l1tStage2uGtSource_;
+
+  bool useReco;
 };
 
 //
@@ -146,8 +145,8 @@ void MBtriggerEfficiency_Stage2::analyze(const edm::Event& iEvent, const edm::Ev
 
   // //if( lsec > 270 ) std::cout<<"lsec: "<<lsec<<"   // bx number: "<<bx<<std::endl;
 
-  // bxNum->Fill(bx,1);
-  // ZB_vsLumi->Fill(lsec,1);
+  bxNum->Fill( bx );
+  ZB_vsLumi->Fill( lsec );
 
   // if (!useReco){
 
