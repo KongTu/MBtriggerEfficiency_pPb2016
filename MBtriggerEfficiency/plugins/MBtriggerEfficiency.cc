@@ -165,7 +165,7 @@ public:
 
   edm::InputTag m_l1stage2globalAlgBlk;
 
-  edm::EDGetTokenT< BXVector<GlobalAlgBlk> >                l1stage2globalAlgBlkToken_;
+  edm::EDGetTokenT< GlobalAlgBlkBxCollection  >                l1stage2globalAlgBlkToken_;
 
   // edm::EDGetTokenT<l1extra::L1JetParticleCollection>  m_l1CenJetToken;
   // edm::EDGetTokenT<l1extra::L1JetParticleCollection>  m_l1ForJetToken;
@@ -227,7 +227,7 @@ MBtriggerEfficiency::MBtriggerEfficiency(const edm::ParameterSet& iConfig):
 
   m_l1stage2globalAlgBlk = edm::InputTag("hltGtStage2Digis");
 
-  l1stage2globalAlgBlkToken_ = consumes< BXVector<GlobalAlgBlk> >( m_l1stage2globalAlgBlk );
+  l1stage2globalAlgBlkToken_ = consumes< GlobalAlgBlkBxCollection  >( m_l1stage2globalAlgBlk );
 
 
   l1GtRecordInputTag = iConfig.getParameter<edm::InputTag>("l1GtRecordInputTag");
@@ -428,7 +428,7 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
 
   if (!useReco){
 
-    edm::Handle< BXVector<GlobalAlgBlk> > l1stage2GlobalTest;
+    edm::Handle< GlobalAlgBlkBxCollection  > l1stage2GlobalTest;
     iEvent.getByToken(l1stage2globalAlgBlkToken_, l1stage2GlobalTest);
 
     for(unsigned bit = 0; bit < 100; bit++){
