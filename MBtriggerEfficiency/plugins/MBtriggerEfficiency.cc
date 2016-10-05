@@ -421,8 +421,10 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
 
       DecisionWord dWord = gtRecord->decisionWord();
       if ( dWord.empty() ) continue;
-      if( dWord[ bit ] == 1 ) std::cout << "Something Fired!" << std::endl;   
+      if( dWord[ bit ] == 1 ) std::cout << "Something Fired!" << std::endl;//nothing gets printout for 2016 data   
     }
+
+    //We can ignore the part below because the problem is the block above. 
 
     edm::Handle<HFDigiCollection> digi;
     iEvent.getByToken(hfDigiTag,digi);
