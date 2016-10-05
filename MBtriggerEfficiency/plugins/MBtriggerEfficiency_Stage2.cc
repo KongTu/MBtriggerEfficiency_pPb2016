@@ -30,7 +30,7 @@
 #include "DataFormats/GeometryVector/interface/GlobalPoint.h"
 
 #include "TFile.h"
-#include "TH1F.h"
+#include "TH1.h"
 #include "TH2F.h"
 #include "TProfile2D.h"
 
@@ -147,13 +147,13 @@ void MBtriggerEfficiency_Stage2::analyze(const edm::Event& iEvent, const edm::Ev
   bxNum->Fill(bx,1);
   ZB_vsLumi->Fill(lsec,1);
 
-  if (!useReco){
+  // if (!useReco){
 
-    edm::Handle<GlobalAlgBlkBxCollection> uGtAlgs;
-    iEvent.getByToken(l1tStage2uGtSource_, uGtAlgs);
+  //   edm::Handle<GlobalAlgBlkBxCollection> uGtAlgs;
+  //   iEvent.getByToken(l1tStage2uGtSource_, uGtAlgs);
 
-    cout << "test1: " << uGtAlgs->getFirstBX() << endl;
-    cout << "test2: " << uGtAlgs->getLastBX() << endl;
+  //   cout << "test1: " << uGtAlgs->getFirstBX() << endl;
+  //   cout << "test2: " << uGtAlgs->getLastBX() << endl;
 
     // for (int ibx=uGtAlgs->getFirstBX(); ibx <= uGtAlgs->getLastBX(); ++ibx) {
 
@@ -176,7 +176,7 @@ void MBtriggerEfficiency_Stage2::analyze(const edm::Event& iEvent, const edm::Ev
   
     // HFDigiCollection::const_iterator i;
     
-  }
+  //}
 }
 // ------------ method called once each job just before starting event loop  ------------
 void 
