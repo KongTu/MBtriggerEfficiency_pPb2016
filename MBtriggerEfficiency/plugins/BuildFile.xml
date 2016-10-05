@@ -18,4 +18,6 @@
 <use name="DataFormats/L1TGlobal"/>
 <use name="DataFormats/CaloTowers"/>
 
+<use name="DQM/L1TMonitor"/>
+
 <flags EDM_PLUGIN="1"/>

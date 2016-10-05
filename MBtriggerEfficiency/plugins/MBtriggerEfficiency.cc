@@ -51,6 +51,8 @@
 #include "DataFormats/L1Trigger/interface/EtSum.h"
 
 #include "DataFormats/L1TGlobal/interface/GlobalAlgBlk.h"
+#include "DataFormats/L1TGlobal/interface/GlobalExtBlk.h"
+#include "DataFormats/L1Trigger/interface/BXVector.h"
 
 #include "DataFormats/L1GlobalTrigger/interface/L1GtObject.h"
 #include "DataFormats/L1GlobalTrigger/interface/L1GlobalTriggerRecord.h"
@@ -73,6 +75,7 @@
 // #include "CondFormats/L1TObjects/interface/L1GtTriggerMenuFwd.h"
 
 #include "L1Trigger/GlobalTriggerAnalyzer/interface/L1GtUtils.h"
+
 
 // #include "DataFormats/L1Trigger/interface/L1JetParticle.h"
 // #include "DataFormats/L1Trigger/interface/L1JetParticleFwd.h"
@@ -165,7 +168,7 @@ public:
 
   edm::InputTag m_l1stage2globalAlgBlk;
 
-  edm::EDGetTokenT< GlobalAlgBlkBxCollection  >                l1stage2globalAlgBlkToken_;
+  edm::EDGetTokenT<GlobalAlgBlkBxCollection> l1tStage2uGtSource_;
 
   // edm::EDGetTokenT<l1extra::L1JetParticleCollection>  m_l1CenJetToken;
   // edm::EDGetTokenT<l1extra::L1JetParticleCollection>  m_l1ForJetToken;
@@ -227,8 +230,7 @@ MBtriggerEfficiency::MBtriggerEfficiency(const edm::ParameterSet& iConfig):
 
   m_l1stage2globalAlgBlk = edm::InputTag("hltGtStage2Digis");
 
-  l1stage2globalAlgBlkToken_ = consumes< GlobalAlgBlkBxCollection  >( m_l1stage2globalAlgBlk );
-
+  l1tStage2uGtSource_ = consumes<GlobalAlgBlkBxCollection>( m_l1stage2globalAlgBlk );
 
   l1GtRecordInputTag = iConfig.getParameter<edm::InputTag>("l1GtRecordInputTag");
   l1GtReadoutRecordInputTag = iConfig.getParameter<edm::InputTag>("l1GtReadoutRecordInputTag");
@@ -428,17 +430,11 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
 
   if (!useReco){
 
-    edm::Handle< GlobalAlgBlkBxCollection  > l1stage2GlobalTest;
-    iEvent.getByToken(l1stage2globalAlgBlkToken_, l1stage2GlobalTest);
+    edm::Handle<GlobalAlgBlkBxCollection> l1stage2GlobalTest;
+    iEvent.getByToken(l1tStage2uGtSource_, l1stage2GlobalTest);
 
-    for(unsigned bit = 0; bit < 100; bit++){
+    if(!1l1stage2GlobalTest.isValid() ) return;
 
-      bool decision = l1stage2GlobalTest.getAlgoDecisionInitial( bit ); 
-      //if ( dWord.empty() ) continue;
-      if( decision == 1 ) std::cout << "Something Fired!" << std::endl;//nothing gets printout for 2016 data   
-    }
-
-    return;
     // edm::Handle<L1GlobalTriggerReadoutRecord> gtRecord;
     // iEvent.getByToken(gtDigiToken, gtRecord);
     
