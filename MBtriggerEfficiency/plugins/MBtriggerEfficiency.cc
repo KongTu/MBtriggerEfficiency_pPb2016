@@ -159,6 +159,12 @@ public:
   edm::EDGetTokenT<HFRecHitCollection> hfRechitTag;
   edm::EDGetTokenT<reco::CaloJetCollection> caloJetTag;
 
+
+
+  edm::InputTag m_l1stage2globalAlgBlk;
+
+  edm::EDGetTokenT< BXVector<GlobalAlgBlk> >                l1stage2globalAlgBlkToken_;
+
   // edm::EDGetTokenT<l1extra::L1JetParticleCollection>  m_l1CenJetToken;
   // edm::EDGetTokenT<l1extra::L1JetParticleCollection>  m_l1ForJetToken;
   // edm::EDGetTokenT<l1extra::L1JetParticleCollection>  m_l1TauJetToken;
@@ -216,6 +222,12 @@ private:
 MBtriggerEfficiency::MBtriggerEfficiency(const edm::ParameterSet& iConfig):
   m_l1GtUtils(iConfig, consumesCollector(), true)//this is important for 80x to compile
 {
+
+  m_l1stage2globalAlgBlk = edm::InputTag("hltGtStage2Digis");
+
+  l1stage2globalAlgBlkToken_ = consumes< BXVector<GlobalAlgBlk> >( m_l1stage2globalAlgBlk );
+
+
   l1GtRecordInputTag = iConfig.getParameter<edm::InputTag>("l1GtRecordInputTag");
   l1GtReadoutRecordInputTag = iConfig.getParameter<edm::InputTag>("l1GtReadoutRecordInputTag");
   l1GtTriggerMenuLiteInputTag = iConfig.getParameter<edm::InputTag>("l1GtTriggerMenuLiteInputTag");
@@ -414,6 +426,17 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
 
   if (!useReco){
 
+    edm::Handle< BXVector<GlobalAlgBlk> > l1stage2GlobalTest;
+    iEvent.getByToken(l1stage2globalAlgBlkToken_, l1stage2GlobalTest);
+
+    for(unsigned bit = 0; bit < 100; bit++){
+
+      bool decision = l1stage2GlobalTest->getAlgoDecisionFinal( bit ); 
+      //if ( dWord.empty() ) continue;
+      if( decision == 1 ) std::cout << "Something Fired!" << std::endl;//nothing gets printout for 2016 data   
+    }
+
+    return;
     // edm::Handle<L1GlobalTriggerReadoutRecord> gtRecord;
     // iEvent.getByToken(gtDigiToken, gtRecord);
     
