@@ -8,36 +8,25 @@ process = cms.Process('Demo',eras.Run2_2016)
 
 process.load("FWCore.MessageService.MessageLogger_cfi")
 
-process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(-1) )
+process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(1000) )
 process.MessageLogger.cerr.FwkReport.reportEvery = cms.untracked.int32(1000)
 
 process.source = cms.Source("PoolSource",
     fileNames = cms.untracked.vstring(
 
-#'/store/data/Run2015D/ZeroBias/RAW/v1/000/259/152/00000/0C81667F-F672-E511-809D-02163E01440D.root'
-#'/store/data/Run2016H/ZeroBias/RAW/v1/000/281/616/00000/10A691C2-3483-E611-AFD3-02163E012A9D.root'
-'/store/data/Run2016H/ZeroBias/RAW/v1/000/281/616/00000/10A691C2-3483-E611-AFD3-02163E012A9D.root'	
-#'/store/data/Run2016D/ZeroBias/RAW/v2/000/276/582/00000/04805A7E-3247-E611-AF3C-02163E011B83.root'
-#'/store/data/Run2016H/ZeroBias/RAW/v1/000/281/638/00000/1EB0A26D-BF83-E611-A184-02163E012507.root'
+#'/store/data/Run2015D/ZeroBias/RAW/v1/000/259/152/00000/0C81667F-F672-E511-809D-02163E01440D.root' #2015 data, this works 
+'/store/data/Run2016H/ZeroBias/RAW/v1/000/281/616/00000/10A691C2-3483-E611-AFD3-02163E012A9D.root' #2016 data, this DOESN'T work	
     )
 )
-
-
+process.load('EventFilter.L1GlobalTriggerRawToDigi.l1GtRecord_cfi')
+process.load('Configuration.StandardSequences.RawToDigi_Data_cff')
 process.load('Configuration.StandardSequences.Services_cff')
 process.load("Configuration.StandardSequences.Digi_cff")
 process.load('Configuration.StandardSequences.GeometryDB_cff')
-process.load("Configuration.StandardSequences.RawToDigi_cff")
 process.load("Configuration.EventContent.EventContent_cff")
 process.load('Configuration.StandardSequences.FrontierConditions_GlobalTag_cff')
-#from Configuration.AlCa.autoCond import autoCond
-#process.GlobalTag.globaltag = 'GR_P_V54::All'
-#process.GlobalTag.globaltag = 'GR_P_V56::All'
-process.GlobalTag.globaltag = '80X_dataRun2_Prompt_v14'
-#process.GlobalTag.globaltag = 'GR_H_V58C::All'
-#process.GlobalTag.globaltag = 'GR_E_V49::All'
-#autoCond['com15'] ## == GR_R_53_V16::All in 5_3_7
 
-#process.GlobalTag.connect=cms.string('frontier://FrontierInt/CMS_CONDITIONS')
+process.GlobalTag.globaltag = '80X_dataRun2_Prompt_v14'
 
 #   For the uTCA map
 process.es_pool = cms.ESSource("PoolDBESSource",
@@ -52,17 +41,6 @@ process.es_pool = cms.ESSource("PoolDBESSource",
        connect = cms.string('frontier://FrontierProd/CMS_CONDITIONS'),
                authenticationMethod = cms.untracked.uint32(0)
 )
-
-#process.load('CondCore.CondDB.CondDB_cfi')
-#process.CondDB.connect = 'frontier://FrontierProd/CMS_CONDITIONS'
-#process.es_pool = cms.ESSource("PoolDBESSource",
-
-#	process.CondDB,
-#    		toGet = cms.VPSet(cms.PSet(
-#        	record = cms.string("HcalElectronicsMapRcd"),
-#        	tag = cms.string("HcalElectronicsMap_v7.05_offline")
-#    	))
-#)
 
 process.es_prefer_es_pool = cms.ESPrefer( "PoolDBESSource", "es_pool" )
 
@@ -80,12 +58,10 @@ process.L1GtTriggerMenuRcdSource = cms.ESSource("EmptyESSource",
 )
 process.es_prefer_l1GtParameters = cms.ESPrefer('L1GtTriggerMenuXmlProducer','l1GtTriggerMenuXml')
 
-
-process.load("Configuration.Geometry.GeometryDB_cff")
-process.load("Configuration.StandardSequences.RawToDigi_cff")
 process.load('L1Trigger.Configuration.L1Extra_cff')
 
 # replacing arguments for L1Extra
+#all the L1Extra in the analyzer have been commented out. 
 process.l1extraParticles.muonSource = cms.InputTag('gtDigis')
 process.l1extraParticles.isolatedEmSource = cms.InputTag('gctDigis', 'isoEm')
 process.l1extraParticles.nonIsolatedEmSource = cms.InputTag('gctDigis', 'nonIsoEm')
@@ -114,7 +90,6 @@ process.output = cms.OutputModule("PoolOutputModule",
     fileName = cms.untracked.string('outProd.root')
 )
 
-process.TFileService = cms.Service("TFileService",fileName = cms.string("test.root"))
 
 process.trigsel = cms.EDFilter("HLTHighLevel",
      TriggerResultsTag = cms.InputTag("TriggerResults","","HLT"),
@@ -123,8 +98,6 @@ process.trigsel = cms.EDFilter("HLTHighLevel",
      andOr = cms.bool(True),
      throw = cms.bool(False)
 )
-
-process.load("Configuration.StandardSequences.Reconstruction_cff")
 
 process.digian = cms.EDAnalyzer('MBtriggerEfficiency',
 	useReco = cms.bool(False),
@@ -145,8 +118,14 @@ process.digian = cms.EDAnalyzer('MBtriggerEfficiency',
 	outputFileName=cms.string("test.root")
 )
 
-process.p = cms.Path(process.hcalDigis + process.ecalDigis + process.ecalPreshowerDigis + process.gtDigis + process.gctDigis + process.L1Extra + process.digian)
 
+process.p = cms.Path(   process.hcalDigis + process.ecalDigis + process.ecalPreshowerDigis 
+			+ process.gtDigis 
+			+ process.gctDigis 
+			#+ process.L1Extra 
+			+ process.digian)
 
+#process.p = cms.Path(process.RawToDigi + process.digian) # this I tried as well
 
-#process.ep = cms.EndPath(process.output)
+process.TFileService = cms.Service("TFileService",fileName = cms.string("test.root"))
+
