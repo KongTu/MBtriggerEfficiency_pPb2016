@@ -15,6 +15,7 @@
 <use name="L1Trigger/GlobalTriggerAnalyzer"/>
 
 <use name="DataFormats/L1Trigger"/>
+<use name="DataFormats/L1TGlobal"/>
 <use name="DataFormats/CaloTowers"/>
 
 <flags EDM_PLUGIN="1"/>
