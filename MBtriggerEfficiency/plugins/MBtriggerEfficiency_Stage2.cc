@@ -29,6 +29,10 @@
 #include "DataFormats/JetReco/interface/CaloJetCollection.h"
 #include "DataFormats/GeometryVector/interface/GlobalPoint.h"
 
+#include "FWCore/ServiceRegistry/interface/Service.h"
+#include "CommonTools/UtilAlgos/interface/TFileService.h"
+
+
 #include "TFile.h"
 #include "TH1.h"
 #include "TH2F.h"
