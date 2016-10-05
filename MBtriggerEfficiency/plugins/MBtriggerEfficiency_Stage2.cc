@@ -75,11 +75,11 @@ public:
 
 private:
   
-  virtual void beginJob() override;
-  virtual void analyze(const edm::Event&, const edm::EventSetup&) override;
-  virtual void endJob() override;
+  virtual void beginJob();
+  virtual void analyze(const edm::Event&, const edm::EventSetup&);
+  virtual void endJob();
   
-  virtual void beginRun(edm::Run const&, edm::EventSetup const&) override;
+  virtual void beginRun(edm::Run const&, edm::EventSetup const&);
   //virtual void endRun(edm::Run const&, edm::EventSetup const&) override;
   //virtual void beginLuminosityBlock(edm::LuminosityBlock const&, edm::EventSetup const&) override;
   //virtual void endLuminosityBlock(edm::LuminosityBlock const&, edm::EventSetup const&) override;
@@ -134,7 +134,7 @@ MBtriggerEfficiency_Stage2::~MBtriggerEfficiency_Stage2()
 // ------------ method called for each event  ------------
 void MBtriggerEfficiency_Stage2::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup)
 {
-
+  using namespace edm;
   using namespace std;
 
   cout << "test" << endl;
@@ -185,8 +185,7 @@ MBtriggerEfficiency_Stage2::beginJob()
 {
 
   edm::Service<TFileService> fs;
-    TH1D::SetDefaultSumw2();
-
+  TH1D::SetDefaultSumw2();
 
   bxNum = fs->make<TH1D>("bxNum",";bxNum",5000,0,5000);
   ZB_vsLumi = fs->make<TH1D>("ZB_vsLumi",";ZB_vsLumi",1000,0,1000);
