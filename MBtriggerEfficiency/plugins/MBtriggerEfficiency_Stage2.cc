@@ -135,6 +135,9 @@ MBtriggerEfficiency_Stage2::~MBtriggerEfficiency_Stage2()
 // ------------ method called for each event  ------------
 void MBtriggerEfficiency_Stage2::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup)
 {
+
+  using namespace std;
+
   //select particular lumi, bunch, etc...
   int lsec=iEvent.eventAuxiliary().luminosityBlock();
   int bx=iEvent.eventAuxiliary().bunchCrossing();
@@ -150,16 +153,19 @@ void MBtriggerEfficiency_Stage2::analyze(const edm::Event& iEvent, const edm::Ev
     iEvent.getByToken(l1tStage2uGtSource_, uGtAlgs);
 
     for (int ibx=uGtAlgs->getFirstBX(); ibx <= uGtAlgs->getLastBX(); ++ibx) {
-      for (auto itr = uGtAlgs->begin(ibx); itr != uGtAlgs->end(ibx); ++itr) {
+
+      cout << "test" << endl;
+
+      // for (auto itr = uGtAlgs->begin(ibx); itr != uGtAlgs->end(ibx); ++itr) {
         
-        for(int algoBit = 0; algoBit < 512; ++algoBit) {
+      //   for(int algoBit = 0; algoBit < 512; ++algoBit) {
                 
-                 // Algorithm bits after BX mask, before prescale 
-                 if(itr->getAlgoDecisionInitial(algoBit)) {
-                        std::cout << "test" << std::endl;
-                 }
-        }
-      }
+      //            // Algorithm bits after BX mask, before prescale 
+      //            if(itr->getAlgoDecisionInitial(algoBit)) {
+      //                   std::cout << "test" << std::endl;
+      //            }
+      //   }
+      // }
     }
 
     // edm::Handle<HFDigiCollection> digi;
