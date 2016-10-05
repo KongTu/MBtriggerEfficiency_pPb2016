@@ -433,7 +433,7 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
 
     for(unsigned bit = 0; bit < 100; bit++){
 
-      bool decision = l1stage2GlobalTest->getAlgoDecisionFinal( bit ); 
+      bool decision = l1stage2GlobalTest.getAlgoDecisionFinal( bit ); 
       //if ( dWord.empty() ) continue;
       if( decision == 1 ) std::cout << "Something Fired!" << std::endl;//nothing gets printout for 2016 data   
     }
