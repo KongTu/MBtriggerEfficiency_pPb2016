@@ -19,8 +19,8 @@ MBana = cms.EDAnalyzer('MBtriggerEfficiency',
 	outputFileName=cms.string("test.root"),
 	useBPTXplus = cms.bool(False),
 	useBPTXminus = cms.bool(False),
-	selected_lumi = cms.untracked.vint(0,1000),
-	beam1_empty_bx = cms.untracked.vint(0,1,2,3,4,5,6,7,8,9),
-	beam2_empty_bx = cms.untracked.vint(0,1,2,3,4,5,6,7,8,9)
+	selected_lumi = cms.untracked.vint32(0,1000),
+	beam1_empty_bx = cms.untracked.vint32(0,1,2,3,4,5,6,7,8,9),
+	beam2_empty_bx = cms.untracked.vint32(0,1,2,3,4,5,6,7,8,9)
 
 )
