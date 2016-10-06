@@ -394,12 +394,12 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
   int bx=iEvent.eventAuxiliary().bunchCrossing();
 
   if( useBPTXplus ){
-    for(int i = 0; i < beam1_empty_bx.size(); i++){
+    for(unsigned i = 0; i < beam1_empty_bx.size(); i++){
       if( bx != beam1_empty_bx[i] ) return;
     }
   }
   if( useBPTXminus ){
-    for(int i = 0; i < beam2_empty_bx.size(); i++){
+    for(unsigned i = 0; i < beam2_empty_bx.size(); i++){
       if( bx != beam2_empty_bx[i] ) return;
     }
   }
