@@ -160,6 +160,8 @@ public:
   vector<int> beam1_empty_bx;
   vector<int> beam2_empty_bx;
 
+  vector<int> selected_lumi;
+
   const CaloGeometry* geo;
   
   TH1F* hCaloTowerET[8];
@@ -235,6 +237,7 @@ MBtriggerEfficiency::MBtriggerEfficiency(const edm::ParameterSet& iConfig):
 
   beam1_empty_bx = iConfig.getUntrackedParameter<std::vector<int>>("beam1_empty_bx");
   beam2_empty_bx = iConfig.getUntrackedParameter<std::vector<int>>("beam2_empty_bx");
+  selected_lumi = iConfig.getUntrackedParameter<std::vector<int>>("selected_lumi");
 
   trgList.push_back("L1Tech_BPTX_plus_AND_NOT_minus.v0");
   trgList.push_back("L1Tech_BPTX_minus_AND_not_plus.v0");
@@ -392,6 +395,10 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
   //select particular lumi, bunch, etc...
   int lsec=iEvent.eventAuxiliary().luminosityBlock();
   int bx=iEvent.eventAuxiliary().bunchCrossing();
+
+  for(unsigned i = 0; i < selected_lumi.size()/2; i++){
+    if( lsec < selected_lumi[2*i] || lsec >= selected_lumi[2*i+1] ) return;
+  }
 
   if( useBPTXplus ){
     for(unsigned i = 0; i < beam1_empty_bx.size(); i++){
