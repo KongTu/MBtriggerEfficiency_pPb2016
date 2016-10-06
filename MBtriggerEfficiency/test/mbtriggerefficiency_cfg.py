@@ -96,7 +96,7 @@ process.trigsel = cms.EDFilter("HLTHighLevel",
      throw = cms.bool(False)
 )
 
-prcess.load("MBtriggerEfficiency_pPb2016.MBtriggerEfficiency.mbtriggerefficiency_cfi")
+process.load("MBtriggerEfficiency_pPb2016.MBtriggerEfficiency.mbtriggerefficiency_cfi")
 
 process.p = cms.Path(   process.hcalDigis + process.ecalDigis + process.ecalPreshowerDigis 
 			+ process.gtDigis 
