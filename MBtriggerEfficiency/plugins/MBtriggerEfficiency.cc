@@ -34,10 +34,8 @@
 #include "TH2F.h"
 #include "TProfile2D.h"
 
-//#include <CLHEP/Geometry/Point3D.h>
 
 //add L1 stuff
-
 #include "DataFormats/L1GlobalTrigger/interface/L1GlobalTriggerReadoutSetupFwd.h"
 #include "DataFormats/L1GlobalTrigger/interface/L1GlobalTriggerReadoutSetup.h"
 #include "DataFormats/L1GlobalTrigger/interface/L1GlobalTriggerReadoutRecord.h"
@@ -62,7 +60,10 @@
 #include "DataFormats/L1GlobalTrigger/interface/L1GtTechnicalTriggerRecord.h"
 #include "DataFormats/L1GlobalTrigger/interface/L1GtTriggerMenuLite.h"
 
+
 #include "L1Trigger/GlobalTriggerAnalyzer/interface/L1GtUtils.h"
+
+
 
 // class declaration
 //
@@ -391,7 +392,7 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
   bxNum->Fill(bx,1);
   ZB_vsLumi->Fill(lsec,1);
 
-  if ( lsec<270 || lsec > 464 ) return;
+  //if ( lsec<270 || lsec > 464 ) return;
 
   evtsTot++;
   
@@ -540,18 +541,7 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
     }//end of !useReco
    
 
-   ////////////////////////////////////////
-      
-/*   
-   edm::ESHandle<L1GtTriggerMenu> menuRcd;
-   iSetup.get<L1GtTriggerMenuRcd>().get(menuRcd) ;
-   const L1GtTriggerMenu* menu = menuRcd.product();
-   
-      
-  for (CItAlgo algo = menu->gtAlgorithmMap().begin(); algo!=menu->gtAlgorithmMap().end(); ++algo) {
-    std::cout << "Name: " << (algo->second).algoName() << " Alias: " << (algo->second).algoAlias() << std::endl;
-  }
-*/
+
 
 /*
 NO need of getting the L1 trigger decision 
@@ -560,13 +550,12 @@ NO need of getting the L1 trigger decision
   bool useL1EventSetup = true;
   bool useL1GtTriggerMenuLite = false;
 
+
   m_l1GtUtils.getL1GtRunCache(iEvent, iSetup, useL1EventSetup, useL1GtTriggerMenuLite);
-   
+
   bool fireHF1=false;
   bool fireHF2=false;
-
-  bool fireJet8_fromGT=false;
-  bool fireJet12_fromGT=false;   
+  
 /*
   iErrorCode=-1;
   for (uint32_t iTr=0; iTr < trgList.size(); iTr++){
