@@ -27,53 +27,6 @@ process.load('Configuration.StandardSequences.FrontierConditions_GlobalTag_cff')
 
 process.GlobalTag.globaltag = '80X_dataRun2_Prompt_v14'
 
-# #   For the uTCA map
-# process.es_pool = cms.ESSource("PoolDBESSource",
-#        process.CondDBSetup,
-#        timetype = cms.string('runnumber'),
-#        toGet = cms.VPSet(
-#            cms.PSet(
-#                    record = cms.string("HcalElectronicsMapRcd"),
-#                    tag = cms.string("HcalElectronicsMap_v7.05_offline")
-#                )
-#            ),
-#        connect = cms.string('frontier://FrontierProd/CMS_CONDITIONS'),
-#                authenticationMethod = cms.untracked.uint32(0)
-# )
-
-# process.es_prefer_es_pool = cms.ESPrefer( "PoolDBESSource", "es_pool" )
-
-# # override the L1 menu from an Xml file
-# process.l1GtTriggerMenuXml = cms.ESProducer("L1GtTriggerMenuXmlProducer",
-#   TriggerMenuLuminosity = cms.string('startup'),
-#   DefXmlFile = cms.string('L1Menu_Collisions2015_lowPU_v4_L1T_Scales_20141121.xml'), 
-#   #DefXmlFile = cms.string('L1Menu_Collisions2016_v7_m2.xml'),
-#   VmeXmlFile = cms.string('')
-# )
-# process.L1GtTriggerMenuRcdSource = cms.ESSource("EmptyESSource",
-#   recordName = cms.string('L1GtTriggerMenuRcd'),
-#   iovIsRunNotTime = cms.bool(True),
-#   firstValid = cms.vuint32(1)
-# )
-# process.es_prefer_l1GtParameters = cms.ESPrefer('L1GtTriggerMenuXmlProducer','l1GtTriggerMenuXml')
-
-# replacing arguments for L1Extra
-#all the L1Extra in the analyzer have been commented out. 
-# process.l1extraParticles.muonSource = cms.InputTag('gtDigis')
-# process.l1extraParticles.isolatedEmSource = cms.InputTag('gctDigis', 'isoEm')
-# process.l1extraParticles.nonIsolatedEmSource = cms.InputTag('gctDigis', 'nonIsoEm')
-# process.l1extraParticles.centralJetSource = cms.InputTag('gctDigis', 'cenJets')
-# process.l1extraParticles.forwardJetSource = cms.InputTag('gctDigis', 'forJets')
-# process.l1extraParticles.tauJetSource = cms.InputTag('gctDigis', 'tauJets')
-# process.l1extraParticles.etTotalSource = cms.InputTag('gctDigis')
-# process.l1extraParticles.etHadSource = cms.InputTag('gctDigis')
-# process.l1extraParticles.etMissSource = cms.InputTag('gctDigis')
-# process.l1extraParticles.htMissSource = cms.InputTag("gctDigis")
-# process.l1extraParticles.hfRingEtSumsSource = cms.InputTag("gctDigis")
-# process.l1extraParticles.hfRingBitCountsSource = cms.InputTag("gctDigis")
-
-#process.hcalDigis.InputLabel = cms.InputTag("source")
-
 process.options = cms.untracked.PSet(
 #    Rethrow = cms.untracked.vstring('ProductNotFound'),
     wantSummary=cms.untracked.bool(True)

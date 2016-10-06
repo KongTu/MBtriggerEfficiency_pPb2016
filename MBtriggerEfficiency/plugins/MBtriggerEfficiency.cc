@@ -154,6 +154,12 @@ public:
 
   bool useReco;
   bool useMC;
+  bool useBPTXplus;
+  bool useBPTXminus;
+
+  vector<int> beam1_empty_bx;
+  vector<int> beam2_empty_bx;
+
   const CaloGeometry* geo;
   
   TH1F* hCaloTowerET[8];
@@ -221,12 +227,14 @@ MBtriggerEfficiency::MBtriggerEfficiency(const edm::ParameterSet& iConfig):
   hfRechitTag = consumes<HFRecHitCollection>(iConfig.getParameter<edm::InputTag>("hfRechitTag"));
   caloJetTag = consumes<reco::CaloJetCollection>(iConfig.getParameter<edm::InputTag>("caloJetTag"));
   hfDigiTag = consumes<HFDigiCollection>(iConfig.getParameter<edm::InputTag>("hfDigiTag"));
-  // m_l1CenJetToken = consumes<l1extra::L1JetParticleCollection>(iConfig.getParameter<edm::InputTag>("m_l1CenJetToken"));
-  // m_l1ForJetToken = consumes<l1extra::L1JetParticleCollection>(iConfig.getParameter<edm::InputTag>("m_l1ForJetToken"));
-  // m_l1TauJetToken = consumes<l1extra::L1JetParticleCollection>(iConfig.getParameter<edm::InputTag>("m_l1TauJetToken"));
+
   useReco=iConfig.getParameter<bool>("useReco");
   useMC=iConfig.getParameter<bool>("useMC");
-  //   tok_ho_  = consumes<HORecHitCollection>(iConfig.getParameter<edm::InputTag>("HOInput"));
+  useBPTXplus=iConfig.getParameter<bool>("useBPTXplus");
+  useBPTXminus=iConfig.getParameter<bool>("useBPTXminus");
+
+  beam1_empty_bx = iConfig.getUntrackedParameter<std::vector<int>>("beam1_empty_bx");
+  beam2_empty_bx = iConfig.getUntrackedParameter<std::vector<int>>("beam2_empty_bx");
 
   trgList.push_back("L1Tech_BPTX_plus_AND_NOT_minus.v0");
   trgList.push_back("L1Tech_BPTX_minus_AND_not_plus.v0");
@@ -236,8 +244,6 @@ MBtriggerEfficiency::MBtriggerEfficiency(const edm::ParameterSet& iConfig):
   trgList.push_back("L1_MinimumBiasHF2_OR");
   trgList.push_back("L1_MinimumBiasHF1_AND");
   trgList.push_back("L1_MinimumBiasHF2_AND");
-  //  trgList.push_back("L1_SingleJet8_BptxAND");
-  //  trgList.push_back("L1_SingleJet12_BptxAND");
   trgList.push_back("L1_SingleJet36");
   trgList.push_back("L1_SingleJet52");
   trgList.push_back("L1_SingleJet16");
@@ -387,7 +393,16 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
   int lsec=iEvent.eventAuxiliary().luminosityBlock();
   int bx=iEvent.eventAuxiliary().bunchCrossing();
 
-  //if( lsec > 270 ) std::cout<<"lsec: "<<lsec<<"   // bx number: "<<bx<<std::endl;
+  if( useBPTXplus ){
+    for(int i = 0; i < beam1_empty_bx.size(); i++){
+      if( bx != beam1_empty_bx[i] ) return;
+    }
+  }
+  if( useBPTXminus ){
+    for(int i = 0; i < beam2_empty_bx.size(); i++){
+      if( bx != beam2_empty_bx[i] ) return;
+    }
+  }
 
   bxNum->Fill(bx,1);
   ZB_vsLumi->Fill(lsec,1);
