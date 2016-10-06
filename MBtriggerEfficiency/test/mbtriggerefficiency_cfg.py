@@ -8,7 +8,7 @@ process = cms.Process('Demo',eras.Run2_2016)
 
 process.load("FWCore.MessageService.MessageLogger_cfi")
 
-process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(1000) )
+process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(-1) )
 process.MessageLogger.cerr.FwkReport.reportEvery = cms.untracked.int32(1000)
 
 process.source = cms.Source("PoolSource",
@@ -18,7 +18,6 @@ process.source = cms.Source("PoolSource",
 '/store/data/Run2016H/ZeroBias/RAW/v1/000/281/616/00000/10A691C2-3483-E611-AFD3-02163E012A9D.root' #2016 data, this DOESN'T work	
     )
 )
-process.load('EventFilter.L1GlobalTriggerRawToDigi.l1GtRecord_cfi')
 process.load('Configuration.StandardSequences.RawToDigi_Data_cff')
 process.load('Configuration.StandardSequences.Services_cff')
 process.load("Configuration.StandardSequences.Digi_cff")
@@ -93,7 +92,7 @@ process.output = cms.OutputModule("PoolOutputModule",
 
 process.trigsel = cms.EDFilter("HLTHighLevel",
      TriggerResultsTag = cms.InputTag("TriggerResults","","HLT"),
-     HLTPaths = cms.vstring('HLT_ZeroBias_v1'),
+     HLTPaths = cms.vstring('HLT_ZeroBias_v*'),
      eventSetupPathsKey = cms.string(''),
      andOr = cms.bool(True),
      throw = cms.bool(False)
@@ -123,9 +122,8 @@ process.p = cms.Path(   process.hcalDigis + process.ecalDigis + process.ecalPres
 			+ process.gtDigis 
 			+ process.gctDigis 
 			#+ process.L1Extra 
+			+ process.trigsel
 			+ process.digian)
-
-#process.p = cms.Path(process.RawToDigi + process.digian) # this I tried as well
 
 process.TFileService = cms.Service("TFileService",fileName = cms.string("test.root"))
 
