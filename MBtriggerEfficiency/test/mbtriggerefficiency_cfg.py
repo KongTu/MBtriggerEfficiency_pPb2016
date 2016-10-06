@@ -27,37 +27,35 @@ process.load('Configuration.StandardSequences.FrontierConditions_GlobalTag_cff')
 
 process.GlobalTag.globaltag = '80X_dataRun2_Prompt_v14'
 
-#   For the uTCA map
-process.es_pool = cms.ESSource("PoolDBESSource",
-       process.CondDBSetup,
-       timetype = cms.string('runnumber'),
-       toGet = cms.VPSet(
-           cms.PSet(
-                   record = cms.string("HcalElectronicsMapRcd"),
-                   tag = cms.string("HcalElectronicsMap_v7.05_offline")
-               )
-           ),
-       connect = cms.string('frontier://FrontierProd/CMS_CONDITIONS'),
-               authenticationMethod = cms.untracked.uint32(0)
-)
+# #   For the uTCA map
+# process.es_pool = cms.ESSource("PoolDBESSource",
+#        process.CondDBSetup,
+#        timetype = cms.string('runnumber'),
+#        toGet = cms.VPSet(
+#            cms.PSet(
+#                    record = cms.string("HcalElectronicsMapRcd"),
+#                    tag = cms.string("HcalElectronicsMap_v7.05_offline")
+#                )
+#            ),
+#        connect = cms.string('frontier://FrontierProd/CMS_CONDITIONS'),
+#                authenticationMethod = cms.untracked.uint32(0)
+# )
 
-process.es_prefer_es_pool = cms.ESPrefer( "PoolDBESSource", "es_pool" )
+# process.es_prefer_es_pool = cms.ESPrefer( "PoolDBESSource", "es_pool" )
 
-# override the L1 menu from an Xml file
-process.l1GtTriggerMenuXml = cms.ESProducer("L1GtTriggerMenuXmlProducer",
-  TriggerMenuLuminosity = cms.string('startup'),
-  DefXmlFile = cms.string('L1Menu_Collisions2015_lowPU_v4_L1T_Scales_20141121.xml'), 
-  #DefXmlFile = cms.string('L1Menu_Collisions2016_v7_m2.xml'),
-  VmeXmlFile = cms.string('')
-)
-process.L1GtTriggerMenuRcdSource = cms.ESSource("EmptyESSource",
-  recordName = cms.string('L1GtTriggerMenuRcd'),
-  iovIsRunNotTime = cms.bool(True),
-  firstValid = cms.vuint32(1)
-)
-process.es_prefer_l1GtParameters = cms.ESPrefer('L1GtTriggerMenuXmlProducer','l1GtTriggerMenuXml')
-
-process.load('L1Trigger.Configuration.L1Extra_cff')
+# # override the L1 menu from an Xml file
+# process.l1GtTriggerMenuXml = cms.ESProducer("L1GtTriggerMenuXmlProducer",
+#   TriggerMenuLuminosity = cms.string('startup'),
+#   DefXmlFile = cms.string('L1Menu_Collisions2015_lowPU_v4_L1T_Scales_20141121.xml'), 
+#   #DefXmlFile = cms.string('L1Menu_Collisions2016_v7_m2.xml'),
+#   VmeXmlFile = cms.string('')
+# )
+# process.L1GtTriggerMenuRcdSource = cms.ESSource("EmptyESSource",
+#   recordName = cms.string('L1GtTriggerMenuRcd'),
+#   iovIsRunNotTime = cms.bool(True),
+#   firstValid = cms.vuint32(1)
+# )
+# process.es_prefer_l1GtParameters = cms.ESPrefer('L1GtTriggerMenuXmlProducer','l1GtTriggerMenuXml')
 
 # replacing arguments for L1Extra
 #all the L1Extra in the analyzer have been commented out. 
@@ -98,32 +96,13 @@ process.trigsel = cms.EDFilter("HLTHighLevel",
      throw = cms.bool(False)
 )
 
-process.digian = cms.EDAnalyzer('MBtriggerEfficiency',
-	useReco = cms.bool(False),
-	useMC = cms.bool(False),
-	l1GtRecordInputTag = cms.InputTag("gtDigis"),
-        l1GtReadoutRecordInputTag = cms.InputTag("gtDigis"),
-        l1GtTriggerMenuLiteInputTag = cms.InputTag("gtDigis"),
-	m_l1CenJetToken = cms.InputTag("l1extraParticles","Central"),
-     	m_l1ForJetToken = cms.InputTag("l1extraParticles","Forward"),
-	m_l1TauJetToken = cms.InputTag("l1extraParticles","Tau"),
-        hfDigiTag = cms.InputTag("hcalDigis"),
-        gtDigiToken = cms.InputTag("gtDigis"),
-        gtDigiTag=cms.InputTag("gtDigis"),
-	gctDigiTag=cms.InputTag("gctDigis"),
-	caloTowerTag=cms.InputTag("towerMaker"),
-	caloJetTag=cms.InputTag("ak4CaloJets"),
-	hfRechitTag=cms.InputTag("hfreco"),
-	outputFileName=cms.string("test.root")
-)
-
+prcess.load("MBtriggerEfficiency_pPb2016.MBtriggerEfficiency.mbtriggerefficiency_cfi")
 
 process.p = cms.Path(   process.hcalDigis + process.ecalDigis + process.ecalPreshowerDigis 
 			+ process.gtDigis 
 			+ process.gctDigis 
-			#+ process.L1Extra 
 			+ process.trigsel
-			+ process.digian)
+			+ process.MBana)
 
 process.TFileService = cms.Service("TFileService",fileName = cms.string("test.root"))
 
