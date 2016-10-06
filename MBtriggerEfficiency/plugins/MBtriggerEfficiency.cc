@@ -498,7 +498,7 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
       if (idepth==1){
         allChanSignalLong->Fill(ampl,1);
         sigPerChanLong[abs(ieta/1000)][iphi]->Fill(ampl,1);
-        if (ampl>16) sigAboveThr1->Fill(ieta,iphi,ampl,1);
+        if (ampl>17) sigAboveThr1->Fill(ieta,iphi,ampl,1);
         sigProfile->Fill(ieta,iphi,ampl,1);
         for (int p=0; p<40; p++){
           if (ampl>p) fire[p]=true;
@@ -507,7 +507,7 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
           if (amplFront+ampl>p) fireFront[p]=true;
           if (amplBack+ampl>p) fireBack[p]=true;
         }
-        if (ampl>16){
+        if (ampl>17){
           //thresholdsLong[etaind][phiind])
           chanAboveThrFileLong->Fill(ieta,iphi,1);
           fireLongThr1=true;
@@ -519,7 +519,7 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
       if (idepth==2){
         allChanSignalShort->Fill(ampl,1);
         sigPerChanShort[abs(ieta/1000)][iphi]->Fill(ampl,1);
-        if (ampl>11) sigAboveThrShort1->Fill(ieta,iphi,ampl,1);
+        if (ampl>17) sigAboveThrShort1->Fill(ieta,iphi,ampl,1);
         sigProfileShort->Fill(ieta,iphi,ampl,1);
         for (int p=0; p<40; p++){
           if (ampl>p) fire[p]=true;
@@ -528,7 +528,7 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
           if (amplFront>p||ampl>p) fireFront[p]=true;
           if (amplBack>p||ampl>p) fireBack[p]=true;
         }
-        if (ampl>16){
+        if (ampl>17){
           //adc>thresholdsShort[etaind][phiind])
             
           chanAboveThrFileShort->Fill(ieta,iphi,1);
