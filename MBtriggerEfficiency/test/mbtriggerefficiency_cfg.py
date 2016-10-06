@@ -59,18 +59,18 @@ process.GlobalTag.globaltag = '80X_dataRun2_Prompt_v14'
 
 # replacing arguments for L1Extra
 #all the L1Extra in the analyzer have been commented out. 
-process.l1extraParticles.muonSource = cms.InputTag('gtDigis')
-process.l1extraParticles.isolatedEmSource = cms.InputTag('gctDigis', 'isoEm')
-process.l1extraParticles.nonIsolatedEmSource = cms.InputTag('gctDigis', 'nonIsoEm')
-process.l1extraParticles.centralJetSource = cms.InputTag('gctDigis', 'cenJets')
-process.l1extraParticles.forwardJetSource = cms.InputTag('gctDigis', 'forJets')
-process.l1extraParticles.tauJetSource = cms.InputTag('gctDigis', 'tauJets')
-process.l1extraParticles.etTotalSource = cms.InputTag('gctDigis')
-process.l1extraParticles.etHadSource = cms.InputTag('gctDigis')
-process.l1extraParticles.etMissSource = cms.InputTag('gctDigis')
-process.l1extraParticles.htMissSource = cms.InputTag("gctDigis")
-process.l1extraParticles.hfRingEtSumsSource = cms.InputTag("gctDigis")
-process.l1extraParticles.hfRingBitCountsSource = cms.InputTag("gctDigis")
+# process.l1extraParticles.muonSource = cms.InputTag('gtDigis')
+# process.l1extraParticles.isolatedEmSource = cms.InputTag('gctDigis', 'isoEm')
+# process.l1extraParticles.nonIsolatedEmSource = cms.InputTag('gctDigis', 'nonIsoEm')
+# process.l1extraParticles.centralJetSource = cms.InputTag('gctDigis', 'cenJets')
+# process.l1extraParticles.forwardJetSource = cms.InputTag('gctDigis', 'forJets')
+# process.l1extraParticles.tauJetSource = cms.InputTag('gctDigis', 'tauJets')
+# process.l1extraParticles.etTotalSource = cms.InputTag('gctDigis')
+# process.l1extraParticles.etHadSource = cms.InputTag('gctDigis')
+# process.l1extraParticles.etMissSource = cms.InputTag('gctDigis')
+# process.l1extraParticles.htMissSource = cms.InputTag("gctDigis")
+# process.l1extraParticles.hfRingEtSumsSource = cms.InputTag("gctDigis")
+# process.l1extraParticles.hfRingBitCountsSource = cms.InputTag("gctDigis")
 
 #process.hcalDigis.InputLabel = cms.InputTag("source")
 
