@@ -460,7 +460,9 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
       
     int nChLong=0;
     int nChShort=0;
-      
+    
+    int count =0;
+
     for (i=digi->begin(); i!=digi->end(); i++) {
       
       HcalDetId cell = i->id();
@@ -496,7 +498,8 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
         if (k==3) amplBack+=adc;
       }
 
-      std::cout << "the " << i << "th digi" << std::endl;    
+      count++;
+      std::cout << "the " << count << "th digi" << std::endl;    
       if (idepth==1){
         allChanSignalLong->Fill(ampl,1);
         sigPerChanLong[abs(ieta/1000)][iphi]->Fill(ampl,1);
