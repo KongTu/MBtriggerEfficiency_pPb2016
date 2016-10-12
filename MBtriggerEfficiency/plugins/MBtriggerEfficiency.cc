@@ -401,15 +401,18 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
   }
 
   if( useBPTXplus ){
+    int count_plus = 0;
     for(unsigned i = 0; i < beam1_empty_bx.size(); i++){
-      if( bx != beam1_empty_bx[i] ) return;
-      std::cout << "bx: " << bx << std::endl;
+      if( bx == beam1_empty_bx[i] ) count_plus++;
     }
+    if( count_plus == 0 ) return;
   }
   if( useBPTXminus ){
+    int count_minus = 0;
     for(unsigned i = 0; i < beam2_empty_bx.size(); i++){
-      if( bx != beam2_empty_bx[i] ) return;
+      if( bx == beam2_empty_bx[i] ) count_minus++;
     }
+    if( count_minus == 0 ) return;
   }
 
   bxNum->Fill(bx,1);
