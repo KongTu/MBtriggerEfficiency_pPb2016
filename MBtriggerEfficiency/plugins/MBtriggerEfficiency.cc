@@ -403,6 +403,7 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
   if( useBPTXplus ){
     for(unsigned i = 0; i < beam1_empty_bx.size(); i++){
       if( bx != beam1_empty_bx[i] ) return;
+      std::cout << "bx: " << bx << std::endl;
     }
   }
   if( useBPTXminus ){
