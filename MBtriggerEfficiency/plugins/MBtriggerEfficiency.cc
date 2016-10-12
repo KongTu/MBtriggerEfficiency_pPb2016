@@ -396,9 +396,9 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
   int lsec=iEvent.eventAuxiliary().luminosityBlock();
   int bx=iEvent.eventAuxiliary().bunchCrossing();
 
-  for(unsigned i = 0; i < selected_lumi.size()/2; i++){
-    if( lsec < selected_lumi[2*i] || lsec >= selected_lumi[2*i+1] ) return;
-  }
+  // for(unsigned i = 0; i < selected_lumi.size()/2; i++){
+  //   if( lsec < selected_lumi[2*i] || lsec >= selected_lumi[2*i+1] ) return;
+  // }
 
   if( useBPTXplus ){
     for(unsigned i = 0; i < beam1_empty_bx.size(); i++){
@@ -533,6 +533,9 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
           if (amplFront>p||ampl>p) fireFront[p]=true;
           if (amplBack>p||ampl>p) fireBack[p]=true;
         }
+
+        std::cout<<"fire: " << fire[16] << std::endl;
+
         if (ampl>17){
           //adc>thresholdsShort[etaind][phiind])
             
@@ -544,6 +547,8 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
         }
       }
     }
+
+    std::cout << "fire final: " << fire[16] << std::endl;
     for (int k=0; k<40; k++){
       if (fire[k]) accPerEvt->Fill(k,1);
       if (fireFront[k]) accPerEvt2sliceFront->Fill(k,1);
