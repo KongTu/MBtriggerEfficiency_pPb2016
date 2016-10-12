@@ -396,9 +396,9 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
   int lsec=iEvent.eventAuxiliary().luminosityBlock();
   int bx=iEvent.eventAuxiliary().bunchCrossing();
 
-  // for(unsigned i = 0; i < selected_lumi.size()/2; i++){
-  //   if( lsec < selected_lumi[2*i] || lsec >= selected_lumi[2*i+1] ) return;
-  // }
+  for(unsigned i = 0; i < selected_lumi.size()/2; i++){
+    if( lsec < selected_lumi[2*i] || lsec >= selected_lumi[2*i+1] ) return;
+  }
 
   if( useBPTXplus ){
     for(unsigned i = 0; i < beam1_empty_bx.size(); i++){
@@ -413,8 +413,6 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
 
   bxNum->Fill(bx,1);
   ZB_vsLumi->Fill(lsec,1);
-
-  //if ( lsec<270 || lsec > 464 ) return;
 
   evtsTot++;
   
@@ -461,8 +459,6 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
     int nChLong=0;
     int nChShort=0;
     
-    int count =0;
-
     for (i=digi->begin(); i!=digi->end(); i++) {
       
       HcalDetId cell = i->id();
@@ -498,9 +494,6 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
         if (k==3) amplBack+=adc;
       }
 
-      count++;
-      std::cout << "the " << count << "th digi" << std::endl;    
-
       if (idepth==1){
         allChanSignalLong->Fill(ampl,1);
         sigPerChanLong[abs(ieta/1000)][iphi]->Fill(ampl,1);
@@ -513,9 +506,6 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
           if (amplFront+ampl>p) fireFront[p]=true;
           if (amplBack+ampl>p) fireBack[p]=true;
         }
-
-        std::cout<<"fire depth 1: " << fire[16] << std::endl;
-
         if (ampl>17){
           //thresholdsLong[etaind][phiind])
           chanAboveThrFileLong->Fill(ieta,iphi,1);
@@ -537,9 +527,6 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
           if (amplFront>p||ampl>p) fireFront[p]=true;
           if (amplBack>p||ampl>p) fireBack[p]=true;
         }
-
-        std::cout<<"fire depth 2: " << fire[16] << std::endl;
-
         if (ampl>17){
           //adc>thresholdsShort[etaind][phiind])
             
@@ -551,8 +538,6 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
         }
       }
     }
-
-    std::cout << "fire final: " << fire[16] << std::endl;
     for (int k=0; k<40; k++){
       if (fire[k]) accPerEvt->Fill(k,1);
       if (fireFront[k]) accPerEvt2sliceFront->Fill(k,1);
