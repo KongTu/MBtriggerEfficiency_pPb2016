@@ -494,7 +494,9 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
         if (k==2) ampl+=adc;
         if (k==1) amplFront+=adc;
         if (k==3) amplBack+=adc;
-      }    
+      }
+
+      std::cout << "the " << i << "th digi" << std::endl;    
       if (idepth==1){
         allChanSignalLong->Fill(ampl,1);
         sigPerChanLong[abs(ieta/1000)][iphi]->Fill(ampl,1);
