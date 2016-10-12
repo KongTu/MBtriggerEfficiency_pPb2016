@@ -500,6 +500,7 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
 
       count++;
       std::cout << "the " << count << "th digi" << std::endl;    
+
       if (idepth==1){
         allChanSignalLong->Fill(ampl,1);
         sigPerChanLong[abs(ieta/1000)][iphi]->Fill(ampl,1);
@@ -512,6 +513,9 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
           if (amplFront+ampl>p) fireFront[p]=true;
           if (amplBack+ampl>p) fireBack[p]=true;
         }
+
+        std::cout<<"fire depth 1: " << fire[16] << std::endl;
+
         if (ampl>17){
           //thresholdsLong[etaind][phiind])
           chanAboveThrFileLong->Fill(ieta,iphi,1);
@@ -534,7 +538,7 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
           if (amplBack>p||ampl>p) fireBack[p]=true;
         }
 
-        std::cout<<"fire: " << fire[16] << std::endl;
+        std::cout<<"fire depth 2: " << fire[16] << std::endl;
 
         if (ampl>17){
           //adc>thresholdsShort[etaind][phiind])
