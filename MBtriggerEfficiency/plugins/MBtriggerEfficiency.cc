@@ -673,6 +673,7 @@ MBtriggerEfficiency::endJob()
   accPerEvt2sliceBack->Write();
   accPerEvtPlus->Write();
   accPerEvtMinus->Write();
+  accPerEvtAnd->Write();
   nChanLong->Write();
   nChanShort->Write();
   allChanEtaPhi->Write();
