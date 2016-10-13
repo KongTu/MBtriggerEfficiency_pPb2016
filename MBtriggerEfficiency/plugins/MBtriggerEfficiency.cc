@@ -90,6 +90,7 @@ public:
   TProfile2D* sigProfileShort;
   
   TH1F* accPerEvt;
+  TH1F* accPerEvtAnd;
   TH1F* accPerEvtPlus;
   TH1F* accPerEvtMinus;
   TH1F* accPerEvt2sliceFront;
@@ -543,11 +544,12 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
       }
     }
     for (int k=0; k<40; k++){
-      if (fire[k]) accPerEvt->Fill(k,1);
+      if (fire[k]) accPerEvt->Fill(k,1); 
       if (fireFront[k]) accPerEvt2sliceFront->Fill(k,1);
       if (fireBack[k]) accPerEvt2sliceBack->Fill(k,1);
       if (firePlus[k]) accPerEvtPlus->Fill(k,1);
       if (fireMinus[k]) accPerEvtMinus->Fill(k,1);
+      if (firePlus[k] && fireMinus[k]) accPerEvtAnd->Fill(k,1);
     }
 
     if (fireLongThr1||fireShortThr1){
@@ -647,6 +649,7 @@ MBtriggerEfficiency::endJob()
   accPerEvt2sliceBack->Scale(pow(evtsTot,-1));
   accPerEvtPlus->Scale(pow(evtsTot,-1));
   accPerEvtMinus->Scale(pow(evtsTot,-1));
+  accPerEvtAnd->Scale(pow(evtsTot,-1));
   accPerEvtThrFile->Scale(pow(evtsTot,-1));
   amplVSsampl->Write();
   outputFile->mkdir("channels");
