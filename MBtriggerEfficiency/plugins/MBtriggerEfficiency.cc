@@ -364,6 +364,8 @@ MBtriggerEfficiency::MBtriggerEfficiency(const edm::ParameterSet& iConfig):
   accPerEvtPlus->TH1F::Sumw2();
   accPerEvtMinus=new TH1F("accPerEvtMinus","accPerEvtMinus",40,0,40);
   accPerEvtMinus->TH1F::Sumw2();
+  accPerEvtAnd=new TH1F("accPerEvtAnd","accPerEvtAnd",40,0,40);
+  accPerEvtAnd->TH1F::Sumw2();
   accPerEvt2sliceFront=new TH1F("accPerEvt2sliceFront","accPerEvt2sliceFront",40,0,40);
   accPerEvt2sliceFront->TH1F::Sumw2();
   accPerEvt2sliceBack=new TH1F("accPerEvt2sliceBack","accPerEvt2sliceBack",40,0,40);
