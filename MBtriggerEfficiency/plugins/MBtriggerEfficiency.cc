@@ -550,7 +550,7 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
       if (firePlus[k]) accPerEvtPlus->Fill(k,1);
       if (fireMinus[k]) accPerEvtMinus->Fill(k,1);
       std::cout << "fire: " << firePlus[k] && fireMinus[k] << std::endl;
-      if ( firePlus[k] && fireMinus[k] ) {accPerEvtAnd->Fill(k,1);}
+      if ( firePlus[k] && fireMinus[k] ) {accPerEvtAnd->Fill(k);}
     }
 
     if (fireLongThr1||fireShortThr1){
