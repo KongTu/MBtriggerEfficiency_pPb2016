@@ -4,8 +4,6 @@ using namespace std;
 
 double pileup = 0.65; //fill the average pileup
 double run_number = 281616; //fill the run number
-
-
 bool doLogY = true;
 
 void plotMBtriggerEff(){
@@ -26,6 +24,7 @@ void plotMBtriggerEff(){
 	TH1D* base1 = makeHist("base1", "", "HF threshold (ADC)", "Efficiency", 40,0,40);
 	
 	TCanvas* c1 = makeCanvas("c1","c1", false, doLogY);
+
 	gPad->SetLeftMargin(0.15);
 	gPad->SetBottomMargin(0.15);
 	gPad->SetTopMargin(0.1);
@@ -88,6 +87,7 @@ void plotMBtriggerEff(){
     r22->SetTextSize(24);
     r22->SetTextFont(53);
     r22->Draw("same");
+
 
 	TLatex* latex3 = new TLatex(0.47, 0.92, Form("Run=%.0f, pileup = %.2f", run_number, pileup) );
     latex3->SetNDC();
@@ -240,11 +240,9 @@ void plotMBtriggerEff(){
     r11->Draw("same");
     r22->Draw("same");
 
-    TLine* l1 = new TLine(0,0.65,20,0.65);
-    l1->SetLineColor(kBlue);
-    l1->SetLineStyle(2);
-    l1->SetLineWidth(2);
-    //l1->Draw("same");
+
+	
+
 
 
 }
