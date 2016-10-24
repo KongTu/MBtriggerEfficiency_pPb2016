@@ -145,6 +145,8 @@ public:
   edm::EDGetTokenT<CaloTowerCollection> caloTowerTag;
   edm::EDGetTokenT<HFRecHitCollection> hfRechitTag;
   edm::EDGetTokenT<reco::CaloJetCollection> caloJetTag;
+  edm::EDGetTokenT<edm::View<reco::Track> > trackSrc_;
+  edm::EDGetTokenT<reco::VertexCollection> vertexSrc_;
 
   edm::InputTag m_l1stage2globalAlgBlk;
   edm::EDGetTokenT<GlobalAlgBlkBxCollection> l1tStage2uGtSource_;
@@ -157,6 +159,7 @@ public:
   bool useMC;
   bool useBPTXplus;
   bool useBPTXminus;
+  bool doMultDepend;
 
   vector<int> beam1_empty_bx;
   vector<int> beam2_empty_bx;
@@ -213,6 +216,7 @@ private:
 //
 MBtriggerEfficiency::MBtriggerEfficiency(const edm::ParameterSet& iConfig):
   m_l1GtUtils(iConfig, consumesCollector(), true)//this is important for 80x to compile
+
 {
 
   m_l1stage2globalAlgBlk = edm::InputTag("hltGtStage2Digis");
@@ -230,11 +234,14 @@ MBtriggerEfficiency::MBtriggerEfficiency(const edm::ParameterSet& iConfig):
   hfRechitTag = consumes<HFRecHitCollection>(iConfig.getParameter<edm::InputTag>("hfRechitTag"));
   caloJetTag = consumes<reco::CaloJetCollection>(iConfig.getParameter<edm::InputTag>("caloJetTag"));
   hfDigiTag = consumes<HFDigiCollection>(iConfig.getParameter<edm::InputTag>("hfDigiTag"));
+  trackSrc_ = consumes<edm::View<reco::Track> >(iConfig.getParameter<edm::InputTag>("trackSrc")),
+  vertexSrc_ = consumes<reco::VertexCollection>(iConfig.getParameter<edm::InputTag>("vertexSrc")),
 
   useReco=iConfig.getParameter<bool>("useReco");
   useMC=iConfig.getParameter<bool>("useMC");
   useBPTXplus=iConfig.getParameter<bool>("useBPTXplus");
   useBPTXminus=iConfig.getParameter<bool>("useBPTXminus");
+  doMultDepend=iConfig.getParameter<bool>("doMultDepend");
 
   beam1_empty_bx = iConfig.getUntrackedParameter<std::vector<int>>("beam1_empty_bx");
   beam2_empty_bx = iConfig.getUntrackedParameter<std::vector<int>>("beam2_empty_bx");
@@ -454,6 +461,45 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
     //   }
     // }
 
+
+    int nMult_ass_good = 0;
+    if( doMultDepend ){
+
+    edm::Handle<reco::VertexCollection> vertices;
+    iEvent.getByToken(vertexSrc_,vertices);
+    double bestvz=-999.9, bestvx=-999.9, bestvy=-999.9;
+    double bestvzError=-999.9, bestvxError=-999.9, bestvyError=-999.9;
+    const reco::Vertex & vtx = (*vertices)[0];
+    bestvz = vtx.z(); 
+    bestvx = vtx.x(); 
+    bestvy = vtx.y();
+    bestvzError = vtx.zError(); 
+    bestvxError = vtx.xError(); 
+    bestvyError = vtx.yError();
+
+    Handle<edm::View<reco::Track>> tracks;
+    iEvent.getByToken(trackSrc_, tracks);
+
+      for(unsigned it = 0; it < tracks->size(); it++){
+
+        const reco::Track & trk = (*tracks)[it];
+
+        math::XYZPoint bestvtx(bestvx,bestvy,bestvz);
+
+        double dzvtx = trk.dz(bestvtx);
+        double dxyvtx = trk.dxy(bestvtx);
+        double dzerror = sqrt(trk.dzError()*trk.dzError()+bestvzError*bestvzError);
+        double dxyerror = sqrt(trk.d0Error()*trk.d0Error()+bestvxError*bestvyError);
+        
+        if(!trk.quality(reco::TrackBase::highPurity)) continue;
+        if(fabs(trk.ptError())/trk.pt() > 0.1 ) continue;
+        if(fabs(dzvtx/dzerror) > 3.0 ) continue;
+        if(fabs(dxyvtx/dxyerror) > 3.0 ) continue;
+        if( fabs(trk.eta()) < 2.4 && trk.pt() > 0.4 ){nMult_ass_good++;}// NtrkOffline        
+
+      } 
+    }
+
     edm::Handle<HFDigiCollection> digi;
     iEvent.getByToken(hfDigiTag,digi);
   
@@ -573,71 +619,6 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
     
     }//end of !useReco
    
-
-
-
-/*
-NO need of getting the L1 trigger decision 
- */
-
-  bool useL1EventSetup = true;
-  bool useL1GtTriggerMenuLite = false;
-
-
-  m_l1GtUtils.getL1GtRunCache(iEvent, iSetup, useL1EventSetup, useL1GtTriggerMenuLite);
-
-  bool fireHF1=false;
-  bool fireHF2=false;
-  
-/*
-  iErrorCode=-1;
-  for (uint32_t iTr=0; iTr < trgList.size(); iTr++){
-     
-     iErrorCode = -1;      
-     bool decisionBeforeMaskAlgTechTrig = m_l1GtUtils.decisionBeforeMask(iEvent, trgList[iTr], iErrorCode);
-     
-     if (iErrorCode == 0){
-       std::cout<<"code0"<<std::endl;
-       if (decisionBeforeMaskAlgTechTrig){
-          if (iTr==4){
-             std::cout << "code4" << std::endl;
-             nMBHF1_firedBX->Fill(bx,1);
-             HF1_OR_vsLumi->Fill(lsec,1);
-             fireHF1=true;
-          }
-         if (iTr==5){
-             nMBHF2_firedBX->Fill(bx,1);
-             HF2_OR_vsLumi->Fill(lsec,1);
-             fireHF2=true;
-          }
-          if (iTr==8) fireJet8_fromGT=true;
-          if (iTr==9) fireJet12_fromGT=true;
-          //        std::cout<<"yes"<<std::endl;
-         idFired->Fill(iTr+1,1);
-        }
-         //trgFirediredBptxGate[iTr]++;
-         //   if (decisionBeforeMaskAlgTechTrig) trgFired[iTr]++;
-      } 
-      else if (iErrorCode == 210001){
-        std::cout<<trgList[iTr]<<" does not exist in the L1 menu"<<std::endl; //algorithm / technical trigger  does not exist in the L1 menu
-      }  
-      else{
-        std::cout<<"err:  "<<iErrorCode<<std::endl;// error - see error code, do whatever needed 
-         
-      }
-      
-      std::cout<<"MENU USED: "<<m_l1GtUtils.l1TriggerMenu()<<std::endl;
-
-  }*/
-
-  if ((fireLongThr1||fireShortThr1)&&fireHF2) crossTest_HF1->Fill(0.1,1);
-  if ((fireLongThr1||fireShortThr1)&&(!fireHF2)) crossTest_HF1->Fill(1.1,1);
-  if ((!(fireLongThr1||fireShortThr1))&&fireHF2) crossTest_HF1->Fill(2.1,1);
-
-  if ((fireLongThr2||fireShortThr2)&&fireHF1) crossTest_HF2->Fill(0.1,1);
-  if ((fireLongThr2||fireShortThr2)&&(!fireHF1)) crossTest_HF2->Fill(1.1,1);
-  if ((!(fireLongThr2||fireShortThr2))&&fireHF1) crossTest_HF2->Fill(2.1,1);
-
 }
 // ------------ method called once each job just before starting event loop  ------------
 void 
