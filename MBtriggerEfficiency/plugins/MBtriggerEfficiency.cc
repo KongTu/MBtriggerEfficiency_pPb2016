@@ -280,7 +280,7 @@ MBtriggerEfficiency::MBtriggerEfficiency(const edm::ParameterSet& iConfig):
   
   chanAboveThrFileLong=new TH2F("chanAboveThrFileLong","chanAboveThrFileLong",100,-50,50,73,0,73);
   chanAboveThrFileShort=new TH2F("chanAboveThrFileShort","chanAboveThrFileShort",100,-50,50,73,0,73);
-  accPerEvtThrFile=new TH1F("accPerEvtThrFile","accPerEvtThrFile",2,1,3); 
+  accPerEvtThrFile=new TH1F("accPerEvtThrFile","accPerEvtThrFile",1000,0,1000); 
   
   bxNum=new TH1F("bxNum","bxNum",5000,0,5000);
   
