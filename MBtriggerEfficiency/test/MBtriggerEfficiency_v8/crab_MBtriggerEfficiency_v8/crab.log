@@ -1,0 +1,444 @@
+ ################################################################### 
+ # WARNING: this module is deprecated.                             # 
+ # Please use CondCore.CondDB.CondDB_cfi.py                        # 
+ ################################################################### 
+L1TRawToDigi Sequence configured for Stage-2 (2016) trigger. 
+# Conditions read from  CMS_CONDITIONS  via FrontierProd 
+DEBUG 2016-10-15 18:23:50,230: 	 Executing command: 'submit'
+DEBUG 2016-10-15 18:23:50,230: 	 Found CRAB cache file /afs/cern.ch/user/z/ztu/.crab3
+DEBUG 2016-10-15 18:23:50,235: 	 Checking credentials
+DEBUG 2016-10-15 18:23:50,236: 	 Found proxy file /tmp/x509up_u30140
+DEBUG 2016-10-15 18:23:50,236: 	 Getting proxy life time left
+DEBUG 2016-10-15 18:23:50,740: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u30140 -timeleft
+ output : 78895
+
+ error: 
+ retcode : 0
+DEBUG 2016-10-15 18:23:51,244: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u30140 -actimeleft
+ output : 78894
+
+ error: 
+ retcode : 0
+DEBUG 2016-10-15 18:23:51,245: 	 Proxy valid for 21:54:55 hours
+INFO 2016-10-15 18:23:51,245: 	 Will use CRAB configuration file crab_ana.py
+DEBUG 2016-10-15 18:23:51,245: 	 Loading CRAB configuration file.
+DEBUG 2016-10-15 18:23:53,363: 	 Will use CRAB Analysis plugin (i.e. will run an analysis job type).
+DEBUG 2016-10-15 18:23:53,482: 	 Executing : 
+ command : openssl x509 -in ~/.globus/usercert.pem -subject -noout
+ output : subject= /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=ztu/CN=732466/CN=Zhoudunming Tu
+
+ error: 
+ retcode : 0
+DEBUG 2016-10-15 18:23:53,482: 	 Checking credentials
+DEBUG 2016-10-15 18:23:53,482: 	 Found proxy file /tmp/x509up_u30140
+DEBUG 2016-10-15 18:23:53,482: 	 Getting proxy life time left
+DEBUG 2016-10-15 18:23:53,888: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u30140 -timeleft
+ output : 78892
+
+ error: 
+ retcode : 0
+DEBUG 2016-10-15 18:23:54,298: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u30140 -actimeleft
+ output : 78891
+
+ error: 
+ retcode : 0
+DEBUG 2016-10-15 18:23:54,298: 	 Proxy valid for 21:54:52 hours
+DEBUG 2016-10-15 18:23:54,702: 	 Executing : 
+ command : env X509_USER_PROXY=/tmp/x509up_u30140 voms-proxy-info -fqan
+ output : /cms/Role=NULL/Capability=NULL
+/cms/uscms/Role=NULL/Capability=NULL
+
+ error: 
+ retcode : 0
+DEBUG 2016-10-15 18:23:55,014: 	 Registering user credentials for server /DC=ch/DC=cern/OU=computers/CN=vocms(045|052|021|031|0118|0118a|0119|0108).cern.ch
+DEBUG 2016-10-15 18:23:55,122: 	 Executing : 
+ command : openssl x509 -in ~/.globus/usercert.pem -subject -noout
+ output : subject= /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=ztu/CN=732466/CN=Zhoudunming Tu
+
+ error: 
+ retcode : 0
+DEBUG 2016-10-15 18:23:55,123: 	 Getting myproxy life time left for myproxy.cern.ch
+DEBUG 2016-10-15 18:23:55,123: 	 Calculating hash of /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=ztu/CN=732466/CN=Zhoudunming Tu_cmsweb.cern.ch for credential name
+DEBUG 2016-10-15 18:23:55,326: 	 Executing : 
+ command : myproxy-info -l aeeb635c02ab2354cd0696fedaf0d9122a1d7b0d -s myproxy.cern.ch
+ output : username: aeeb635c02ab2354cd0696fedaf0d9122a1d7b0d
+owner: /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=ztu/CN=732466/CN=Zhoudunming Tu
+  renewal policy: /DC=ch/DC=cern/OU=computers/CN=vocms(045|052|021|031|0118|0118a|0119|0108).cern.ch
+  trusted retrieval policy: /DC=ch/DC=cern/OU=computers/CN=vocms(045|052|021|031|0118|0118a|0119|0108).cern.ch
+  timeleft: 644:12:00  (26.8 days)
+
+ error: 
+ retcode : 0
+DEBUG 2016-10-15 18:23:55,327: 	 Myproxy is valid: 2319120
+DEBUG 2016-10-15 18:23:55,327: 	 Command use: submit
+DEBUG 2016-10-15 18:23:55,327: 	 Options use: ['-c', 'crab_ana.py']
+DEBUG 2016-10-15 18:23:55,649: 	 CRABClient version: 3.3.1608
+DEBUG 2016-10-15 18:23:55,649: 	 Instance is prod
+DEBUG 2016-10-15 18:23:55,649: 	 Server base url is cmsweb.cern.ch
+DEBUG 2016-10-15 18:23:55,649: 	 Command url /crabserver/prod/workflow
+DEBUG 2016-10-15 18:23:55,649: 	 Started submission
+DEBUG 2016-10-15 18:23:55,649: 	 Working on /afs/cern.ch/work/z/ztu/MBtriggerEfficiency/CMSSW_8_0_20/src/MBtriggerEfficiency_pPb2016/MBtriggerEfficiency/test/MBtriggerEfficiency_v8/crab_MBtriggerEfficiency_v8
+DEBUG 2016-10-15 18:23:56,041: 	 Loading required information from the environment
+DEBUG 2016-10-15 18:23:56,041: 	 Found CMSSW_8_0_20 for slc6_amd64_gcc530 with base /afs/cern.ch/work/z/ztu/MBtriggerEfficiency/CMSSW_8_0_20
+DEBUG 2016-10-15 18:23:56,053: 	 UNIQUE NAME: tarUUID 77c83f41-6514-4907-9c21-288a0b6dfd65 
+DEBUG 2016-10-15 18:23:56,054: 	 self.config: from WMCore.Configuration import Configuration
+config = Configuration()
+config.section_('General')
+config.General.transferLogs = True
+config.General.transferOutputs = True
+config.General.workArea = 'MBtriggerEfficiency_v8'
+config.General.requestName = 'MBtriggerEfficiency_v8'
+config.section_('JobType')
+config.JobType.psetName = 'mbtriggerefficiency_cfg.py'
+config.JobType.pluginName = 'Analysis'
+config.JobType.allowUndistributedCMSSW = True
+config.section_('Data')
+config.Data.publication = False
+config.Data.unitsPerJob = 5
+config.Data.userInputFiles = ['/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/10C1AEAA-F395-E511-AFB2-02163E013734.root\n', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/10D0B7FC-F795-E511-ADC5-02163E01417D.root\n', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/12D32DEB-F795-E511-8FC9-02163E01436F.root\n', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/14589407-F895-E511-A8D3-02163E014537.root\n', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/1612330C-F895-E511-8A54-02163E0133F2.root\n', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/1691BB7C-F395-E511-B5D3-02163E014775.root\n', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/181A06E4-F795-E511-BFE7-02163E0135FF.root\n', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/185730D7-F795-E511-A77F-02163E013437.root\n', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/1E1B3CCF-F795-E511-88B9-02163E0146E1.root\n', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/1E2E24CF-F795-E511-A8CB-02163E011F51.root\n', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/1E8EB901-F895-E511-9344-02163E011EFA.root\n', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/224BB882-F395-E511-90DF-02163E013468.root\n', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/2293F967-F395-E511-83D2-02163E01392B.root\n', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/2E477685-F395-E511-965D-02163E014614.root\n', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/340CEAAA-F395-E511-A0B9-02163E012968.root\n', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/34E613D5-F795-E511-84E7-02163E0138FE.root\n', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/34EC4CD7-F795-E511-AA64-02163E014160.root\n', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/3836C0CF-F795-E511-92FB-02163E0136F3.root\n', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/3A7B6263-F395-E511-B782-02163E0135C4.root\n', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/428A97F9-F795-E511-899C-02163E011FF3.root\n', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/46D6E22C-FC95-E511-A7F4-02163E014692.root\n', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/481AF7C2-F795-E511-9070-02163E011D72.root\n', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/48463986-F395-E511-AC16-02163E0146F9.root\n', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/485F8B02-F895-E511-95AB-02163E0133BB.root\n', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/4A3F445D-F395-E511-AD1D-02163E0141BC.root\n', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/4E0306D4-F795-E511-9CDE-02163E0135B9.root\n', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/562BF0AE-F395-E511-A759-02163E01390D.root\n', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/5633EF84-F395-E511-89C4-02163E01278A.root\n', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/56C9A7E1-F795-E511-9394-02163E014667.root\n', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/58E876D3-F795-E511-87C4-02163E01431F.root\n', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/5A7E4143-F895-E511-B53B-02163E01355F.root\n', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/5C82950C-F895-E511-8874-02163E011FE0.root\n', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/5EAABDFB-F795-E511-A05B-02163E014783.root\n', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/642149F3-F795-E511-B860-02163E011BB3.root\n', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/64B23EE0-F795-E511-A93D-02163E0142F1.root\n', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/683B6E69-F395-E511-9799-02163E014191.root\n', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/6CB501EF-F795-E511-90AE-02163E0141C0.root\n', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/743A3E84-F395-E511-86D9-02163E0146FC.root\n', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/746BAE79-F395-E511-B387-02163E011E86.root\n', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/76973A65-F395-E511-B731-02163E0136F3.root\n', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/787B84CF-F995-E511-B6E7-02163E0119D3.root\n', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/86924EC9-F795-E511-A679-02163E013463.root\n', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/8A30FFD5-F795-E511-A10E-02163E011FD2.root\n', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/8A8E7D2A-F995-E511-9379-02163E014649.root\n', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/8C3D64BC-F795-E511-A0A1-02163E011EA8.root\n', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/8EBD8F59-F395-E511-B9A8-02163E0122C2.root\n', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/903BE1E2-F795-E511-9C5D-02163E013779.root\n', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/946CB1A5-F895-E511-BB7E-02163E014676.root\n', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/9E1DD5F9-F795-E511-BDD8-02163E01371D.root\n', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/A217F7CF-F795-E511-84C1-02163E0144FA.root\n', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/A627B570-F395-E511-80E9-02163E01378A.root\n', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/B4E76263-F395-E511-B629-02163E01395B.root\n', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/C23DE128-FB95-E511-AB17-02163E014441.root\n', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/C6F55E60-F395-E511-8F5A-02163E011BFC.root\n', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/C8C30A94-F395-E511-8E62-02163E0138FB.root\n', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/CA28A6D8-F795-E511-A875-02163E01423A.root\n', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/CAC894C7-F795-E511-B11A-02163E01469D.root\n', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/CE45135E-F895-E511-B388-02163E014486.root\n', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/D8E901C7-F795-E511-933E-02163E013399.root\n', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/DA4565EC-F795-E511-A60F-02163E011FEE.root\n', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/DC412CB3-F395-E511-BED5-02163E013904.root\n', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/DEF67562-F395-E511-AF34-02163E011AAE.root\n', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/E2A881D3-F795-E511-A7FA-02163E013997.root\n', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/E2F938CB-F795-E511-8D96-02163E0146DA.root\n', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/EA6CB67C-F395-E511-882E-02163E014376.root\n', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/EE7B27F4-F795-E511-A7C8-02163E014184.root\n', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/F299C14B-F895-E511-B2E1-02163E013454.root\n', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/F49C7B6E-F395-E511-85BB-02163E011E86.root\n', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/F6A9B4D6-F795-E511-AF31-02163E0133C8.root\n', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/FC9127D5-F795-E511-9FBE-02163E01465F.root\n', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/FE90F9D4-F795-E511-AD68-02163E01342B.root\n', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/FEBFB5D5-F795-E511-AFC8-02163E011E23.root\n']
+config.Data.ignoreLocality = False
+config.Data.splitting = 'FileBased'
+config.Data.outLFNDirBase = '/store/user/ztu/'
+config.section_('Site')
+config.Site.storageSite = 'T2_US_MIT'
+config.section_('User')
+config.section_('Debug')
+
+DEBUG 2016-10-15 18:23:56,054: 	 self.config.JobType.psetName: mbtriggerefficiency_cfg.py
+INFO 2016-10-15 18:23:56,054: 	 Importing CMSSW configuration mbtriggerefficiency_cfg.py
+INFO 2016-10-15 18:23:57,576: 	 Finished importing CMSSW configuration mbtriggerefficiency_cfg.py
+DEBUG 2016-10-15 18:23:57,576: 	 Writing CMSSW configuration to /afs/cern.ch/work/z/ztu/MBtriggerEfficiency/CMSSW_8_0_20/src/MBtriggerEfficiency_pPb2016/MBtriggerEfficiency/test/MBtriggerEfficiency_v8/crab_MBtriggerEfficiency_v8/inputs/PSet.py
+DEBUG 2016-10-15 18:23:57,792: 	 The following EDM output files will be collected: []
+DEBUG 2016-10-15 18:23:57,792: 	 The following TFile output files will be collected: ['test.root']
+DEBUG 2016-10-15 18:23:57,793: 	 The following user output files will be collected: []
+DEBUG 2016-10-15 18:23:57,793: 	 Loading required information from the environment
+DEBUG 2016-10-15 18:23:57,793: 	 Found CMSSW_8_0_20 for slc6_amd64_gcc530 with base /afs/cern.ch/work/z/ztu/MBtriggerEfficiency/CMSSW_8_0_20
+DEBUG 2016-10-15 18:23:57,793: 	 Making tarball in /afs/cern.ch/work/z/ztu/MBtriggerEfficiency/CMSSW_8_0_20/src/MBtriggerEfficiency_pPb2016/MBtriggerEfficiency/test/MBtriggerEfficiency_v8/crab_MBtriggerEfficiency_v8/inputs/77c83f41-6514-4907-9c21-288a0b6dfd65default.tgz
+DEBUG 2016-10-15 18:23:57,831: 	 Checking directory /afs/cern.ch/work/z/ztu/MBtriggerEfficiency/CMSSW_8_0_20/lib
+DEBUG 2016-10-15 18:23:57,832: 	 Adding directory /afs/cern.ch/work/z/ztu/MBtriggerEfficiency/CMSSW_8_0_20/lib to tarball
+DEBUG 2016-10-15 18:23:57,899: 	 Checking directory /afs/cern.ch/work/z/ztu/MBtriggerEfficiency/CMSSW_8_0_20/biglib
+DEBUG 2016-10-15 18:23:57,899: 	 Adding directory /afs/cern.ch/work/z/ztu/MBtriggerEfficiency/CMSSW_8_0_20/biglib to tarball
+DEBUG 2016-10-15 18:23:57,900: 	 Checking directory /afs/cern.ch/work/z/ztu/MBtriggerEfficiency/CMSSW_8_0_20/module
+DEBUG 2016-10-15 18:23:57,988: 	 Uploading archive /afs/cern.ch/work/z/ztu/MBtriggerEfficiency/CMSSW_8_0_20/src/MBtriggerEfficiency_pPb2016/MBtriggerEfficiency/test/MBtriggerEfficiency_v8/crab_MBtriggerEfficiency_v8/inputs/77c83f41-6514-4907-9c21-288a0b6dfd65default.tgz to the CRAB cache. Using URI https://cmsweb.cern.ch/crabcache
+DEBUG 2016-10-15 18:23:58,393: 	 Loading required information from the environment
+DEBUG 2016-10-15 18:23:58,393: 	 Found CMSSW_8_0_20 for slc6_amd64_gcc530 with base /afs/cern.ch/work/z/ztu/MBtriggerEfficiency/CMSSW_8_0_20
+DEBUG 2016-10-15 18:23:58,393: 	 Making tarball in /afs/cern.ch/work/z/ztu/MBtriggerEfficiency/CMSSW_8_0_20/src/MBtriggerEfficiency_pPb2016/MBtriggerEfficiency/test/MBtriggerEfficiency_v8/crab_MBtriggerEfficiency_v8/inputs/debugFiles.tgz
+DEBUG 2016-10-15 18:23:58,397: 	 Uploading archive /afs/cern.ch/work/z/ztu/MBtriggerEfficiency/CMSSW_8_0_20/src/MBtriggerEfficiency_pPb2016/MBtriggerEfficiency/test/MBtriggerEfficiency_v8/crab_MBtriggerEfficiency_v8/inputs/debugFiles.tgz to the CRAB cache. Using URI https://cmsweb.cern.ch/crabcache
+DEBUG 2016-10-15 18:23:58,750: 	 Result uploading input files: 35dd23bd00726fd1e6a12249da1b922f6c8876cffae219bfe46720fa4687f11d.tar.gz 
+DEBUG 2016-10-15 18:23:58,750: 	 Attaching list of user-specified primary input files.
+INFO 2016-10-15 18:23:58,750: 	 Sending the request to the server
+DEBUG 2016-10-15 18:23:58,751: 	 Submitting {'maxjobruntime': 1250, 'extrajdl': [], 'ignorelocality': 0, 'savelogsflag': 1, 'useparent': 0, 'asyncdest': 'T2_US_MIT', 'algoargs': 5, 'cachefilename': '35dd23bd00726fd1e6a12249da1b922f6c8876cffae219bfe46720fa4687f11d.tar.gz', 'numcores': 1, 'addoutputfiles': [], 'generator': 'pythia', 'maxmemory': 2000, 'publishdbsurl': 'https://cmsweb.cern.ch/dbs/prod/phys03/DBSWriter', 'priority': 10, 'jobsw': 'CMSSW_8_0_20', 'edmoutfiles': [], 'userfiles': set(['/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/F49C7B6E-F395-E511-85BB-02163E011E86.root', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/FC9127D5-F795-E511-9FBE-02163E01465F.root', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/58E876D3-F795-E511-87C4-02163E01431F.root', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/1E8EB901-F895-E511-9344-02163E011EFA.root', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/34EC4CD7-F795-E511-AA64-02163E014160.root', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/743A3E84-F395-E511-86D9-02163E0146FC.root', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/5A7E4143-F895-E511-B53B-02163E01355F.root', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/224BB882-F395-E511-90DF-02163E013468.root', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/8C3D64BC-F795-E511-A0A1-02163E011EA8.root', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/EA6CB67C-F395-E511-882E-02163E014376.root', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/8A8E7D2A-F995-E511-9379-02163E014649.root', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/12D32DEB-F795-E511-8FC9-02163E01436F.root', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/562BF0AE-F395-E511-A759-02163E01390D.root', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/DC412CB3-F395-E511-BED5-02163E013904.root', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/DA4565EC-F795-E511-A60F-02163E011FEE.root', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/9E1DD5F9-F795-E511-BDD8-02163E01371D.root', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/4E0306D4-F795-E511-9CDE-02163E0135B9.root', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/D8E901C7-F795-E511-933E-02163E013399.root', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/86924EC9-F795-E511-A679-02163E013463.root', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/E2F938CB-F795-E511-8D96-02163E0146DA.root', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/B4E76263-F395-E511-B629-02163E01395B.root', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/14589407-F895-E511-A8D3-02163E014537.root', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/5EAABDFB-F795-E511-A05B-02163E014783.root', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/946CB1A5-F895-E511-BB7E-02163E014676.root', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/4A3F445D-F395-E511-AD1D-02163E0141BC.root', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/1691BB7C-F395-E511-B5D3-02163E014775.root', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/1E2E24CF-F795-E511-A8CB-02163E011F51.root', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/2293F967-F395-E511-83D2-02163E01392B.root', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/F299C14B-F895-E511-B2E1-02163E013454.root', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/E2A881D3-F795-E511-A7FA-02163E013997.root', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/F6A9B4D6-F795-E511-AF31-02163E0133C8.root', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/CE45135E-F895-E511-B388-02163E014486.root', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/EE7B27F4-F795-E511-A7C8-02163E014184.root', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/3836C0CF-F795-E511-92FB-02163E0136F3.root', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/5633EF84-F395-E511-89C4-02163E01278A.root', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/8A30FFD5-F795-E511-A10E-02163E011FD2.root', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/A217F7CF-F795-E511-84C1-02163E0144FA.root', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/C8C30A94-F395-E511-8E62-02163E0138FB.root', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/CAC894C7-F795-E511-B11A-02163E01469D.root', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/1E1B3CCF-F795-E511-88B9-02163E0146E1.root', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/CA28A6D8-F795-E511-A875-02163E01423A.root', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/DEF67562-F395-E511-AF34-02163E011AAE.root', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/3A7B6263-F395-E511-B782-02163E0135C4.root', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/485F8B02-F895-E511-95AB-02163E0133BB.root', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/8EBD8F59-F395-E511-B9A8-02163E0122C2.root', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/FEBFB5D5-F795-E511-AFC8-02163E011E23.root', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/683B6E69-F395-E511-9799-02163E014191.root', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/1612330C-F895-E511-8A54-02163E0133F2.root', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/2E477685-F395-E511-965D-02163E014614.root', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/A627B570-F395-E511-80E9-02163E01378A.root', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/C23DE128-FB95-E511-AB17-02163E014441.root', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/5C82950C-F895-E511-8874-02163E011FE0.root', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/181A06E4-F795-E511-BFE7-02163E0135FF.root', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/64B23EE0-F795-E511-A93D-02163E0142F1.root', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/C6F55E60-F395-E511-8F5A-02163E011BFC.root', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/56C9A7E1-F795-E511-9394-02163E014667.root', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/46D6E22C-FC95-E511-A7F4-02163E014692.root', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/481AF7C2-F795-E511-9070-02163E011D72.root', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/FE90F9D4-F795-E511-AD68-02163E01342B.root', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/48463986-F395-E511-AC16-02163E0146F9.root', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/185730D7-F795-E511-A77F-02163E013437.root', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/6CB501EF-F795-E511-90AE-02163E0141C0.root', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/10D0B7FC-F795-E511-ADC5-02163E01417D.root', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/340CEAAA-F395-E511-A0B9-02163E012968.root', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/428A97F9-F795-E511-899C-02163E011FF3.root', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/787B84CF-F995-E511-B6E7-02163E0119D3.root', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/76973A65-F395-E511-B731-02163E0136F3.root', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/10C1AEAA-F395-E511-AFB2-02163E013734.root', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/34E613D5-F795-E511-84E7-02163E0138FE.root', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/642149F3-F795-E511-B860-02163E011BB3.root', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/903BE1E2-F795-E511-9C5D-02163E013779.root', '/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/746BAE79-F395-E511-B387-02163E011E86.root']), 'primarydataset': 'CRAB_UserFiles', 'inputdata': '', 'lfn': '/store/user/ztu/', 'dryrun': 0, 'workflow': 'crab_MBtriggerEfficiency_v8', 'adduserfiles': [], 'nonprodsw': 1, 'tfileoutfiles': ['test.root'], 'oneEventMode': 0, 'debugfilename': '4f2d70a9f5929a8697a73e86779533d6c6dc11a506fbbfeb76d7345ecc8ada43.tar.gz', 'cacheurl': 'https://cmsweb.cern.ch/crabcache', 'saveoutput': 1, 'publication': 0, 'jobarch': 'slc6_amd64_gcc530', 'totalunits': 0, 'splitalgo': 'FileBased', 'nonvaliddata': 0, 'dbsurl': 'https://cmsweb.cern.ch/dbs/prod/global/DBSReader', 'publishgroupname': 0, 'jobtype': 'Analysis', 'publishname2': ''} 
+DEBUG 2016-10-15 18:23:58,751: 	 Encoded submit request: maxjobruntime=1250&ignorelocality=0&savelogsflag=1&useparent=0&asyncdest=T2_US_MIT&algoargs=5&cachefilename=35dd23bd00726fd1e6a12249da1b922f6c8876cffae219bfe46720fa4687f11d.tar.gz&numcores=1&generator=pythia&maxmemory=2000&publishdbsurl=https%3A%2F%2Fcmsweb.cern.ch%2Fdbs%2Fprod%2Fphys03%2FDBSWriter&priority=10&jobsw=CMSSW_8_0_20&primarydataset=CRAB_UserFiles&inputdata=&lfn=%2Fstore%2Fuser%2Fztu%2F&dryrun=0&workflow=crab_MBtriggerEfficiency_v8&nonprodsw=1&oneEventMode=0&debugfilename=4f2d70a9f5929a8697a73e86779533d6c6dc11a506fbbfeb76d7345ecc8ada43.tar.gz&cacheurl=https%3A%2F%2Fcmsweb.cern.ch%2Fcrabcache&saveoutput=1&publication=0&jobarch=slc6_amd64_gcc530&totalunits=0&splitalgo=FileBased&nonvaliddata=0&dbsurl=https%3A%2F%2Fcmsweb.cern.ch%2Fdbs%2Fprod%2Fglobal%2FDBSReader&publishgroupname=0&jobtype=Analysis&publishname2=&tfileoutfiles=test.root&userfiles=/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/F49C7B6E-F395-E511-85BB-02163E011E86.root&userfiles=/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/FC9127D5-F795-E511-9FBE-02163E01465F.root&userfiles=/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/58E876D3-F795-E511-87C4-02163E01431F.root&userfiles=/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/1E8EB901-F895-E511-9344-02163E011EFA.root&userfiles=/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/34EC4CD7-F795-E511-AA64-02163E014160.root&userfiles=/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/743A3E84-F395-E511-86D9-02163E0146FC.root&userfiles=/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/5A7E4143-F895-E511-B53B-02163E01355F.root&userfiles=/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/224BB882-F395-E511-90DF-02163E013468.root&userfiles=/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/8C3D64BC-F795-E511-A0A1-02163E011EA8.root&userfiles=/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/EA6CB67C-F395-E511-882E-02163E014376.root&userfiles=/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/8A8E7D2A-F995-E511-9379-02163E014649.root&userfiles=/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/12D32DEB-F795-E511-8FC9-02163E01436F.root&userfiles=/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/562BF0AE-F395-E511-A759-02163E01390D.root&userfiles=/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/DC412CB3-F395-E511-BED5-02163E013904.root&userfiles=/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/DA4565EC-F795-E511-A60F-02163E011FEE.root&userfiles=/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/9E1DD5F9-F795-E511-BDD8-02163E01371D.root&userfiles=/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/4E0306D4-F795-E511-9CDE-02163E0135B9.root&userfiles=/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/D8E901C7-F795-E511-933E-02163E013399.root&userfiles=/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/86924EC9-F795-E511-A679-02163E013463.root&userfiles=/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/E2F938CB-F795-E511-8D96-02163E0146DA.root&userfiles=/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/B4E76263-F395-E511-B629-02163E01395B.root&userfiles=/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/14589407-F895-E511-A8D3-02163E014537.root&userfiles=/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/5EAABDFB-F795-E511-A05B-02163E014783.root&userfiles=/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/946CB1A5-F895-E511-BB7E-02163E014676.root&userfiles=/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/4A3F445D-F395-E511-AD1D-02163E0141BC.root&userfiles=/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/1691BB7C-F395-E511-B5D3-02163E014775.root&userfiles=/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/1E2E24CF-F795-E511-A8CB-02163E011F51.root&userfiles=/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/2293F967-F395-E511-83D2-02163E01392B.root&userfiles=/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/F299C14B-F895-E511-B2E1-02163E013454.root&userfiles=/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/E2A881D3-F795-E511-A7FA-02163E013997.root&userfiles=/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/F6A9B4D6-F795-E511-AF31-02163E0133C8.root&userfiles=/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/CE45135E-F895-E511-B388-02163E014486.root&userfiles=/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/EE7B27F4-F795-E511-A7C8-02163E014184.root&userfiles=/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/3836C0CF-F795-E511-92FB-02163E0136F3.root&userfiles=/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/5633EF84-F395-E511-89C4-02163E01278A.root&userfiles=/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/8A30FFD5-F795-E511-A10E-02163E011FD2.root&userfiles=/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/A217F7CF-F795-E511-84C1-02163E0144FA.root&userfiles=/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/C8C30A94-F395-E511-8E62-02163E0138FB.root&userfiles=/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/CAC894C7-F795-E511-B11A-02163E01469D.root&userfiles=/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/1E1B3CCF-F795-E511-88B9-02163E0146E1.root&userfiles=/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/CA28A6D8-F795-E511-A875-02163E01423A.root&userfiles=/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/DEF67562-F395-E511-AF34-02163E011AAE.root&userfiles=/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/3A7B6263-F395-E511-B782-02163E0135C4.root&userfiles=/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/485F8B02-F895-E511-95AB-02163E0133BB.root&userfiles=/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/8EBD8F59-F395-E511-B9A8-02163E0122C2.root&userfiles=/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/FEBFB5D5-F795-E511-AFC8-02163E011E23.root&userfiles=/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/683B6E69-F395-E511-9799-02163E014191.root&userfiles=/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/1612330C-F895-E511-8A54-02163E0133F2.root&userfiles=/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/2E477685-F395-E511-965D-02163E014614.root&userfiles=/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/A627B570-F395-E511-80E9-02163E01378A.root&userfiles=/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/C23DE128-FB95-E511-AB17-02163E014441.root&userfiles=/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/5C82950C-F895-E511-8874-02163E011FE0.root&userfiles=/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/181A06E4-F795-E511-BFE7-02163E0135FF.root&userfiles=/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/64B23EE0-F795-E511-A93D-02163E0142F1.root&userfiles=/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/C6F55E60-F395-E511-8F5A-02163E011BFC.root&userfiles=/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/56C9A7E1-F795-E511-9394-02163E014667.root&userfiles=/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/46D6E22C-FC95-E511-A7F4-02163E014692.root&userfiles=/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/481AF7C2-F795-E511-9070-02163E011D72.root&userfiles=/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/FE90F9D4-F795-E511-AD68-02163E01342B.root&userfiles=/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/48463986-F395-E511-AC16-02163E0146F9.root&userfiles=/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/185730D7-F795-E511-A77F-02163E013437.root&userfiles=/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/6CB501EF-F795-E511-90AE-02163E0141C0.root&userfiles=/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/10D0B7FC-F795-E511-ADC5-02163E01417D.root&userfiles=/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/340CEAAA-F395-E511-A0B9-02163E012968.root&userfiles=/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/428A97F9-F795-E511-899C-02163E011FF3.root&userfiles=/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/787B84CF-F995-E511-B6E7-02163E0119D3.root&userfiles=/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/76973A65-F395-E511-B731-02163E0136F3.root&userfiles=/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/10C1AEAA-F395-E511-AFB2-02163E013734.root&userfiles=/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/34E613D5-F795-E511-84E7-02163E0138FE.root&userfiles=/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/642149F3-F795-E511-B860-02163E011BB3.root&userfiles=/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/903BE1E2-F795-E511-9C5D-02163E013779.root&userfiles=/store/hidata/HIRun2015/HIMinimumBias1/RAW/v1/000/262/640/00000/746BAE79-F395-E511-B387-02163E011E86.root
+DEBUG 2016-10-15 18:23:59,321: 	 Result: {'result': [{'RequestName': '161015_162359:ztu_crab_MBtriggerEfficiency_v8'}]}
+INFO 2016-10-15 18:23:59,337: 	 Success: Your task has been delivered to the CRAB3 server.
+INFO 2016-10-15 18:23:59,338: 	 Task name: 161015_162359:ztu_crab_MBtriggerEfficiency_v8
+INFO 2016-10-15 18:23:59,338: 	 Please use 'crab status' to check how the submission process proceeds.
+DEBUG 2016-10-15 18:23:59,338: 	 About to return
+INFO 2016-10-15 18:23:59,342: 	 Log file is /afs/cern.ch/work/z/ztu/MBtriggerEfficiency/CMSSW_8_0_20/src/MBtriggerEfficiency_pPb2016/MBtriggerEfficiency/test/MBtriggerEfficiency_v8/crab_MBtriggerEfficiency_v8/crab.log
+DEBUG 2016-10-15 18:24:37,472: 	 Executing command: 'status'
+DEBUG 2016-10-15 18:24:37,472: 	 Found CRAB cache file /afs/cern.ch/user/z/ztu/.crab3
+DEBUG 2016-10-15 18:24:37,481: 	 Checking credentials
+DEBUG 2016-10-15 18:24:37,483: 	 Found proxy file /tmp/x509up_u30140
+DEBUG 2016-10-15 18:24:37,483: 	 Getting proxy life time left
+DEBUG 2016-10-15 18:24:37,989: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u30140 -timeleft
+ output : 78848
+
+ error: 
+ retcode : 0
+DEBUG 2016-10-15 18:24:38,394: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u30140 -actimeleft
+ output : 78847
+
+ error: 
+ retcode : 0
+DEBUG 2016-10-15 18:24:38,394: 	 Proxy valid for 21:54:08 hours
+DEBUG 2016-10-15 18:24:38,507: 	 Executing : 
+ command : openssl x509 -in ~/.globus/usercert.pem -subject -noout
+ output : subject= /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=ztu/CN=732466/CN=Zhoudunming Tu
+
+ error: 
+ retcode : 0
+DEBUG 2016-10-15 18:24:38,507: 	 Checking credentials
+DEBUG 2016-10-15 18:24:38,507: 	 Found proxy file /tmp/x509up_u30140
+DEBUG 2016-10-15 18:24:38,507: 	 Getting proxy life time left
+DEBUG 2016-10-15 18:24:39,013: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u30140 -timeleft
+ output : 78847
+
+ error: 
+ retcode : 0
+DEBUG 2016-10-15 18:24:39,521: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u30140 -actimeleft
+ output : 78846
+
+ error: 
+ retcode : 0
+DEBUG 2016-10-15 18:24:39,522: 	 Proxy valid for 21:54:07 hours
+DEBUG 2016-10-15 18:24:39,875: 	 Registering user credentials for server /DC=ch/DC=cern/OU=computers/CN=vocms(045|052|021|031|0118|0118a|0119|0108).cern.ch
+DEBUG 2016-10-15 18:24:39,983: 	 Executing : 
+ command : openssl x509 -in ~/.globus/usercert.pem -subject -noout
+ output : subject= /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=ztu/CN=732466/CN=Zhoudunming Tu
+
+ error: 
+ retcode : 0
+DEBUG 2016-10-15 18:24:39,983: 	 Getting myproxy life time left for myproxy.cern.ch
+DEBUG 2016-10-15 18:24:39,983: 	 Calculating hash of /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=ztu/CN=732466/CN=Zhoudunming Tu_cmsweb.cern.ch for credential name
+DEBUG 2016-10-15 18:24:40,188: 	 Executing : 
+ command : myproxy-info -l aeeb635c02ab2354cd0696fedaf0d9122a1d7b0d -s myproxy.cern.ch
+ output : username: aeeb635c02ab2354cd0696fedaf0d9122a1d7b0d
+owner: /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=ztu/CN=732466/CN=Zhoudunming Tu
+  renewal policy: /DC=ch/DC=cern/OU=computers/CN=vocms(045|052|021|031|0118|0118a|0119|0108).cern.ch
+  trusted retrieval policy: /DC=ch/DC=cern/OU=computers/CN=vocms(045|052|021|031|0118|0118a|0119|0108).cern.ch
+  timeleft: 644:11:15  (26.8 days)
+
+ error: 
+ retcode : 0
+DEBUG 2016-10-15 18:24:40,190: 	 Myproxy is valid: 2319075
+DEBUG 2016-10-15 18:24:40,190: 	 Command use: status
+DEBUG 2016-10-15 18:24:40,190: 	 Options use: ['MBtriggerEfficiency_v8/crab_MBtriggerEfficiency_v8/']
+DEBUG 2016-10-15 18:24:40,556: 	 CRABClient version: 3.3.1608
+DEBUG 2016-10-15 18:24:40,556: 	 Instance is prod
+DEBUG 2016-10-15 18:24:40,556: 	 Server base url is cmsweb.cern.ch
+DEBUG 2016-10-15 18:24:40,556: 	 Command url /crabserver/prod/workflow
+DEBUG 2016-10-15 18:24:40,556: 	 Looking up detailed status of task 161015_162359:ztu_crab_MBtriggerEfficiency_v8
+DEBUG 2016-10-15 18:24:40,933: 	 {'status': 'QUEUED', 'username': 'ztu', 'totalJobdefs': 0, 'jobsPerStatus': {}, 'taskWarningMsg': [], 'schedd': '', 'statusFailureMsg': '', 'taskFailureMsg': '', 'failedJobdefs': 0, 'command': 'SUBMIT', 'submissionTime': 1476548639, 'jobdefErrors': [], 'collector': 'cmsgwms-collector-global.cern.ch,cmssrv221.fnal.gov', 'jobList': []}
+INFO 2016-10-15 18:24:40,934: 	 CRAB project directory:		/afs/cern.ch/work/z/ztu/MBtriggerEfficiency/CMSSW_8_0_20/src/MBtriggerEfficiency_pPb2016/MBtriggerEfficiency/test/MBtriggerEfficiency_v8/crab_MBtriggerEfficiency_v8
+INFO 2016-10-15 18:24:40,934: 	 Task name:			161015_162359:ztu_crab_MBtriggerEfficiency_v8
+INFO 2016-10-15 18:24:40,934: 	 Task status:			QUEUED on command SUBMIT
+INFO 2016-10-15 18:24:40,934: 	 
+No jobs created yet!
+INFO 2016-10-15 18:24:40,936: 	 Log file is /afs/cern.ch/work/z/ztu/MBtriggerEfficiency/CMSSW_8_0_20/src/MBtriggerEfficiency_pPb2016/MBtriggerEfficiency/test/MBtriggerEfficiency_v8/crab_MBtriggerEfficiency_v8/crab.log
+DEBUG 2016-10-15 18:24:44,007: 	 Executing command: 'status'
+DEBUG 2016-10-15 18:24:44,007: 	 Found CRAB cache file /afs/cern.ch/user/z/ztu/.crab3
+DEBUG 2016-10-15 18:24:44,014: 	 Checking credentials
+DEBUG 2016-10-15 18:24:44,014: 	 Found proxy file /tmp/x509up_u30140
+DEBUG 2016-10-15 18:24:44,014: 	 Getting proxy life time left
+DEBUG 2016-10-15 18:24:44,519: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u30140 -timeleft
+ output : 78841
+
+ error: 
+ retcode : 0
+DEBUG 2016-10-15 18:24:44,926: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u30140 -actimeleft
+ output : 78841
+
+ error: 
+ retcode : 0
+DEBUG 2016-10-15 18:24:44,926: 	 Proxy valid for 21:54:01 hours
+DEBUG 2016-10-15 18:24:45,042: 	 Executing : 
+ command : openssl x509 -in ~/.globus/usercert.pem -subject -noout
+ output : subject= /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=ztu/CN=732466/CN=Zhoudunming Tu
+
+ error: 
+ retcode : 0
+DEBUG 2016-10-15 18:24:45,042: 	 Checking credentials
+DEBUG 2016-10-15 18:24:45,042: 	 Found proxy file /tmp/x509up_u30140
+DEBUG 2016-10-15 18:24:45,042: 	 Getting proxy life time left
+DEBUG 2016-10-15 18:24:45,548: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u30140 -timeleft
+ output : 78840
+
+ error: 
+ retcode : 0
+DEBUG 2016-10-15 18:24:45,959: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u30140 -actimeleft
+ output : 78840
+
+ error: 
+ retcode : 0
+DEBUG 2016-10-15 18:24:45,960: 	 Proxy valid for 21:54:00 hours
+DEBUG 2016-10-15 18:24:46,287: 	 Registering user credentials for server /DC=ch/DC=cern/OU=computers/CN=vocms(045|052|021|031|0118|0118a|0119|0108).cern.ch
+DEBUG 2016-10-15 18:24:46,396: 	 Executing : 
+ command : openssl x509 -in ~/.globus/usercert.pem -subject -noout
+ output : subject= /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=ztu/CN=732466/CN=Zhoudunming Tu
+
+ error: 
+ retcode : 0
+DEBUG 2016-10-15 18:24:46,396: 	 Getting myproxy life time left for myproxy.cern.ch
+DEBUG 2016-10-15 18:24:46,396: 	 Calculating hash of /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=ztu/CN=732466/CN=Zhoudunming Tu_cmsweb.cern.ch for credential name
+DEBUG 2016-10-15 18:24:46,801: 	 Executing : 
+ command : myproxy-info -l aeeb635c02ab2354cd0696fedaf0d9122a1d7b0d -s myproxy.cern.ch
+ output : username: aeeb635c02ab2354cd0696fedaf0d9122a1d7b0d
+owner: /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=ztu/CN=732466/CN=Zhoudunming Tu
+  renewal policy: /DC=ch/DC=cern/OU=computers/CN=vocms(045|052|021|031|0118|0118a|0119|0108).cern.ch
+  trusted retrieval policy: /DC=ch/DC=cern/OU=computers/CN=vocms(045|052|021|031|0118|0118a|0119|0108).cern.ch
+  timeleft: 644:11:09  (26.8 days)
+
+ error: 
+ retcode : 0
+DEBUG 2016-10-15 18:24:46,802: 	 Myproxy is valid: 2319069
+DEBUG 2016-10-15 18:24:46,802: 	 Command use: status
+DEBUG 2016-10-15 18:24:46,802: 	 Options use: ['MBtriggerEfficiency_v8/crab_MBtriggerEfficiency_v8/']
+DEBUG 2016-10-15 18:24:47,166: 	 CRABClient version: 3.3.1608
+DEBUG 2016-10-15 18:24:47,166: 	 Instance is prod
+DEBUG 2016-10-15 18:24:47,166: 	 Server base url is cmsweb.cern.ch
+DEBUG 2016-10-15 18:24:47,166: 	 Command url /crabserver/prod/workflow
+DEBUG 2016-10-15 18:24:47,166: 	 Looking up detailed status of task 161015_162359:ztu_crab_MBtriggerEfficiency_v8
+DEBUG 2016-10-15 18:24:48,725: 	 {'status': 'QUEUED', 'username': 'ztu', 'totalJobdefs': 0, 'jobsPerStatus': {}, 'taskWarningMsg': [], 'schedd': 'crab3@submit-6.t2.ucsd.edu', 'statusFailureMsg': '', 'taskFailureMsg': '', 'failedJobdefs': 0, 'command': 'SUBMIT', 'submissionTime': 1476548639, 'jobdefErrors': [], 'collector': 'cmsgwms-collector-global.cern.ch,cmssrv221.fnal.gov', 'jobList': []}
+INFO 2016-10-15 18:24:48,726: 	 CRAB project directory:		/afs/cern.ch/work/z/ztu/MBtriggerEfficiency/CMSSW_8_0_20/src/MBtriggerEfficiency_pPb2016/MBtriggerEfficiency/test/MBtriggerEfficiency_v8/crab_MBtriggerEfficiency_v8
+INFO 2016-10-15 18:24:48,726: 	 Task name:			161015_162359:ztu_crab_MBtriggerEfficiency_v8
+INFO 2016-10-15 18:24:48,726: 	 Grid scheduler:			crab3@submit-6.t2.ucsd.edu
+INFO 2016-10-15 18:24:48,726: 	 Task status:			QUEUED on command SUBMIT
+INFO 2016-10-15 18:24:48,726: 	 Dashboard monitoring URL:	http://dashb-cms-job.cern.ch/dashboard/templates/task-analysis/#user=ztu&table=Mains&pattern=161015_162359%3Aztu_crab_MBtriggerEfficiency_v8
+INFO 2016-10-15 18:24:48,726: 	 
+No jobs created yet!
+INFO 2016-10-15 18:24:48,728: 	 Log file is /afs/cern.ch/work/z/ztu/MBtriggerEfficiency/CMSSW_8_0_20/src/MBtriggerEfficiency_pPb2016/MBtriggerEfficiency/test/MBtriggerEfficiency_v8/crab_MBtriggerEfficiency_v8/crab.log
+DEBUG 2016-10-15 18:25:12,871: 	 Executing command: 'status'
+DEBUG 2016-10-15 18:25:12,872: 	 Found CRAB cache file /afs/cern.ch/user/z/ztu/.crab3
+DEBUG 2016-10-15 18:25:12,879: 	 Checking credentials
+DEBUG 2016-10-15 18:25:12,879: 	 Found proxy file /tmp/x509up_u30140
+DEBUG 2016-10-15 18:25:12,879: 	 Getting proxy life time left
+DEBUG 2016-10-15 18:25:13,383: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u30140 -timeleft
+ output : 78812
+
+ error: 
+ retcode : 0
+DEBUG 2016-10-15 18:25:13,888: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u30140 -actimeleft
+ output : 78812
+
+ error: 
+ retcode : 0
+DEBUG 2016-10-15 18:25:13,888: 	 Proxy valid for 21:53:32 hours
+DEBUG 2016-10-15 18:25:14,003: 	 Executing : 
+ command : openssl x509 -in ~/.globus/usercert.pem -subject -noout
+ output : subject= /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=ztu/CN=732466/CN=Zhoudunming Tu
+
+ error: 
+ retcode : 0
+DEBUG 2016-10-15 18:25:14,003: 	 Checking credentials
+DEBUG 2016-10-15 18:25:14,003: 	 Found proxy file /tmp/x509up_u30140
+DEBUG 2016-10-15 18:25:14,003: 	 Getting proxy life time left
+DEBUG 2016-10-15 18:25:14,407: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u30140 -timeleft
+ output : 78811
+
+ error: 
+ retcode : 0
+DEBUG 2016-10-15 18:25:14,811: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u30140 -actimeleft
+ output : 78811
+
+ error: 
+ retcode : 0
+DEBUG 2016-10-15 18:25:14,811: 	 Proxy valid for 21:53:31 hours
+DEBUG 2016-10-15 18:25:15,208: 	 Registering user credentials for server /DC=ch/DC=cern/OU=computers/CN=vocms(045|052|021|031|0118|0118a|0119|0108).cern.ch
+DEBUG 2016-10-15 18:25:15,316: 	 Executing : 
+ command : openssl x509 -in ~/.globus/usercert.pem -subject -noout
+ output : subject= /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=ztu/CN=732466/CN=Zhoudunming Tu
+
+ error: 
+ retcode : 0
+DEBUG 2016-10-15 18:25:15,316: 	 Getting myproxy life time left for myproxy.cern.ch
+DEBUG 2016-10-15 18:25:15,316: 	 Calculating hash of /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=ztu/CN=732466/CN=Zhoudunming Tu_cmsweb.cern.ch for credential name
+DEBUG 2016-10-15 18:25:15,420: 	 Executing : 
+ command : myproxy-info -l aeeb635c02ab2354cd0696fedaf0d9122a1d7b0d -s myproxy.cern.ch
+ output : username: aeeb635c02ab2354cd0696fedaf0d9122a1d7b0d
+owner: /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=ztu/CN=732466/CN=Zhoudunming Tu
+  renewal policy: /DC=ch/DC=cern/OU=computers/CN=vocms(045|052|021|031|0118|0118a|0119|0108).cern.ch
+  trusted retrieval policy: /DC=ch/DC=cern/OU=computers/CN=vocms(045|052|021|031|0118|0118a|0119|0108).cern.ch
+  timeleft: 644:10:40  (26.8 days)
+
+ error: 
+ retcode : 0
+DEBUG 2016-10-15 18:25:15,421: 	 Myproxy is valid: 2319040
+DEBUG 2016-10-15 18:25:15,421: 	 Command use: status
+DEBUG 2016-10-15 18:25:15,421: 	 Options use: ['MBtriggerEfficiency_v8/crab_MBtriggerEfficiency_v8/']
+DEBUG 2016-10-15 18:25:15,752: 	 CRABClient version: 3.3.1608
+DEBUG 2016-10-15 18:25:15,752: 	 Instance is prod
+DEBUG 2016-10-15 18:25:15,752: 	 Server base url is cmsweb.cern.ch
+DEBUG 2016-10-15 18:25:15,752: 	 Command url /crabserver/prod/workflow
+DEBUG 2016-10-15 18:25:15,752: 	 Looking up detailed status of task 161015_162359:ztu_crab_MBtriggerEfficiency_v8
+DEBUG 2016-10-15 18:25:36,527: 	 {'status': 'QUEUED', 'username': 'ztu', 'totalJobdefs': 0, 'jobsPerStatus': {}, 'taskWarningMsg': [], 'schedd': 'crab3@submit-6.t2.ucsd.edu', 'statusFailureMsg': '', 'taskFailureMsg': '', 'failedJobdefs': 0, 'command': 'SUBMIT', 'submissionTime': 1476548639, 'jobdefErrors': [], 'collector': 'cmsgwms-collector-global.cern.ch,cmssrv221.fnal.gov', 'jobList': []}
+INFO 2016-10-15 18:25:36,528: 	 CRAB project directory:		/afs/cern.ch/work/z/ztu/MBtriggerEfficiency/CMSSW_8_0_20/src/MBtriggerEfficiency_pPb2016/MBtriggerEfficiency/test/MBtriggerEfficiency_v8/crab_MBtriggerEfficiency_v8
+INFO 2016-10-15 18:25:36,528: 	 Task name:			161015_162359:ztu_crab_MBtriggerEfficiency_v8
+INFO 2016-10-15 18:25:36,528: 	 Grid scheduler:			crab3@submit-6.t2.ucsd.edu
+INFO 2016-10-15 18:25:36,528: 	 Task status:			QUEUED on command SUBMIT
+INFO 2016-10-15 18:25:36,528: 	 Dashboard monitoring URL:	http://dashb-cms-job.cern.ch/dashboard/templates/task-analysis/#user=ztu&table=Mains&pattern=161015_162359%3Aztu_crab_MBtriggerEfficiency_v8
+INFO 2016-10-15 18:25:36,528: 	 
+No jobs created yet!
+INFO 2016-10-15 18:25:36,530: 	 Log file is /afs/cern.ch/work/z/ztu/MBtriggerEfficiency/CMSSW_8_0_20/src/MBtriggerEfficiency_pPb2016/MBtriggerEfficiency/test/MBtriggerEfficiency_v8/crab_MBtriggerEfficiency_v8/crab.log
+DEBUG 2016-10-15 18:26:01,369: 	 Executing command: 'status'
+DEBUG 2016-10-15 18:26:01,370: 	 Found CRAB cache file /afs/cern.ch/user/z/ztu/.crab3
+DEBUG 2016-10-15 18:26:01,376: 	 Checking credentials
+DEBUG 2016-10-15 18:26:01,377: 	 Found proxy file /tmp/x509up_u30140
+DEBUG 2016-10-15 18:26:01,377: 	 Getting proxy life time left
+DEBUG 2016-10-15 18:26:01,882: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u30140 -timeleft
+ output : 78764
+
+ error: 
+ retcode : 0
+DEBUG 2016-10-15 18:26:02,389: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u30140 -actimeleft
+ output : 78763
+
+ error: 
+ retcode : 0
+DEBUG 2016-10-15 18:26:02,389: 	 Proxy valid for 21:52:44 hours
+DEBUG 2016-10-15 18:26:02,502: 	 Executing : 
+ command : openssl x509 -in ~/.globus/usercert.pem -subject -noout
+ output : subject= /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=ztu/CN=732466/CN=Zhoudunming Tu
+
+ error: 
+ retcode : 0
+DEBUG 2016-10-15 18:26:02,502: 	 Checking credentials
+DEBUG 2016-10-15 18:26:02,502: 	 Found proxy file /tmp/x509up_u30140
+DEBUG 2016-10-15 18:26:02,502: 	 Getting proxy life time left
+DEBUG 2016-10-15 18:26:03,008: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u30140 -timeleft
+ output : 78763
+
+ error: 
+ retcode : 0
+DEBUG 2016-10-15 18:26:03,513: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u30140 -actimeleft
+ output : 78762
+
+ error: 
+ retcode : 0
+DEBUG 2016-10-15 18:26:03,513: 	 Proxy valid for 21:52:43 hours
+DEBUG 2016-10-15 18:26:04,934: 	 Registering user credentials for server /DC=ch/DC=cern/OU=computers/CN=vocms(045|052|021|031|0118|0118a|0119|0108).cern.ch
+DEBUG 2016-10-15 18:26:05,042: 	 Executing : 
+ command : openssl x509 -in ~/.globus/usercert.pem -subject -noout
+ output : subject= /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=ztu/CN=732466/CN=Zhoudunming Tu
+
+ error: 
+ retcode : 0
+DEBUG 2016-10-15 18:26:05,043: 	 Getting myproxy life time left for myproxy.cern.ch
+DEBUG 2016-10-15 18:26:05,043: 	 Calculating hash of /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=ztu/CN=732466/CN=Zhoudunming Tu_cmsweb.cern.ch for credential name
+DEBUG 2016-10-15 18:26:05,246: 	 Executing : 
+ command : myproxy-info -l aeeb635c02ab2354cd0696fedaf0d9122a1d7b0d -s myproxy.cern.ch
+ output : username: aeeb635c02ab2354cd0696fedaf0d9122a1d7b0d
+owner: /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=ztu/CN=732466/CN=Zhoudunming Tu
+  renewal policy: /DC=ch/DC=cern/OU=computers/CN=vocms(045|052|021|031|0118|0118a|0119|0108).cern.ch
+  trusted retrieval policy: /DC=ch/DC=cern/OU=computers/CN=vocms(045|052|021|031|0118|0118a|0119|0108).cern.ch
+  timeleft: 644:09:50  (26.8 days)
+
+ error: 
+ retcode : 0
+DEBUG 2016-10-15 18:26:05,247: 	 Myproxy is valid: 2318990
+DEBUG 2016-10-15 18:26:05,247: 	 Command use: status
+DEBUG 2016-10-15 18:26:05,247: 	 Options use: ['MBtriggerEfficiency_v8/crab_MBtriggerEfficiency_v8/']
+DEBUG 2016-10-15 18:26:05,586: 	 CRABClient version: 3.3.1608
+DEBUG 2016-10-15 18:26:05,586: 	 Instance is prod
+DEBUG 2016-10-15 18:26:05,586: 	 Server base url is cmsweb.cern.ch
+DEBUG 2016-10-15 18:26:05,586: 	 Command url /crabserver/prod/workflow
+DEBUG 2016-10-15 18:26:05,586: 	 Looking up detailed status of task 161015_162359:ztu_crab_MBtriggerEfficiency_v8
+DEBUG 2016-10-15 18:26:16,345: 	 {'status': 'SUBMITTED', 'username': 'ztu', 'totalJobdefs': 0, 'jobsPerStatus': {}, 'taskWarningMsg': ['Task has not yet bootstrapped. Retry in a minute if you just submitted the task.'], 'schedd': 'crab3@submit-6.t2.ucsd.edu', 'statusFailureMsg': '', 'taskFailureMsg': '', 'failedJobdefs': 0, 'command': 'SUBMIT', 'submissionTime': 1476548639, 'jobdefErrors': [], 'collector': 'cmsgwms-collector-global.cern.ch,cmssrv221.fnal.gov', 'jobList': []}
+INFO 2016-10-15 18:26:16,345: 	 CRAB project directory:		/afs/cern.ch/work/z/ztu/MBtriggerEfficiency/CMSSW_8_0_20/src/MBtriggerEfficiency_pPb2016/MBtriggerEfficiency/test/MBtriggerEfficiency_v8/crab_MBtriggerEfficiency_v8
+INFO 2016-10-15 18:26:16,345: 	 Task name:			161015_162359:ztu_crab_MBtriggerEfficiency_v8
+INFO 2016-10-15 18:26:16,345: 	 Grid scheduler:			crab3@submit-6.t2.ucsd.edu
+INFO 2016-10-15 18:26:16,345: 	 Task status:			SUBMITTED
+INFO 2016-10-15 18:26:16,345: 	 Dashboard monitoring URL:	http://dashb-cms-job.cern.ch/dashboard/templates/task-analysis/#user=ztu&table=Mains&pattern=161015_162359%3Aztu_crab_MBtriggerEfficiency_v8
+WARNING 2016-10-15 18:26:16,345: 	 Warning:			Task has not yet bootstrapped. Retry in a minute if you just submitted the task.
+INFO 2016-10-15 18:26:16,345: 	 
+No jobs created yet!
+INFO 2016-10-15 18:26:16,347: 	 Log file is /afs/cern.ch/work/z/ztu/MBtriggerEfficiency/CMSSW_8_0_20/src/MBtriggerEfficiency_pPb2016/MBtriggerEfficiency/test/MBtriggerEfficiency_v8/crab_MBtriggerEfficiency_v8/crab.log

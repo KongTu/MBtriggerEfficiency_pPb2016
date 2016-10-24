@@ -1,0 +1,147 @@
+DEBUG 2016-10-15 17:49:40,717: 	 Executing command: 'submit'
+DEBUG 2016-10-15 17:49:40,717: 	 Found CRAB cache file /afs/cern.ch/user/z/ztu/.crab3
+DEBUG 2016-10-15 17:49:40,723: 	 Checking credentials
+DEBUG 2016-10-15 17:49:40,723: 	 Found proxy file /tmp/x509up_u30140
+DEBUG 2016-10-15 17:49:40,723: 	 Getting proxy life time left
+DEBUG 2016-10-15 17:49:41,227: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u30140 -timeleft
+ output : 80944
+
+ error: 
+ retcode : 0
+DEBUG 2016-10-15 17:49:41,631: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u30140 -actimeleft
+ output : 80944
+
+ error: 
+ retcode : 0
+DEBUG 2016-10-15 17:49:41,632: 	 Proxy valid for 22:29:04 hours
+INFO 2016-10-15 17:49:41,632: 	 Will use CRAB configuration file crab_ana.py
+DEBUG 2016-10-15 17:49:41,632: 	 Loading CRAB configuration file.
+DEBUG 2016-10-15 17:49:43,525: 	 Will use CRAB Analysis plugin (i.e. will run an analysis job type).
+ERROR 2016-10-15 17:49:43,526: 	 Working area '/afs/cern.ch/work/z/ztu/MBtriggerEfficiency/CMSSW_8_0_20/src/MBtriggerEfficiency_pPb2016/MBtriggerEfficiency/test/MBtriggerEfficiency_v8/crab_MBtriggerEfficiency_v8' already exists 
+Please change the requestName in the config file
+ERROR 2016-10-15 17:49:43,526: 	 Caught exception
+Traceback (most recent call last):
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1608/bin/crab", line 160, in <module>
+    client()
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1608/bin/crab", line 146, in __call__
+    self.cmd = sub_cmd(self.logger, args[1:])
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1608/lib/python2.7/site-packages/CRABClient/Commands/submit.py", line 34, in __init__
+    SubCommand.__init__(self, logger, cmdargs, disable_interspersed_args=True)
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1608/lib/python2.7/site-packages/CRABClient/Commands/SubCommand.py", line 302, in __init__
+    getattr(self.configuration.General, 'requestName', None))
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1608/lib/python2.7/site-packages/CRABClient/ClientUtilities.py", line 394, in createWorkArea
+    raise ConfigException("Working area '%s' already exists \nPlease change the requestName in the config file" % fullpath)
+ConfigException: Working area '/afs/cern.ch/work/z/ztu/MBtriggerEfficiency/CMSSW_8_0_20/src/MBtriggerEfficiency_pPb2016/MBtriggerEfficiency/test/MBtriggerEfficiency_v8/crab_MBtriggerEfficiency_v8' already exists 
+Please change the requestName in the config file
+DEBUG 2016-10-15 17:56:37,639: 	 Executing command: 'submit'
+DEBUG 2016-10-15 17:56:37,640: 	 Found CRAB cache file /afs/cern.ch/user/z/ztu/.crab3
+DEBUG 2016-10-15 17:56:37,649: 	 Checking credentials
+DEBUG 2016-10-15 17:56:37,650: 	 Found proxy file /tmp/x509up_u30140
+DEBUG 2016-10-15 17:56:37,650: 	 Getting proxy life time left
+DEBUG 2016-10-15 17:56:38,157: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u30140 -timeleft
+ output : 80527
+
+ error: 
+ retcode : 0
+DEBUG 2016-10-15 17:56:38,566: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u30140 -actimeleft
+ output : 80527
+
+ error: 
+ retcode : 0
+DEBUG 2016-10-15 17:56:38,566: 	 Proxy valid for 22:22:07 hours
+INFO 2016-10-15 17:56:38,566: 	 Will use CRAB configuration file crab_ana.py
+DEBUG 2016-10-15 17:56:38,566: 	 Loading CRAB configuration file.
+ERROR 2016-10-15 17:56:40,508: 	 Invalid CRAB configuration: Parameter Site.whiteList is not known. Maybe you mean Site.whitelist?
+The documentation about the CRAB configuration file can be found in https://twiki.cern.ch/twiki/bin/view/CMSPublic/CRAB3ConfigurationFile
+ERROR 2016-10-15 17:56:40,508: 	 Caught exception
+Traceback (most recent call last):
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1608/bin/crab", line 160, in <module>
+    client()
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1608/bin/crab", line 146, in __call__
+    self.cmd = sub_cmd(self.logger, args[1:])
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1608/lib/python2.7/site-packages/CRABClient/Commands/submit.py", line 34, in __init__
+    SubCommand.__init__(self, logger, cmdargs, disable_interspersed_args=True)
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1608/lib/python2.7/site-packages/CRABClient/Commands/SubCommand.py", line 298, in __init__
+    self.loadConfig(self.options.config, self.args)
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1608/lib/python2.7/site-packages/CRABClient/Commands/SubCommand.py", line 89, in loadConfig
+    raise ConfigurationException(configmsg)
+ConfigurationException: Invalid CRAB configuration: Parameter Site.whiteList is not known. Maybe you mean Site.whitelist?
+The documentation about the CRAB configuration file can be found in https://twiki.cern.ch/twiki/bin/view/CMSPublic/CRAB3ConfigurationFile
+DEBUG 2016-10-15 18:18:06,259: 	 Executing command: 'submit'
+DEBUG 2016-10-15 18:18:06,259: 	 Found CRAB cache file /afs/cern.ch/user/z/ztu/.crab3
+DEBUG 2016-10-15 18:18:06,265: 	 Checking credentials
+DEBUG 2016-10-15 18:18:06,266: 	 Found proxy file /tmp/x509up_u30140
+DEBUG 2016-10-15 18:18:06,266: 	 Getting proxy life time left
+DEBUG 2016-10-15 18:18:06,771: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u30140 -timeleft
+ output : 79239
+
+ error: 
+ retcode : 0
+DEBUG 2016-10-15 18:18:07,278: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u30140 -actimeleft
+ output : 79238
+
+ error: 
+ retcode : 0
+DEBUG 2016-10-15 18:18:07,278: 	 Proxy valid for 22:00:39 hours
+INFO 2016-10-15 18:18:07,279: 	 Will use CRAB configuration file crab_ana.py
+DEBUG 2016-10-15 18:18:07,279: 	 Loading CRAB configuration file.
+DEBUG 2016-10-15 18:18:09,250: 	 Will use CRAB Analysis plugin (i.e. will run an analysis job type).
+ERROR 2016-10-15 18:18:09,251: 	 Working area '/afs/cern.ch/work/z/ztu/MBtriggerEfficiency/CMSSW_8_0_20/src/MBtriggerEfficiency_pPb2016/MBtriggerEfficiency/test/MBtriggerEfficiency_v8/crab_MBtriggerEfficiency_v8' already exists 
+Please change the requestName in the config file
+ERROR 2016-10-15 18:18:09,251: 	 Caught exception
+Traceback (most recent call last):
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1608/bin/crab", line 160, in <module>
+    client()
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1608/bin/crab", line 146, in __call__
+    self.cmd = sub_cmd(self.logger, args[1:])
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1608/lib/python2.7/site-packages/CRABClient/Commands/submit.py", line 34, in __init__
+    SubCommand.__init__(self, logger, cmdargs, disable_interspersed_args=True)
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1608/lib/python2.7/site-packages/CRABClient/Commands/SubCommand.py", line 302, in __init__
+    getattr(self.configuration.General, 'requestName', None))
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1608/lib/python2.7/site-packages/CRABClient/ClientUtilities.py", line 394, in createWorkArea
+    raise ConfigException("Working area '%s' already exists \nPlease change the requestName in the config file" % fullpath)
+ConfigException: Working area '/afs/cern.ch/work/z/ztu/MBtriggerEfficiency/CMSSW_8_0_20/src/MBtriggerEfficiency_pPb2016/MBtriggerEfficiency/test/MBtriggerEfficiency_v8/crab_MBtriggerEfficiency_v8' already exists 
+Please change the requestName in the config file
+DEBUG 2016-10-17 18:45:38,312: 	 Executing command: 'submit'
+DEBUG 2016-10-17 18:45:38,312: 	 Found CRAB cache file /afs/cern.ch/user/z/ztu/.crab3
+DEBUG 2016-10-17 18:45:38,321: 	 Checking credentials
+DEBUG 2016-10-17 18:45:38,321: 	 Found proxy file /tmp/x509up_u30140
+DEBUG 2016-10-17 18:45:38,321: 	 Getting proxy life time left
+DEBUG 2016-10-17 18:45:38,927: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u30140 -timeleft
+ output : 80704
+
+ error: 
+ retcode : 0
+DEBUG 2016-10-17 18:45:39,435: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u30140 -actimeleft
+ output : 80703
+
+ error: 
+ retcode : 0
+DEBUG 2016-10-17 18:45:39,435: 	 Proxy valid for 22:25:04 hours
+INFO 2016-10-17 18:45:39,435: 	 Will use CRAB configuration file crab_ana.py
+DEBUG 2016-10-17 18:45:39,436: 	 Loading CRAB configuration file.
+DEBUG 2016-10-17 18:45:41,750: 	 Will use CRAB Analysis plugin (i.e. will run an analysis job type).
+ERROR 2016-10-17 18:45:41,750: 	 Working area '/afs/cern.ch/work/z/ztu/MBtriggerEfficiency/CMSSW_8_0_20/src/MBtriggerEfficiency_pPb2016/MBtriggerEfficiency/test/MBtriggerEfficiency_v14/crab_MBtriggerEfficiency_v14' already exists 
+Please change the requestName in the config file
+ERROR 2016-10-17 18:45:41,751: 	 Caught exception
+Traceback (most recent call last):
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1608/bin/crab", line 160, in <module>
+    client()
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1608/bin/crab", line 146, in __call__
+    self.cmd = sub_cmd(self.logger, args[1:])
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1608/lib/python2.7/site-packages/CRABClient/Commands/submit.py", line 34, in __init__
+    SubCommand.__init__(self, logger, cmdargs, disable_interspersed_args=True)
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1608/lib/python2.7/site-packages/CRABClient/Commands/SubCommand.py", line 302, in __init__
+    getattr(self.configuration.General, 'requestName', None))
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1608/lib/python2.7/site-packages/CRABClient/ClientUtilities.py", line 394, in createWorkArea
+    raise ConfigException("Working area '%s' already exists \nPlease change the requestName in the config file" % fullpath)
+ConfigException: Working area '/afs/cern.ch/work/z/ztu/MBtriggerEfficiency/CMSSW_8_0_20/src/MBtriggerEfficiency_pPb2016/MBtriggerEfficiency/test/MBtriggerEfficiency_v14/crab_MBtriggerEfficiency_v14' already exists 
+Please change the requestName in the config file
