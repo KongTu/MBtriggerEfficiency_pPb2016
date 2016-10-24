@@ -447,8 +447,7 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
   bool fireMinus[40];
   bool fireShortThr1=false;
   bool fireLongThr1=false;
-  bool fireShortThr2=false;
-  bool fireLongThr2=false;
+
 
   if (!useReco){
 
@@ -574,9 +573,6 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
           chanAboveThrFileLong->Fill(ieta,iphi,1);
           fireLongThr1=true;
         }
-        if (ampl>17){
-          fireLongThr2=true;
-        }
       }
       if (idepth==2){
         allChanSignalShort->Fill(ampl,1);
@@ -592,12 +588,8 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
         }
         if (ampl>17){
           //adc>thresholdsShort[etaind][phiind])
-            
           chanAboveThrFileShort->Fill(ieta,iphi,1);
           fireShortThr1=true;                        
-        }
-        if (ampl>17){
-          fireShortThr2=true;
         }
       }
     }
@@ -613,12 +605,7 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
     if (fireLongThr1||fireShortThr1){
       accPerEvtThrFile->Fill(1,1);
     }
-      // if (fireLongThr2||fireShortThr2) 
-      //  {
-      
-      //       accPerEvtThrFile->Fill(1,1);
-      //  }
-      
+
     nChanLong->Fill(nChLong,1);
     nChanShort->Fill(nChShort,1);
       //std::cout<<nChLong<<std::endl;
