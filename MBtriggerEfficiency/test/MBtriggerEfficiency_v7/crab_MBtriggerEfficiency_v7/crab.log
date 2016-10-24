@@ -1,0 +1,144 @@
+ ################################################################### 
+ # WARNING: this module is deprecated.                             # 
+ # Please use CondCore.CondDB.CondDB_cfi.py                        # 
+ ################################################################### 
+L1TRawToDigi Sequence configured for Stage-2 (2016) trigger. 
+# Conditions read from  CMS_CONDITIONS  via FrontierProd 
+DEBUG 2016-10-15 16:55:01,206: 	 Executing command: 'submit'
+DEBUG 2016-10-15 16:55:01,206: 	 Found CRAB cache file /afs/cern.ch/user/z/ztu/.crab3
+DEBUG 2016-10-15 16:55:01,225: 	 Checking credentials
+DEBUG 2016-10-15 16:55:01,226: 	 Found proxy file /tmp/x509up_u30140
+DEBUG 2016-10-15 16:55:01,226: 	 Getting proxy life time left
+DEBUG 2016-10-15 16:55:01,937: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u30140 -timeleft
+ output : 84224
+
+ error: 
+ retcode : 0
+DEBUG 2016-10-15 16:55:02,546: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u30140 -actimeleft
+ output : 84223
+
+ error: 
+ retcode : 0
+DEBUG 2016-10-15 16:55:02,546: 	 Proxy valid for 23:23:44 hours
+INFO 2016-10-15 16:55:02,546: 	 Will use CRAB configuration file crab_ana.py
+DEBUG 2016-10-15 16:55:02,547: 	 Loading CRAB configuration file.
+DEBUG 2016-10-15 16:55:05,647: 	 Will use CRAB Analysis plugin (i.e. will run an analysis job type).
+DEBUG 2016-10-15 16:55:05,790: 	 Executing : 
+ command : openssl x509 -in ~/.globus/usercert.pem -subject -noout
+ output : subject= /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=ztu/CN=732466/CN=Zhoudunming Tu
+
+ error: 
+ retcode : 0
+DEBUG 2016-10-15 16:55:05,790: 	 Checking credentials
+DEBUG 2016-10-15 16:55:05,790: 	 Found proxy file /tmp/x509up_u30140
+DEBUG 2016-10-15 16:55:05,790: 	 Getting proxy life time left
+DEBUG 2016-10-15 16:55:06,508: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u30140 -timeleft
+ output : 84219
+
+ error: 
+ retcode : 0
+DEBUG 2016-10-15 16:55:07,118: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u30140 -actimeleft
+ output : 84218
+
+ error: 
+ retcode : 0
+DEBUG 2016-10-15 16:55:07,118: 	 Proxy valid for 23:23:39 hours
+DEBUG 2016-10-15 16:55:07,524: 	 Executing : 
+ command : env X509_USER_PROXY=/tmp/x509up_u30140 voms-proxy-info -fqan
+ output : /cms/Role=NULL/Capability=NULL
+/cms/uscms/Role=NULL/Capability=NULL
+
+ error: 
+ retcode : 0
+DEBUG 2016-10-15 16:55:07,843: 	 Registering user credentials for server /DC=ch/DC=cern/OU=computers/CN=vocms(045|052|021|031|0118|0118a|0119|0108).cern.ch
+DEBUG 2016-10-15 16:55:07,955: 	 Executing : 
+ command : openssl x509 -in ~/.globus/usercert.pem -subject -noout
+ output : subject= /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=ztu/CN=732466/CN=Zhoudunming Tu
+
+ error: 
+ retcode : 0
+DEBUG 2016-10-15 16:55:07,955: 	 Getting myproxy life time left for myproxy.cern.ch
+DEBUG 2016-10-15 16:55:07,955: 	 Calculating hash of /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=ztu/CN=732466/CN=Zhoudunming Tu_cmsweb.cern.ch for credential name
+DEBUG 2016-10-15 16:55:08,363: 	 Executing : 
+ command : myproxy-info -l aeeb635c02ab2354cd0696fedaf0d9122a1d7b0d -s myproxy.cern.ch
+ output : username: aeeb635c02ab2354cd0696fedaf0d9122a1d7b0d
+owner: /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=ztu/CN=732466/CN=Zhoudunming Tu
+  renewal policy: /DC=ch/DC=cern/OU=computers/CN=vocms(045|052|021|031|0118|0118a|0119|0108).cern.ch
+  trusted retrieval policy: /DC=ch/DC=cern/OU=computers/CN=vocms(045|052|021|031|0118|0118a|0119|0108).cern.ch
+  timeleft: 645:40:47  (26.9 days)
+
+ error: 
+ retcode : 0
+DEBUG 2016-10-15 16:55:08,365: 	 Myproxy is valid: 2324447
+DEBUG 2016-10-15 16:55:08,365: 	 Command use: submit
+DEBUG 2016-10-15 16:55:08,365: 	 Options use: ['-c', 'crab_ana.py']
+DEBUG 2016-10-15 16:55:08,707: 	 CRABClient version: 3.3.1608
+DEBUG 2016-10-15 16:55:08,707: 	 Instance is prod
+DEBUG 2016-10-15 16:55:08,707: 	 Server base url is cmsweb.cern.ch
+DEBUG 2016-10-15 16:55:08,707: 	 Command url /crabserver/prod/workflow
+DEBUG 2016-10-15 16:55:08,707: 	 Started submission
+DEBUG 2016-10-15 16:55:08,707: 	 Working on /afs/cern.ch/work/z/ztu/MBtriggerEfficiency/CMSSW_8_0_20/src/MBtriggerEfficiency_pPb2016/MBtriggerEfficiency/test/MBtriggerEfficiency_v7/crab_MBtriggerEfficiency_v7
+DEBUG 2016-10-15 16:55:09,088: 	 Loading required information from the environment
+DEBUG 2016-10-15 16:55:09,088: 	 Found CMSSW_8_0_20 for slc6_amd64_gcc530 with base /afs/cern.ch/work/z/ztu/MBtriggerEfficiency/CMSSW_8_0_20
+DEBUG 2016-10-15 16:55:09,102: 	 UNIQUE NAME: tarUUID 1cfd94b4-9b45-4076-8f70-04b53cb66923 
+DEBUG 2016-10-15 16:55:09,103: 	 self.config: from WMCore.Configuration import Configuration
+config = Configuration()
+config.section_('General')
+config.General.transferLogs = True
+config.General.transferOutputs = True
+config.General.workArea = 'MBtriggerEfficiency_v7'
+config.General.requestName = 'MBtriggerEfficiency_v7'
+config.section_('JobType')
+config.JobType.psetName = 'mbtriggerefficiency_cfg.py'
+config.JobType.pluginName = 'Analysis'
+config.JobType.allowUndistributedCMSSW = True
+config.section_('Data')
+config.Data.inputDataset = '/L1TechBPTXPlusOnly/Run2015A-v1/RAW'
+config.Data.publication = False
+config.Data.unitsPerJob = 5
+config.Data.ignoreLocality = False
+config.Data.splitting = 'LumiBased'
+config.Data.inputDBS = 'global'
+config.Data.lumiMask = 'json_247324.txt'
+config.Data.outLFNDirBase = '/store/user/ztu/'
+config.section_('Site')
+config.Site.storageSite = 'T2_US_MIT'
+config.section_('User')
+config.section_('Debug')
+
+DEBUG 2016-10-15 16:55:09,103: 	 self.config.JobType.psetName: mbtriggerefficiency_cfg.py
+INFO 2016-10-15 16:55:09,103: 	 Importing CMSSW configuration mbtriggerefficiency_cfg.py
+INFO 2016-10-15 16:55:12,628: 	 Finished importing CMSSW configuration mbtriggerefficiency_cfg.py
+DEBUG 2016-10-15 16:55:12,628: 	 Writing CMSSW configuration to /afs/cern.ch/work/z/ztu/MBtriggerEfficiency/CMSSW_8_0_20/src/MBtriggerEfficiency_pPb2016/MBtriggerEfficiency/test/MBtriggerEfficiency_v7/crab_MBtriggerEfficiency_v7/inputs/PSet.py
+DEBUG 2016-10-15 16:55:12,849: 	 The following EDM output files will be collected: []
+DEBUG 2016-10-15 16:55:12,849: 	 The following TFile output files will be collected: ['test.root']
+DEBUG 2016-10-15 16:55:12,849: 	 The following user output files will be collected: []
+DEBUG 2016-10-15 16:55:12,849: 	 Loading required information from the environment
+DEBUG 2016-10-15 16:55:12,849: 	 Found CMSSW_8_0_20 for slc6_amd64_gcc530 with base /afs/cern.ch/work/z/ztu/MBtriggerEfficiency/CMSSW_8_0_20
+DEBUG 2016-10-15 16:55:12,849: 	 Making tarball in /afs/cern.ch/work/z/ztu/MBtriggerEfficiency/CMSSW_8_0_20/src/MBtriggerEfficiency_pPb2016/MBtriggerEfficiency/test/MBtriggerEfficiency_v7/crab_MBtriggerEfficiency_v7/inputs/1cfd94b4-9b45-4076-8f70-04b53cb66923default.tgz
+DEBUG 2016-10-15 16:55:13,135: 	 Checking directory /afs/cern.ch/work/z/ztu/MBtriggerEfficiency/CMSSW_8_0_20/lib
+DEBUG 2016-10-15 16:55:13,135: 	 Adding directory /afs/cern.ch/work/z/ztu/MBtriggerEfficiency/CMSSW_8_0_20/lib to tarball
+DEBUG 2016-10-15 16:55:13,218: 	 Checking directory /afs/cern.ch/work/z/ztu/MBtriggerEfficiency/CMSSW_8_0_20/biglib
+DEBUG 2016-10-15 16:55:13,218: 	 Adding directory /afs/cern.ch/work/z/ztu/MBtriggerEfficiency/CMSSW_8_0_20/biglib to tarball
+DEBUG 2016-10-15 16:55:13,221: 	 Checking directory /afs/cern.ch/work/z/ztu/MBtriggerEfficiency/CMSSW_8_0_20/module
+DEBUG 2016-10-15 16:55:13,789: 	 Uploading archive /afs/cern.ch/work/z/ztu/MBtriggerEfficiency/CMSSW_8_0_20/src/MBtriggerEfficiency_pPb2016/MBtriggerEfficiency/test/MBtriggerEfficiency_v7/crab_MBtriggerEfficiency_v7/inputs/1cfd94b4-9b45-4076-8f70-04b53cb66923default.tgz to the CRAB cache. Using URI https://cmsweb.cern.ch/crabcache
+DEBUG 2016-10-15 16:55:14,209: 	 Loading required information from the environment
+DEBUG 2016-10-15 16:55:14,209: 	 Found CMSSW_8_0_20 for slc6_amd64_gcc530 with base /afs/cern.ch/work/z/ztu/MBtriggerEfficiency/CMSSW_8_0_20
+DEBUG 2016-10-15 16:55:14,209: 	 Making tarball in /afs/cern.ch/work/z/ztu/MBtriggerEfficiency/CMSSW_8_0_20/src/MBtriggerEfficiency_pPb2016/MBtriggerEfficiency/test/MBtriggerEfficiency_v7/crab_MBtriggerEfficiency_v7/inputs/debugFiles.tgz
+DEBUG 2016-10-15 16:55:14,216: 	 Uploading archive /afs/cern.ch/work/z/ztu/MBtriggerEfficiency/CMSSW_8_0_20/src/MBtriggerEfficiency_pPb2016/MBtriggerEfficiency/test/MBtriggerEfficiency_v7/crab_MBtriggerEfficiency_v7/inputs/debugFiles.tgz to the CRAB cache. Using URI https://cmsweb.cern.ch/crabcache
+DEBUG 2016-10-15 16:55:14,536: 	 Result uploading input files: 8d0c8b31676a36af0c8d0629c46e68ec38c23b9833c67c915b8830cab74b3925.tar.gz 
+DEBUG 2016-10-15 16:55:14,536: 	 Attaching lumi mask json_247324.txt to the request
+DEBUG 2016-10-15 16:55:14,536: 	 Reading lumi-mask from json_247324.txt
+INFO 2016-10-15 16:55:14,536: 	 Sending the request to the server
+DEBUG 2016-10-15 16:55:14,536: 	 Submitting {'maxjobruntime': 1250, 'extrajdl': [], 'ignorelocality': 0, 'savelogsflag': 1, 'useparent': 0, 'asyncdest': 'T2_US_MIT', 'algoargs': 5, 'cachefilename': '8d0c8b31676a36af0c8d0629c46e68ec38c23b9833c67c915b8830cab74b3925.tar.gz', 'numcores': 1, 'addoutputfiles': [], 'generator': 'pythia', 'maxmemory': 2000, 'publishdbsurl': 'https://cmsweb.cern.ch/dbs/prod/phys03/DBSWriter', 'priority': 10, 'jobsw': 'CMSSW_8_0_20', 'edmoutfiles': [], 'userfiles': [], 'primarydataset': '', 'inputdata': '/L1TechBPTXPlusOnly/Run2015A-v1/RAW', 'lfn': '/store/user/ztu/', 'dryrun': 0, 'workflow': 'crab_MBtriggerEfficiency_v7', 'adduserfiles': [], 'jobarch': 'slc6_amd64_gcc530', 'lumis': ['88,350'], 'nonprodsw': 1, 'tfileoutfiles': ['test.root'], 'oneEventMode': 0, 'debugfilename': 'cba366fe785cc78726360570d107b5d6381f5dc539142247050e8e4e301f69b9.tar.gz', 'cacheurl': 'https://cmsweb.cern.ch/crabcache', 'saveoutput': 1, 'publication': 0, 'runs': [u'247324'], 'totalunits': 0, 'splitalgo': 'LumiBased', 'nonvaliddata': 0, 'dbsurl': 'https://cmsweb.cern.ch/dbs/prod/global/DBSReader', 'publishgroupname': 0, 'jobtype': 'Analysis', 'publishname2': ''} 
+DEBUG 2016-10-15 16:55:14,537: 	 Encoded submit request: maxjobruntime=1250&ignorelocality=0&savelogsflag=1&useparent=0&asyncdest=T2_US_MIT&algoargs=5&cachefilename=8d0c8b31676a36af0c8d0629c46e68ec38c23b9833c67c915b8830cab74b3925.tar.gz&numcores=1&generator=pythia&maxmemory=2000&publishdbsurl=https%3A%2F%2Fcmsweb.cern.ch%2Fdbs%2Fprod%2Fphys03%2FDBSWriter&priority=10&jobsw=CMSSW_8_0_20&primarydataset=&inputdata=%2FL1TechBPTXPlusOnly%2FRun2015A-v1%2FRAW&lfn=%2Fstore%2Fuser%2Fztu%2F&dryrun=0&workflow=crab_MBtriggerEfficiency_v7&jobarch=slc6_amd64_gcc530&nonprodsw=1&oneEventMode=0&debugfilename=cba366fe785cc78726360570d107b5d6381f5dc539142247050e8e4e301f69b9.tar.gz&cacheurl=https%3A%2F%2Fcmsweb.cern.ch%2Fcrabcache&saveoutput=1&publication=0&totalunits=0&splitalgo=LumiBased&nonvaliddata=0&dbsurl=https%3A%2F%2Fcmsweb.cern.ch%2Fdbs%2Fprod%2Fglobal%2FDBSReader&publishgroupname=0&jobtype=Analysis&publishname2=&tfileoutfiles=test.root&runs=247324&lumis=88%2C350
+DEBUG 2016-10-15 16:55:14,902: 	 Result: {'result': [{'RequestName': '161015_145514:ztu_crab_MBtriggerEfficiency_v7'}]}
+INFO 2016-10-15 16:55:14,907: 	 Success: Your task has been delivered to the CRAB3 server.
+INFO 2016-10-15 16:55:14,907: 	 Task name: 161015_145514:ztu_crab_MBtriggerEfficiency_v7
+INFO 2016-10-15 16:55:14,907: 	 Please use 'crab status' to check how the submission process proceeds.
+DEBUG 2016-10-15 16:55:14,907: 	 About to return
+INFO 2016-10-15 16:55:14,911: 	 Log file is /afs/cern.ch/work/z/ztu/MBtriggerEfficiency/CMSSW_8_0_20/src/MBtriggerEfficiency_pPb2016/MBtriggerEfficiency/test/MBtriggerEfficiency_v7/crab_MBtriggerEfficiency_v7/crab.log
