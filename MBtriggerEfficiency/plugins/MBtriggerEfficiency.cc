@@ -483,7 +483,7 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
     bestvxError = vtx.xError(); 
     bestvyError = vtx.yError();
 
-    Handle<edm::View<reco::Track>> tracks;
+    edm::Handle<edm::View<reco::Track>> tracks;
     iEvent.getByToken(trackSrc_, tracks);
 
       for(unsigned it = 0; it < tracks->size(); it++){
