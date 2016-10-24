@@ -29,6 +29,12 @@
 #include "DataFormats/JetReco/interface/CaloJetCollection.h"
 #include "DataFormats/GeometryVector/interface/GlobalPoint.h"
 
+#include "DataFormats/VertexReco/interface/Vertex.h"
+#include "DataFormats/VertexReco/interface/VertexFwd.h"
+
+#include "DataFormats/TrackReco/interface/Track.h"
+#include "DataFormats/TrackReco/interface/TrackFwd.h"
+
 #include "TFile.h"
 #include "TH1F.h"
 #include "TH2F.h"
