@@ -467,8 +467,10 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
     // }
 
 
-    int nMult_ass_good = 0;
+    int nMult_ass_good = 1;
     if( doMultDepend ){
+
+      nMult_ass_good = 0;
 
     edm::Handle<reco::VertexCollection> vertices;
     iEvent.getByToken(vertexSrc_,vertices);
@@ -603,7 +605,7 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
     }
 
     if (fireLongThr1||fireShortThr1){
-      accPerEvtThrFile->Fill(1,1);
+      accPerEvtThrFile->Fill(nMult_ass_good, 1);
     }
 
     nChanLong->Fill(nChLong,1);
