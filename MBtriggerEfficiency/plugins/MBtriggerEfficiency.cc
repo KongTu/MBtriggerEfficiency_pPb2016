@@ -638,6 +638,7 @@ MBtriggerEfficiency::endJob()
   accPerEvtMinus->Scale(pow(evtsTot,-1));
   accPerEvtAnd->Scale(pow(evtsTot,-1));
   accPerEvtThrFile->Scale(pow(evtsTot,-1));
+  accPerEvtThrFileDeno->Scale(pow(evtsTot,-1));
   amplVSsampl->Write();
   outputFile->mkdir("channels");
   outputFile->cd("channels");
