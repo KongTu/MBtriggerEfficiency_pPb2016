@@ -109,6 +109,7 @@ public:
   TH2F* chanAboveThrFileLong;
   TH2F* chanAboveThrFileShort;
   TH1F* accPerEvtThrFile;
+  TH1F* accPerEvtThrFileDeno;
   
   TH1F* idFired;
   TH1F* idFired_frac;
@@ -281,7 +282,8 @@ MBtriggerEfficiency::MBtriggerEfficiency(const edm::ParameterSet& iConfig):
   chanAboveThrFileLong=new TH2F("chanAboveThrFileLong","chanAboveThrFileLong",100,-50,50,73,0,73);
   chanAboveThrFileShort=new TH2F("chanAboveThrFileShort","chanAboveThrFileShort",100,-50,50,73,0,73);
   accPerEvtThrFile=new TH1F("accPerEvtThrFile","accPerEvtThrFile",1000,0,1000); 
-  
+  accPerEvtThrFileDeno=new TH1F("accPerEvtThrFileDeno","accPerEvtThrFileDeno",1000,0,1000);
+
   bxNum=new TH1F("bxNum","bxNum",5000,0,5000);
   
   idFired=new TH1F("idFired","idFired",13,0,13);
@@ -504,7 +506,9 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
         if(fabs(dxyvtx/dxyerror) > 3.0 ) continue;
         if( fabs(trk.eta()) < 2.4 && trk.pt() > 0.4 ){nMult_ass_good++;}// NtrkOffline        
 
-      } 
+      }
+
+      accPerEvtThrFileDeno->Fill(nMult_ass_good, 1); 
     }
 
     edm::Handle<HFDigiCollection> digi;
@@ -608,6 +612,7 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
       accPerEvtThrFile->Fill(nMult_ass_good, 1);
     }
 
+
     nChanLong->Fill(nChLong,1);
     nChanShort->Fill(nChShort,1);
       //std::cout<<nChLong<<std::endl;
@@ -667,6 +672,7 @@ MBtriggerEfficiency::endJob()
   chanAboveThrFileLong->Write();
   chanAboveThrFileShort->Write();
   accPerEvtThrFile->Write();
+  accPerEvtThrFileDeno->Write();
 
   idFired->TH1F::Sumw2();
   idFired->SetBinContent(1,evtsTot);
