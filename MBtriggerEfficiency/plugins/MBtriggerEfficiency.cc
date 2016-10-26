@@ -112,6 +112,9 @@ public:
   TH1F* accPerEvtThrFileAnd;
   TH1F* accPerEvtThrFileDeno;
   
+  TH2F* accPerEvtThrFile2D;
+  TH2F* accPerEvtThrFileAnd2D;
+
   TH1F* idFired;
   TH1F* idFired_frac;
   TH1F* nMBHF1_firedBX;
@@ -285,6 +288,9 @@ MBtriggerEfficiency::MBtriggerEfficiency(const edm::ParameterSet& iConfig):
   accPerEvtThrFile=new TH1F("accPerEvtThrFile","accPerEvtThrFile",1000,0,1000); 
   accPerEvtThrFileAnd=new TH1F("accPerEvtThrFileAnd","accPerEvtThrFileAnd",1000,0,1000); 
   accPerEvtThrFileDeno=new TH1F("accPerEvtThrFileDeno","accPerEvtThrFileDeno",1000,0,1000);
+  
+  accPerEvtThrFile2D=new TH2F("accPerEvtThrFile2D","accPerEvtThrFile2D",40,0,40,1000,0,1000); 
+  accPerEvtThrFileAnd2D=new TH2F("accPerEvtThrFileAnd2D","accPerEvtThrFileAnd2D",40,0,40,1000,0,1000); 
 
   bxNum=new TH1F("bxNum","bxNum",5000,0,5000);
   
@@ -613,12 +619,12 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
       }
     }
     for (int k=0; k<40; k++){
-      if (fire[k]) accPerEvt->Fill(k,1); 
+      if (fire[k]) accPerEvt->Fill(k,1); accPerEvtThrFile2D->Fill(k, nMult_ass_good,1);
       if (fireFront[k]) accPerEvt2sliceFront->Fill(k,1);
       if (fireBack[k]) accPerEvt2sliceBack->Fill(k,1);
       if (firePlus[k]) accPerEvtPlus->Fill(k,1);
       if (fireMinus[k]) accPerEvtMinus->Fill(k,1);
-      if (firePlus[k] && fireMinus[k]) accPerEvtAnd->Fill(k,1);
+      if (firePlus[k] && fireMinus[k]) accPerEvtAnd->Fill(k,1); accPerEvtThrFileAnd2D->Fill(k, nMult_ass_good,1);
     }
 
     if (fireLongThr1||fireShortThr1){
@@ -656,6 +662,8 @@ MBtriggerEfficiency::endJob()
   accPerEvtAnd->Scale(pow(evtsTot,-1));
   accPerEvtThrFile->Scale(pow(evtsTot,-1));
   accPerEvtThrFileAnd->Scale(pow(evtsTot,-1));
+  accPerEvtThrFile2D->Scale(pow(evtsTot,-1));
+  accPerEvtThrFileAnd2D->Scale(pow(evtsTot,-1));
   accPerEvtThrFileDeno->Scale(pow(evtsTot,-1));
   amplVSsampl->Write();
   outputFile->mkdir("channels");
@@ -692,6 +700,8 @@ MBtriggerEfficiency::endJob()
   chanAboveThrFileShort->Write();
   accPerEvtThrFile->Write();
   accPerEvtThrFileAnd->Write();
+  accPerEvtThrFile2D->Write();
+  accPerEvtThrFileAnd2D->Write();
   accPerEvtThrFileDeno->Write();
 
   idFired->TH1F::Sumw2();
