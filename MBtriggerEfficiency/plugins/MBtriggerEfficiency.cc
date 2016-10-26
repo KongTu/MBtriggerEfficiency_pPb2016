@@ -112,6 +112,7 @@ public:
   TH1F* accPerEvtThrFileAnd;
   TH1F* accPerEvtThrFileDeno;
   
+  //adding 2D
   TH2F* accPerEvtThrFile2D;
   TH2F* accPerEvtThrFileAnd2D;
 
