@@ -109,6 +109,7 @@ public:
   TH2F* chanAboveThrFileLong;
   TH2F* chanAboveThrFileShort;
   TH1F* accPerEvtThrFile;
+  TH1F* accPerEvtThrFileAnd;
   TH1F* accPerEvtThrFileDeno;
   
   TH1F* idFired;
@@ -282,6 +283,7 @@ MBtriggerEfficiency::MBtriggerEfficiency(const edm::ParameterSet& iConfig):
   chanAboveThrFileLong=new TH2F("chanAboveThrFileLong","chanAboveThrFileLong",100,-50,50,73,0,73);
   chanAboveThrFileShort=new TH2F("chanAboveThrFileShort","chanAboveThrFileShort",100,-50,50,73,0,73);
   accPerEvtThrFile=new TH1F("accPerEvtThrFile","accPerEvtThrFile",1000,0,1000); 
+  accPerEvtThrFileAnd=new TH1F("accPerEvtThrFileAnd","accPerEvtThrFileAnd",1000,0,1000); 
   accPerEvtThrFileDeno=new TH1F("accPerEvtThrFileDeno","accPerEvtThrFileDeno",1000,0,1000);
 
   bxNum=new TH1F("bxNum","bxNum",5000,0,5000);
@@ -450,6 +452,11 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
   bool fireShortThr1=false;
   bool fireLongThr1=false;
 
+  bool fireShortThr1_plus=false;
+  bool fireShortThr1_minus=false;
+  bool fireLongThr1_plus=false;
+  bool fireLongThr1_minus=false;
+
 
   if (!useReco){
 
@@ -578,6 +585,9 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
           //thresholdsLong[etaind][phiind])
           chanAboveThrFileLong->Fill(ieta,iphi,1);
           fireLongThr1=true;
+
+          if(ieta>0) fireLongThr1_plus=true;
+          if(ieta<0) fireLongThr1_minus=true;
         }
       }
       if (idepth==2){
@@ -595,7 +605,10 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
         if (ampl>17){
           //adc>thresholdsShort[etaind][phiind])
           chanAboveThrFileShort->Fill(ieta,iphi,1);
-          fireShortThr1=true;                        
+          fireShortThr1=true; 
+
+          if(ieta>0) fireShortThr1_plus=true;
+          if(ieta<0) fireShortThr1_minus=true;                       
         }
       }
     }
@@ -610,6 +623,10 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
 
     if (fireLongThr1||fireShortThr1){
       accPerEvtThrFile->Fill(nMult_ass_good, 1);
+    }
+
+    if( (fireLongThr1_plus && fireLongThr1_minus) || (fireShortThr1_plus && fireShortThr1_minus) ){
+      accPerEvtThrFileAnd->Fill(nMult_ass_good, 1);
     }
 
 
@@ -638,6 +655,7 @@ MBtriggerEfficiency::endJob()
   accPerEvtMinus->Scale(pow(evtsTot,-1));
   accPerEvtAnd->Scale(pow(evtsTot,-1));
   accPerEvtThrFile->Scale(pow(evtsTot,-1));
+  accPerEvtThrFileAnd->Scale(pow(evtsTot,-1));
   accPerEvtThrFileDeno->Scale(pow(evtsTot,-1));
   amplVSsampl->Write();
   outputFile->mkdir("channels");
@@ -673,6 +691,7 @@ MBtriggerEfficiency::endJob()
   chanAboveThrFileLong->Write();
   chanAboveThrFileShort->Write();
   accPerEvtThrFile->Write();
+  accPerEvtThrFileAnd->Write();
   accPerEvtThrFileDeno->Write();
 
   idFired->TH1F::Sumw2();
