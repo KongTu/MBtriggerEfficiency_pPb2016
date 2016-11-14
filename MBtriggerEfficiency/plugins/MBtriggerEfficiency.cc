@@ -121,6 +121,8 @@ public:
   TH2F* accPerEvtThrFile2D;
   TH2F* accPerEvtThrFileAnd2D;
 
+  TH2F* crossCheck_TP;
+
   TH1F* idFired;
   TH1F* idFired_frac;
   TH1F* nMBHF1_firedBX;
@@ -301,6 +303,7 @@ MBtriggerEfficiency::MBtriggerEfficiency(const edm::ParameterSet& iConfig):
   
   accPerEvtThrFile2D=new TH2F("accPerEvtThrFile2D","accPerEvtThrFile2D",40,0,40,1000,0,1000); 
   accPerEvtThrFileAnd2D=new TH2F("accPerEvtThrFileAnd2D","accPerEvtThrFileAnd2D",40,0,40,1000,0,1000); 
+  crossCheck_TP=new TH2F("crossCheck_TP","crossCheck_TP",2,0,1,2,0,1); 
 
   bxNum=new TH1F("bxNum","bxNum",5000,0,5000);
   
@@ -511,6 +514,8 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
          ttids[digi.id()] = digi;
    }
 
+   double tpFineGrainCount = 0.0;
+
    for (const auto& digi: *digis) {
       HcalTrigTowerDetId id = digi.id();
 
@@ -526,8 +531,7 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
       double tp_fg0_ = digi.t0().fineGrain(0);
       double tp_fg1_ = digi.t0().fineGrain(1);
 
-      cout << "tp_fg0_: " << tp_fg0_ << endl;
-      cout << "tp_fg1_: " << tp_fg1_ << endl;
+      if( tp_fg0_ == 1 || tp_fg1_ == 1) tpFineGrainCount++;
 
       // if (tp_et_ < threshold_)
       //    continue;
@@ -725,6 +729,18 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
       accPerEvtThrFileAnd->Fill(nMult_ass_good, 1);
     }
 
+    double hcalTP_emul = 0.0
+    if(fireLongThr1||fireShortThr1){
+      hcalTP_emul = 1.0
+    }
+    double hcalTP_data = 0.0
+    if( tpFineGrainCount >= 1.0 ){
+      hcalTP_data = 1.0
+    }
+
+    crossCheck_TP->Fill(hcalTP_emul, hcalTP_data);
+    
+
 
     nChanLong->Fill(nChLong,1);
     nChanShort->Fill(nChShort,1);
@@ -755,6 +771,8 @@ MBtriggerEfficiency::endJob()
   accPerEvtThrFile2D->Scale(pow(evtsTot,-1));
   accPerEvtThrFileAnd2D->Scale(pow(evtsTot,-1));
   accPerEvtThrFileDeno->Scale(pow(evtsTot,-1));
+  crossCheck_TP->Scale(pow(evtsTot,-1));
+
   amplVSsampl->Write();
   outputFile->mkdir("channels");
   outputFile->cd("channels");
@@ -785,6 +803,7 @@ MBtriggerEfficiency::endJob()
   sigProfileShort->Write();
   sigAboveThr1->Write();
   sigAboveThrShort1->Write();
+  crossCheck_TP->Write()
 
   chanAboveThrFileLong->Write();
   chanAboveThrFileShort->Write();
