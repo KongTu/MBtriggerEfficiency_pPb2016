@@ -15,6 +15,11 @@
 
 #include "FWCore/ParameterSet/interface/ParameterSet.h"
 
+#include "CalibFormats/CaloTPG/interface/CaloTPGTranscoder.h"
+#include "CalibFormats/CaloTPG/interface/CaloTPGRecord.h"
+#include "CalibFormats/HcalObjects/interface/HcalDbRecord.h"
+#include "CalibFormats/HcalObjects/interface/HcalDbService.h"
+
 #include "DataFormats/HcalDetId/interface/HcalDetId.h"
 #include "DataFormats/HcalDetId/interface/HcalElectronicsId.h"
 #include "DataFormats/HcalDigi/interface/HcalQIESample.h"

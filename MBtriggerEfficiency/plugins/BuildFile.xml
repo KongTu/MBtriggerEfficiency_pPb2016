@@ -23,6 +23,9 @@
 <use name="DataFormats/L1TGlobal"/>
 <use name="DataFormats/CaloTowers"/>
 
+<use name="CalibFormats/CaloTPG"/>
+<use name="CalibFormats/HcalObjects"/>
+
 <use name="DQM/L1TMonitor"/>
 
 <flags EDM_PLUGIN="1"/>
