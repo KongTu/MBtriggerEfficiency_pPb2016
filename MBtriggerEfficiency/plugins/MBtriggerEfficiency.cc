@@ -303,7 +303,7 @@ MBtriggerEfficiency::MBtriggerEfficiency(const edm::ParameterSet& iConfig):
   
   accPerEvtThrFile2D=new TH2F("accPerEvtThrFile2D","accPerEvtThrFile2D",40,0,40,1000,0,1000); 
   accPerEvtThrFileAnd2D=new TH2F("accPerEvtThrFileAnd2D","accPerEvtThrFileAnd2D",40,0,40,1000,0,1000); 
-  crossCheck_TP=new TH2F("crossCheck_TP","crossCheck_TP",2,0,1,2,0,1); 
+  crossCheck_TP=new TH2F("crossCheck_TP","crossCheck_TP",2,0,2,2,0,2); 
 
   bxNum=new TH1F("bxNum","bxNum",5000,0,5000);
   
