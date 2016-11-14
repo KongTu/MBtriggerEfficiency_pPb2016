@@ -490,7 +490,7 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
     // }
 
     edm::Handle<HcalTrigPrimDigiCollection> digis;
-    if (!event.getByLabel(digis_, digis)) {
+    if (!iEvent.getByLabel(digis_, digis)) {
       LogError("AnalyzeTP") <<
          "Can't find hcal trigger primitive digi collection with tag '" <<
          digis_ << "'" << std::endl;
