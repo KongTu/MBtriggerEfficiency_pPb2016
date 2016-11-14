@@ -229,7 +229,7 @@ private:
 // constructors and destructor
 //
 MBtriggerEfficiency::MBtriggerEfficiency(const edm::ParameterSet& iConfig):
-  digis_(config.getParameter<edm::InputTag>("triggerPrimitives")),
+  digis_(iConfig.getParameter<edm::InputTag>("triggerPrimitives")),
   m_l1GtUtils(iConfig, consumesCollector(), true)//this is important for 80x to compile
 
 {
