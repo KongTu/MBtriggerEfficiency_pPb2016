@@ -423,6 +423,9 @@ MBtriggerEfficiency::~MBtriggerEfficiency()
 // ------------ method called for each event  ------------
 void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup)
 {
+
+  using namespace edm;
+  using namespace std;
   //select particular lumi, bunch, etc...
   int lsec=iEvent.eventAuxiliary().luminosityBlock();
   int bx=iEvent.eventAuxiliary().bunchCrossing();
@@ -486,7 +489,7 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
     //   }
     // }
 
-    Handle<HcalTrigPrimDigiCollection> digis;
+    edm::Handle<HcalTrigPrimDigiCollection> digis;
     if (!event.getByLabel(digis_, digis)) {
       LogError("AnalyzeTP") <<
          "Can't find hcal trigger primitive digi collection with tag '" <<
@@ -494,7 +497,7 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
       return;
     }
 
-   ESHandle<CaloTPGTranscoder> decoder;
+   edm::ESHandle<CaloTPGTranscoder> decoder;
    setup.get<CaloTPGRecord>().get(decoder);
 
    std::map<HcalTrigTowerDetId, HcalTriggerPrimitiveDigi> ttids;
