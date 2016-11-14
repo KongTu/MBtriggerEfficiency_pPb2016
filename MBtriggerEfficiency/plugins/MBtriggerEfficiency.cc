@@ -729,13 +729,13 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
       accPerEvtThrFileAnd->Fill(nMult_ass_good, 1);
     }
 
-    double hcalTP_emul = 0.0
+    double hcalTP_emul = 0.0;
     if(fireLongThr1||fireShortThr1){
-      hcalTP_emul = 1.0
+      hcalTP_emul = 1.0;
     }
-    double hcalTP_data = 0.0
+    double hcalTP_data = 0.0;
     if( tpFineGrainCount >= 1.0 ){
-      hcalTP_data = 1.0
+      hcalTP_data = 1.0;
     }
 
     crossCheck_TP->Fill(hcalTP_emul, hcalTP_data);
