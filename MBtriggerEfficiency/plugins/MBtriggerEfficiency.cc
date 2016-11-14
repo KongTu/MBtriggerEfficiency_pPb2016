@@ -503,7 +503,7 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
     }
 
    edm::ESHandle<CaloTPGTranscoder> decoder;
-   setup.get<CaloTPGRecord>().get(decoder);
+   iSetup.get<CaloTPGRecord>().get(decoder);
 
    std::map<HcalTrigTowerDetId, HcalTriggerPrimitiveDigi> ttids;
    for (const auto& digi: *digis) {
