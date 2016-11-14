@@ -575,8 +575,6 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
       // }
    }
 
-   if( tpFineGrainCount == 0.0 ) return;
-
     int nMult_ass_good = 1;
     if( doMultDepend ){
 
@@ -641,6 +639,7 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
       int idepth=cell.depth();
       int ieta=cell.ieta();
       int iphi=cell.iphi();
+      if( ieta == 35 && iphi == 47 ) continue;
       //  if (abs(ieta)>36) continue;
       if (idepth==1) 
         {
@@ -740,8 +739,6 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
     }
 
     crossCheck_TP->Fill(hcalTP_emul, hcalTP_data);
-    
-
 
     nChanLong->Fill(nChLong,1);
     nChanShort->Fill(nChShort,1);
