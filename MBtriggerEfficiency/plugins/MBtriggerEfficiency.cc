@@ -803,7 +803,7 @@ MBtriggerEfficiency::endJob()
   sigProfileShort->Write();
   sigAboveThr1->Write();
   sigAboveThrShort1->Write();
-  crossCheck_TP->Write()
+  crossCheck_TP->Write();
 
   chanAboveThrFileLong->Write();
   chanAboveThrFileShort->Write();
