@@ -531,7 +531,7 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
       double tp_fg0_ = digi.t0().fineGrain(0);
       double tp_fg1_ = digi.t0().fineGrain(1);
 
-      if( tp_fg0_ == 1 || tp_fg1_ == 1) tpFineGrainCount++;
+      if( tp_fg1_ == 1 ) tpFineGrainCount++;
 
       // if (tp_et_ < threshold_)
       //    continue;
