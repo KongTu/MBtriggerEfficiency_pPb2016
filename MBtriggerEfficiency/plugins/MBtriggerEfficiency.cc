@@ -517,10 +517,10 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
    double tpFineGrainCount = 0.0;
 
    for (const auto& digi: *digis) {
-      HcalTrigTowerDetId id = digi.id();
+      //HcalTrigTowerDetId id = digi.id();
 
-      if (id.version() == 1 and abs(id.ieta()) >= 40 and id.iphi() % 4 == 1)
-         continue;
+      //if (id.version() == 1 and abs(id.ieta()) >= 40 and id.iphi() % 4 == 1)
+      //   continue;
 
       // tp_ieta_ = id.ieta();
       // tp_iphi_ = id.iphi();
