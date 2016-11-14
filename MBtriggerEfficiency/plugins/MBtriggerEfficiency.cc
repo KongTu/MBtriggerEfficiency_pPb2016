@@ -160,6 +160,8 @@ public:
   edm::EDGetTokenT<edm::View<reco::Track> > trackSrc_;
   edm::EDGetTokenT<reco::VertexCollection> vertexSrc_;
 
+  edm::InputTag digis_;
+
   edm::InputTag m_l1stage2globalAlgBlk;
   edm::EDGetTokenT<GlobalAlgBlkBxCollection> l1tStage2uGtSource_;
 
@@ -227,9 +229,11 @@ private:
 // constructors and destructor
 //
 MBtriggerEfficiency::MBtriggerEfficiency(const edm::ParameterSet& iConfig):
+  digis_(config.getParameter<edm::InputTag>("triggerPrimitives")),
   m_l1GtUtils(iConfig, consumesCollector(), true)//this is important for 80x to compile
 
 {
+  consumes<HcalTrigPrimDigiCollection>(digis_);
 
   m_l1stage2globalAlgBlk = edm::InputTag("hltGtStage2Digis");
 
@@ -481,6 +485,83 @@ void MBtriggerEfficiency::analyze(const edm::Event& iEvent, const edm::EventSetu
     //     }
     //   }
     // }
+
+    Handle<HcalTrigPrimDigiCollection> digis;
+    if (!event.getByLabel(digis_, digis)) {
+      LogError("AnalyzeTP") <<
+         "Can't find hcal trigger primitive digi collection with tag '" <<
+         digis_ << "'" << std::endl;
+      return;
+    }
+
+   ESHandle<CaloTPGTranscoder> decoder;
+   setup.get<CaloTPGRecord>().get(decoder);
+
+   std::map<HcalTrigTowerDetId, HcalTriggerPrimitiveDigi> ttids;
+   for (const auto& digi: *digis) {
+      if (digi.id().version() == 1)
+         ttids[digi.id()] = digi;
+   }
+
+   for (const auto& digi: *digis) {
+      HcalTrigTowerDetId id = digi.id();
+
+      if (id.version() == 1 and abs(id.ieta()) >= 40 and id.iphi() % 4 == 1)
+         continue;
+
+      // tp_ieta_ = id.ieta();
+      // tp_iphi_ = id.iphi();
+      // tp_depth_ = id.depth();
+      // tp_version_ = id.version();
+      // tp_soi_ = digi.SOI_compressedEt();
+      // tp_et_ = decoder->hcaletValue(id, digi.t0());
+      double tp_fg0_ = digi.t0().fineGrain(0);
+      double tp_fg1_ = digi.t0().fineGrain(1);
+
+      cout << "tp_fg0_: " << tp_fg0_ << endl;
+      cout << "tp_fg1_: " << tp_fg1_ << endl;
+
+      // if (tp_et_ < threshold_)
+      //    continue;
+
+      // tps_->Fill();
+
+      // if (tp_version_ == 0 and abs(tp_ieta_) >= 29) {
+      //    ev_tp_v0_et_ += tp_et_;
+      // } else if (tp_version_ == 1) {
+      //    ev_tp_v1_et_ += tp_et_;
+      // }
+
+      // if (abs(tp_ieta_) >= 29 and tp_version_ == 0) {
+      //    std::set<HcalTrigTowerDetId> matches;
+      //    for (const auto& detid: tpd_geo->detIds(id)) {
+      //       for (const auto& ttid: tpd_geo->towerIds(detid)) {
+      //          if (ttid.version() == 1)
+      //             matches.insert(ttid);
+      //       }
+      //    }
+
+      //    m_ieta_ = tp_ieta_;
+      //    m_iphi_ = tp_iphi_;
+      //    new_et_ = 0;
+      //    new_count_ = 0;
+      //    old_et_ = tp_et_;
+      //    old_fg0_ = tp_fg0_;
+      //    old_fg1_ = tp_fg1_;
+      //    new_fg0_ = 0;
+      //    new_fg1_ = 0;
+      //    for (const auto& m: matches) {
+      //       if (m.version() == 1 and abs(m.ieta()) >= 40 and m.iphi() % 4 == 1)
+      //          continue;
+
+      //       new_et_ += decoder->hcaletValue(m, ttids[m].t0());
+      //       ++new_count_;
+      //       new_fg0_ = new_fg0_ || ttids[m].t0().fineGrain(0);
+      //       new_fg1_ = new_fg1_ || ttids[m].t0().fineGrain(1);
+      //    }
+      //    match_->Fill();
+      // }
+   }
 
 
     int nMult_ass_good = 1;
